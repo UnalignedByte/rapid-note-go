@@ -1,0 +1,7 @@
+xcuserdata
+*.orig
+*.BACKUP.*
+*.LOCAL.*
+*.BASE.*
+*.REMOTE.*
+.DS_Store
