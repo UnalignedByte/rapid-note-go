@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NotesListVC : UITableViewController
+@interface NotesListVC : UITableViewController <NSFetchedResultsControllerDelegate>
 
 //Initialization
 - (id)init;
