@@ -115,7 +115,7 @@
 #pragma mark - Actions
 - (void)addNoteAction:(id)sender_
 {
-    Note *note = [[DataManager sharedInstance] createNote];
+    Note *note = [[DataManager sharedInstance] addNewNote];
 }
 
 @end

@@ -21,6 +21,6 @@
 + (DataManager *)sharedInstance;
 
 //Notes management
-- (Note *)createNote;
+- (Note *)addNewNote;
 
 @end

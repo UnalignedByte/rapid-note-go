@@ -70,7 +70,7 @@
 
 
 #pragma mark - Notes management
-- (Note *)createAndAddNote
+- (Note *)addNewNote
 {
     Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note"
                                                inManagedObjectContext:_notesContext];

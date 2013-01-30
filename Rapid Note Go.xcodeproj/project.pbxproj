@@ -69,6 +69,7 @@
 		89B7BBF716B6C57000294BBA /* PadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootVC.m; path = Source/Views/PadRootVC.m; sourceTree = "<group>"; };
 		89D6CA5916B6920A0023F1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89D6CA6116B692240023F1C8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				890EAE9D16A831F0000CFA48 /* Rapid Note Go-Info.plist */,
+				B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */,
 				897FA6E416A838B300EB2D18 /* Localizations */,
 			);
 			name = "Supporting Files";
@@ -406,6 +408,7 @@
 		890EAEB316A831F0000CFA48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Rapid Note Go/Rapid Note Go.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
@@ -418,6 +421,7 @@
 		890EAEB416A831F0000CFA48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Rapid Note Go/Rapid Note Go.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
