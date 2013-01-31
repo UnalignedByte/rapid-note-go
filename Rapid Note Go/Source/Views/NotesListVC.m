@@ -14,6 +14,8 @@
 
 #import "NoteCell.h"
 
+#import "NoteDetailsVC.h"
+
 
 #define INPUT_ANIMATION_DURATION 0.3
 
@@ -37,6 +39,8 @@
 {
     if((self = [super init]) == nil)
         return nil;
+    
+    self.title = Localize(@"Notes");
     
     [self setupTable];
     [self setupNavigationButtonsForAdding];
@@ -215,18 +219,65 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView_ didDeselectRowAtIndexPath:(NSIndexPath *)indexPath_
+- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath_
 {
     [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
     
     Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
+    
+    NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] initWithNote:note];
+    [self.navigationController pushViewController:noteDetailsVC animated:YES];
 }
 
 
 #pragma mark - Fetched Results Controller Delegate
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller_
+{
+    [self.tableVC.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller_ didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo_
+           atIndex:(NSUInteger)sectionIndex_ forChangeType:(NSFetchedResultsChangeType)type_
+{
+    switch(type_) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableVC.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableVC.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller_ didChangeObject:(id)object_ atIndexPath:(NSIndexPath *)indexPath_
+     forChangeType:(NSFetchedResultsChangeType)type_ newIndexPath:(NSIndexPath *)newIndexPath_
+{
+    switch(type_) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableVC.tableView deleteRowsAtIndexPaths:@[indexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:
+        {
+            [self.tableVC.tableView cellForRowAtIndexPath:indexPath_];
+            break;
+        }
+        case NSFetchedResultsChangeMove:
+            [self.tableVC.tableView deleteRowsAtIndexPaths:@[indexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller_
 {
-    [self.tableVC.tableView reloadData];
+    [self.tableVC.tableView endUpdates];
 }
 
 
