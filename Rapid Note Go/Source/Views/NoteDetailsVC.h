@@ -15,6 +15,10 @@
 @interface NoteDetailsVC : UIViewController
 
 //Initialization
+- (id)init;
 - (id)initWithNote:(Note *)note_;
+
+//Control
+- (void)configureWithNote:(Note *)note_;
 
 @end

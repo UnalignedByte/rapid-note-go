@@ -8,6 +8,17 @@
 
 #import "PadRootVC.h"
 
+#import "NotesListVC.h"
+#import "NoteDetailsVC.h"
+
+
+@interface PadRootVC ()
+
+@property (nonatomic, strong) NotesListVC *notesListVC;
+@property (nonatomic, strong) NoteDetailsVC *noteDetailsVC;
+
+@end
+
 
 @implementation PadRootVC
 
@@ -16,8 +27,24 @@
 {
     if((self = [super init]) == nil)
         return nil;
+    
+    self.notesListVC = [[NotesListVC alloc] init];
+    self.noteDetailsVC = [[NoteDetailsVC alloc] init];
+    self.notesListVC.noteDetailsVC = self.noteDetailsVC;
+    
+    self.viewControllers = @[[[UINavigationController alloc] initWithRootViewController:self.notesListVC],
+                             self.noteDetailsVC];
+    
+    self.delegate = self;
 
     return self;
+}
+
+
+#pragma mark - Split View Controller Delegate
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    return NO;
 }
 
 @end

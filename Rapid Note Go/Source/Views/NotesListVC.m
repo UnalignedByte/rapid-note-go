@@ -225,8 +225,12 @@
     
     Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
     
-    NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] initWithNote:note];
-    [self.navigationController pushViewController:noteDetailsVC animated:YES];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.noteDetailsVC configureWithNote:note];
+    } else {
+        NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] initWithNote:note];
+        [self.navigationController pushViewController:noteDetailsVC animated:YES];
+    }
 }
 
 

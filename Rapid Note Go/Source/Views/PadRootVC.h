@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PadRootVC : UISplitViewController
+@interface PadRootVC : UISplitViewController <UISplitViewControllerDelegate>
 
 //Initialization
 - (id)init;
