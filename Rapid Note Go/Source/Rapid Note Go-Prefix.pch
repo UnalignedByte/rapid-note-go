@@ -13,3 +13,6 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+
+#define Localize(string) NSLocalizedString(string, nil)

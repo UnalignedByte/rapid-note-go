@@ -31,6 +31,7 @@
 		89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */; };
 		89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* PadRootVC.m */; };
 		89D6CA5816B6920A0023F1C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D6CA5A16B6920A0023F1C8 /* Localizable.strings */; };
+		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		89D6CA5916B6920A0023F1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89D6CA6116B692240023F1C8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
+		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				89B7BBF716B6C57000294BBA /* PadRootVC.m */,
 				89B7BBF016B6C38500294BBA /* NotesListVC.h */,
 				89B7BBF116B6C38500294BBA /* NotesListVC.m */,
+				B5B30E1416B9D09000429607 /* NoteInputView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				891B93BF16B8113400EE24C9 /* Icon.png in Resources */,
 				891B93C016B8113400EE24C9 /* Icon@2x.png in Resources */,
 				891B93CA16B8249C00EE24C9 /* NoteCell.xib in Resources */,
+				B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +412,7 @@
 		890EAEB316A831F0000CFA48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Rapid Note Go/Rapid Note Go.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Rapid Note Go/Supporting Files/Rapid Note Go.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
@@ -421,7 +425,7 @@
 		890EAEB416A831F0000CFA48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Rapid Note Go/Rapid Note Go.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Rapid Note Go/Supporting Files/Rapid Note Go.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";

@@ -15,10 +15,17 @@
 #import "NoteCell.h"
 
 
+#define INPUT_ANIMATION_DURATION 0.3
+
+
 #pragma mark - Private properties
 @interface NotesListVC ()
 
+@property (nonatomic, strong) UITableViewController *tableVC;
 @property (nonatomic, strong) NSFetchedResultsController *notesResultsController;
+@property (nonatomic, strong) IBOutlet UIView *noteInputView;
+@property (nonatomic, strong) IBOutlet UITextView *noteInputText;
+@property (nonatomic, strong) IBOutlet UIView *noteInputBackground;
 
 @end
 
@@ -31,14 +38,49 @@
     if((self = [super init]) == nil)
         return nil;
     
-    UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                   target:self
-                                                                                   action:@selector(addNoteAction:)];
-    self.navigationItem.rightBarButtonItem = addNoteButton;
-    
+    [self setupTable];
+    [self setupNavigationButtonsForAdding];
     [self setupNotesResultsController];
+    [self setupNoteInput];
 
     return self;
+}
+
+
+- (void)setupTable
+{
+    self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    CGRect tableRect = self.view.frame;
+    tableRect.origin.y = 0;
+    self.tableVC.tableView.frame = tableRect;
+    [self.view addSubview:self.tableVC.tableView];
+    self.tableVC.tableView.dataSource = self;
+    self.tableVC.tableView.delegate = self;
+}
+
+
+- (void)setupNavigationButtonsForAdding
+{
+    UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                   target:self
+                                                                                   action:@selector(showNoteInputAction:)];
+    self.navigationItem.rightBarButtonItem = addNoteButton;
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
+
+- (void)setupNavigationButtonsForEditing
+{
+    UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Add")
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(addNoteAction:)];
+    UIBarButtonItem *cancelNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
+                                                                         style:UIBarButtonItemStyleBordered
+                                                                        target:self
+                                                                        action:@selector(cancelNoteAction:)];
+    self.navigationItem.rightBarButtonItem = addNoteButton;
+    self.navigationItem.leftBarButtonItem = cancelNoteButton;
 }
 
 
@@ -66,6 +108,69 @@
     if(![self.notesResultsController performFetch:&err]) {
         abort();
     }
+}
+
+
+- (void)setupNoteInput
+{
+    [[NSBundle mainBundle] loadNibNamed:@"NoteInputView" owner:self options:nil];
+    //[self.view addSubview:self.noteInputView];
+    [self.view addSubview:self.noteInputView];
+    [self.view bringSubviewToFront:self.noteInputView];
+    //move input view up
+    CGRect noteInputRect = self.noteInputView.frame;
+    noteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
+    self.noteInputView.frame = noteInputRect;
+    //hide the view for the moment
+    self.noteInputView.alpha = 0.0;
+}
+
+
+#pragma mark - Internal Control
+- (void)showInput
+{
+    self.inputView.userInteractionEnabled = YES;
+    CGRect noteInputRect = self.noteInputView.frame;
+    noteInputRect.origin.y = 0.0;
+    [self.noteInputText becomeFirstResponder];
+    
+    [self setupNavigationButtonsForEditing];
+    
+    [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:INPUT_ANIMATION_DURATION];
+        self.noteInputView.alpha = 1.0;
+        self.noteInputView.frame = noteInputRect;
+    [UIView commitAnimations];
+}
+
+
+- (void)hideInput
+{
+    self.inputView.userInteractionEnabled = NO;
+    CGRect noteInputRect = self.noteInputView.frame;
+    noteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
+    [self.noteInputText resignFirstResponder];
+    
+    [self setupNavigationButtonsForAdding];
+    
+    [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:INPUT_ANIMATION_DURATION];
+        self.noteInputView.alpha = 0.0;
+        self.noteInputView.frame = noteInputRect;
+    [UIView commitAnimations];
+    
+    self.noteInputText.text = @"";
+}
+
+
+- (void)addNote
+{
+}
+
+
+- (void)cancelNote
+{
+    [self hideInput];
 }
 
 
@@ -97,6 +202,14 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView_ heightForRowAtIndexPath:(NSIndexPath *)indexPath_
+{
+    UITableViewCell *cell = [tableView_ cellForRowAtIndexPath:indexPath_];
+    
+    return cell.frame.size.height;
+}
+
+
 - (void)tableView:(UITableView *)tableView_ didDeselectRowAtIndexPath:(NSIndexPath *)indexPath_
 {
     [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
@@ -108,14 +221,32 @@
 #pragma mark - Fetched Results Controller Delegate
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller_
 {
-    [self.tableView reloadData];
+    [self.tableVC.tableView reloadData];
 }
 
 
 #pragma mark - Actions
-- (void)addNoteAction:(id)sender_
+- (IBAction)showNoteInputAction:(id)sender_
 {
-    Note *note = [[DataManager sharedInstance] addNewNote];
+    [self showInput];
+}
+
+
+- (IBAction)hideNoteInputAction:(id)sender_
+{
+    [self hideInput];
+}
+
+
+- (IBAction)addNoteAction:(id)sender_
+{
+    [self addNote];
+}
+
+
+- (IBAction)cancelNoteAction:(id)sender_
+{
+    [self cancelNote];
 }
 
 @end
