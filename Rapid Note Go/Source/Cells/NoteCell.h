@@ -17,6 +17,9 @@ static NSString *kNoteCellIdentifier = @"NoteCellIdentifier";
 
 @interface NoteCell : UITableViewCell
 
+//Class  Info
++ (CGFloat)height;
+
 //Initialization
 - (id)init;
 - (void)configureWithNote:(Note *)note_;

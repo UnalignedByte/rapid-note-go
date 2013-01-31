@@ -31,6 +31,7 @@
 		89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */; };
 		89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* PadRootVC.m */; };
 		89D6CA5816B6920A0023F1C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D6CA5A16B6920A0023F1C8 /* Localizable.strings */; };
+		B5081F5B16BA8B4900C3F248 /* NSDate+NiceFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5A16BA8B4900C3F248 /* NSDate+NiceFormatting.m */; };
 		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,8 @@
 		89B7BBF716B6C57000294BBA /* PadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootVC.m; path = Source/Views/PadRootVC.m; sourceTree = "<group>"; };
 		89D6CA5916B6920A0023F1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89D6CA6116B692240023F1C8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5081F5916BA8B3D00C3F248 /* NSDate+NiceFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NiceFormatting.h"; path = "Source/Utilities/NSDate+NiceFormatting.h"; sourceTree = "<group>"; };
+		B5081F5A16BA8B4900C3F248 /* NSDate+NiceFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NiceFormatting.m"; path = "Source/Utilities/NSDate+NiceFormatting.m"; sourceTree = "<group>"; };
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +134,7 @@
 				89B7BBEF16B6C34800294BBA /* Views */,
 				891B93C116B8224C00EE24C9 /* Managers */,
 				89253EE116B6C7D300A9D1E9 /* Models */,
+				B5081F5816BA8AFE00C3F248 /* Utilities */,
 			);
 			name = Source;
 			path = "Rapid Note Go";
@@ -238,6 +242,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		B5081F5816BA8AFE00C3F248 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B5081F5916BA8B3D00C3F248 /* NSDate+NiceFormatting.h */,
+				B5081F5A16BA8B4900C3F248 /* NSDate+NiceFormatting.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -338,6 +351,7 @@
 				891B93C416B8227300EE24C9 /* DataManager.m in Sources */,
 				891B93C716B8244900EE24C9 /* Note.m in Sources */,
 				891B93CD16B824F800EE24C9 /* NoteCell.m in Sources */,
+				B5081F5B16BA8B4900C3F248 /* NSDate+NiceFormatting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

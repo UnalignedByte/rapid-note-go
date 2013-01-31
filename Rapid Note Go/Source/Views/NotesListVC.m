@@ -165,6 +165,13 @@
 
 - (void)addNote
 {
+    //check if message entered is empty
+    NSString *noSpaces = [self.noteInputText.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if(noSpaces.length > 0) {
+        Note *note = [[DataManager sharedInstance] addNewNote];
+        note.message = self.noteInputText.text;
+        [self hideInput];
+    }
 }
 
 
@@ -204,9 +211,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView_ heightForRowAtIndexPath:(NSIndexPath *)indexPath_
 {
-    UITableViewCell *cell = [tableView_ cellForRowAtIndexPath:indexPath_];
-    
-    return cell.frame.size.height;
+    return [NoteCell height];
 }
 
 
