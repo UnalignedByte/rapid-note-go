@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSManagedObjectModel *notesModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *notesStoreCoordinator;
+@property (nonatomic, strong) NSURL *notesStoreUrl;
 
 @end
 
@@ -40,7 +41,10 @@
 {
     if((self = [super init]) == nil)
         return nil;
-
+    
+    self.notesStoreUrl = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    self.notesStoreUrl = [self.notesStoreUrl URLByAppendingPathComponent:@"notes.sqlite"];
+    
     [self setupNotesModel];
     [self setupNotesStoreCoordinator];
     [self setupNotesContext];
@@ -59,6 +63,15 @@
 - (void)setupNotesStoreCoordinator
 {
     self.notesStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.notesModel];
+    
+    NSError *error;
+    if(![self.notesStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                             configuration:nil
+                                                       URL:self.notesStoreUrl
+                                                   options:nil
+                                                          error:&error]) {
+        abort();
+    }
 }
 
 
@@ -66,17 +79,38 @@
 {
     _notesContext = [[NSManagedObjectContext alloc] init];
     [_notesContext setPersistentStoreCoordinator:self.notesStoreCoordinator];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notesContextChanged:)
+                                                 name:NSManagedObjectContextObjectsDidChangeNotification
+                                               object:self.notesContext];
 }
 
 
-#pragma mark - Notes management
+#pragma mark - Notes Context Changes
+- (void)notesContextChanged:(NSNotification *)notification_
+{
+    NSError *error;
+    if(![self.notesContext save:&error]) {
+        abort();
+    }
+}
+
+
+#pragma mark - Control
 - (Note *)addNewNote
 {
     Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note"
                                                inManagedObjectContext:_notesContext];
+    
     note.creationDate = [NSDate date];
     
     return note;
+}
+
+
+- (void)deleteNote:(Note *)note_
+{
+    [_notesContext deleteObject:note_];
 }
 
 @end

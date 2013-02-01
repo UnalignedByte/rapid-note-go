@@ -20,7 +20,8 @@
 //Singleton
 + (DataManager *)sharedInstance;
 
-//Notes management
+//Control
 - (Note *)addNewNote;
+- (void)deleteNote:(Note *)note_;
 
 @end

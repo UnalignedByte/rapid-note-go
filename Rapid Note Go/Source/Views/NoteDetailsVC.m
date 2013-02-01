@@ -57,6 +57,7 @@
 {
     [super viewDidLoad];
     [self setupNote];
+    [self setupNavigationButtonsForReading];
 }
 
 
@@ -104,11 +105,89 @@
 }
 
 
+- (void)setupNavigationButtonsForReading
+{
+    self.navigationItem.leftBarButtonItem = nil;
+    
+    if(self.note == nil)
+        return;
+    
+    UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:@"N"
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(notificationButtonAction:)];
+    self.navigationItem.rightBarButtonItem = setNotificationButton;
+}
+
+
+- (void)setupNavigationButtonsForEditing
+{
+    UIBarButtonItem *cancelEditingButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
+                                                                            style:UIBarButtonItemStyleBordered
+                                                                           target:self
+                                                                           action:@selector(cancelNoteEditingAction:)];
+    UIBarButtonItem *saveEditingButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Save")
+                                                                          style:UIBarButtonSystemItemAction
+                                                                         target:self
+                                                                         action:@selector(saveNoteEditingAction:)];
+    self.navigationItem.leftBarButtonItem = cancelEditingButton;
+    self.navigationItem.rightBarButtonItem = saveEditingButton;
+}
+
+#pragma mark - Internal Control
+- (void)cancelNoteEditing
+{
+    self.noteText.text = self.note.message;
+    
+    [self setupNavigationButtonsForReading];
+    
+    [self.noteText resignFirstResponder];
+}
+
+
+- (void)saveNoteEditing
+{
+    self.note.message = self.noteText.text;
+    self.note.modificationDate = [NSDate date];
+    
+    [self setupNote];
+    [self setupNavigationButtonsForReading];
+    
+    [self.noteText resignFirstResponder];
+}
+
+
 #pragma mark - Control
 - (void)configureWithNote:(Note *)note_
 {
     self.note = note_;
     [self setupNote];
+}
+
+
+#pragma mark - Text View Delegate
+- (void)textViewDidBeginEditing:(UITextView *)textView_
+{
+    [self setupNavigationButtonsForEditing];
+}
+
+
+#pragma mark - Acitons
+- (void)notificationButtonAction:(id)sender_
+{
+    
+}
+
+
+- (void)cancelNoteEditingAction:(id)sender_
+{
+    [self cancelNoteEditing];
+}
+
+
+- (void)saveNoteEditingAction:(id)sender_
+{
+    [self saveNoteEditing];
 }
 
 @end

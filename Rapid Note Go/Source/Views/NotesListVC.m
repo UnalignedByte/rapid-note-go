@@ -65,26 +65,41 @@
 
 - (void)setupNavigationButtonsForAdding
 {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Edit")
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(editNotesListAction:)];
     UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                    target:self
                                                                                    action:@selector(showNoteInputAction:)];
+    self.navigationItem.leftBarButtonItem = editButton;
     self.navigationItem.rightBarButtonItem = addNoteButton;
-    self.navigationItem.leftBarButtonItem = nil;
 }
 
 
 - (void)setupNavigationButtonsForEditing
 {
     UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Add")
-                                                                      style:UIBarButtonItemStyleBordered
+                                                                      style:UIBarButtonItemStylePlain
                                                                      target:self
                                                                      action:@selector(addNoteAction:)];
     UIBarButtonItem *cancelNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
-                                                                         style:UIBarButtonItemStyleBordered
+                                                                         style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(cancelNoteAction:)];
     self.navigationItem.rightBarButtonItem = addNoteButton;
     self.navigationItem.leftBarButtonItem = cancelNoteButton;
+}
+
+
+- (void)setupNavigationButtonsForListEditing
+{
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Done")
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(finishEditingNotesListAction:)];
+    self.navigationItem.leftBarButtonItem = doneButton;
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 
@@ -185,6 +200,22 @@
 }
 
 
+- (void)editNotesList
+{
+    [self setupNavigationButtonsForListEditing];
+    
+    [self.tableVC.tableView setEditing:YES animated:YES];
+}
+
+
+- (void)finishEditingNotesList
+{
+    [self setupNavigationButtonsForAdding];
+    
+    [self.tableVC.tableView setEditing:NO animated:YES];
+}
+
+
 #pragma mark - Table View Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView_
 {
@@ -234,6 +265,23 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView_ commitEditingStyle:(UITableViewCellEditingStyle)style_
+        forRowAtIndexPath:(NSIndexPath *)indexPath_
+{
+    Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
+    
+    switch(style_) {
+        case UITableViewCellEditingStyleDelete:
+            [[DataManager sharedInstance] deleteNote:note];
+            break;
+        case UITableViewCellEditingStyleInsert:
+            break;
+        case UITableViewCellEditingStyleNone:
+            break;
+    }
+}
+
+
 #pragma mark - Fetched Results Controller Delegate
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller_
 {
@@ -256,7 +304,7 @@
 }
 
 
-- (void)controller:(NSFetchedResultsController *)controller_ didChangeObject:(id)object_ atIndexPath:(NSIndexPath *)indexPath_
+- (void)controller:(NSFetchedResultsController *)controller_ didChangeObject:(id)object_ atIndexPath:(NSIndexPath *)oldIndexPath_
      forChangeType:(NSFetchedResultsChangeType)type_ newIndexPath:(NSIndexPath *)newIndexPath_
 {
     switch(type_) {
@@ -264,15 +312,15 @@
             [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            [self.tableVC.tableView deleteRowsAtIndexPaths:@[indexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableVC.tableView deleteRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
         {
-            [self.tableVC.tableView cellForRowAtIndexPath:indexPath_];
+            [self.tableVC.tableView reloadRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
         case NSFetchedResultsChangeMove:
-            [self.tableVC.tableView deleteRowsAtIndexPaths:@[indexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableVC.tableView deleteRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
@@ -307,6 +355,18 @@
 - (IBAction)cancelNoteAction:(id)sender_
 {
     [self cancelNote];
+}
+
+
+- (IBAction)editNotesListAction:(id)sender_
+{
+    [self editNotesList];
+}
+
+
+- (IBAction)finishEditingNotesListAction:(id)sender_
+{
+    [self finishEditingNotesList];
 }
 
 @end

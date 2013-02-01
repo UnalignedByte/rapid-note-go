@@ -12,7 +12,7 @@
 @class Note;
 
 
-@interface NoteDetailsVC : UIViewController
+@interface NoteDetailsVC : UIViewController <UITextViewDelegate>
 
 //Initialization
 - (id)init;
