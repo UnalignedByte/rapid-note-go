@@ -33,7 +33,7 @@
     self.notesListVC.noteDetailsVC = self.noteDetailsVC;
     
     self.viewControllers = @[[[UINavigationController alloc] initWithRootViewController:self.notesListVC],
-                             self.noteDetailsVC];
+                             [[UINavigationController alloc] initWithRootViewController:self.noteDetailsVC]];
     
     self.delegate = self;
 

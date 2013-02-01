@@ -51,6 +51,12 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated_
+{
+    [self.tableVC.tableView deselectRowAtIndexPath:[self.tableVC.tableView indexPathForSelectedRow] animated:YES];
+}
+
+
 - (void)setupTable
 {
     self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -252,8 +258,6 @@
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath_
 {
-    [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
-    
     Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -272,8 +276,13 @@
     
     switch(style_) {
         case UITableViewCellEditingStyleDelete:
+        {
+            if(indexPath_.row == [self.tableVC.tableView indexPathForSelectedRow].row) {
+                [self.noteDetailsVC configureWithNote:nil];
+            }
             [[DataManager sharedInstance] deleteNote:note];
             break;
+        }
         case UITableViewCellEditingStyleInsert:
             break;
         case UITableViewCellEditingStyleNone:
