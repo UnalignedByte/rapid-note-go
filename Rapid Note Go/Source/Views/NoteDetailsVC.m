@@ -8,7 +8,12 @@
 
 #import "NoteDetailsVC.h"
 
+#import "DataManager.h"
+
 #import "Note.h"
+
+
+#define NOTIFICATION_ANIMATION_DURATION 0.3
 
 
 @interface NoteDetailsVC ()
@@ -23,7 +28,12 @@
 @property (nonatomic, weak) IBOutlet UILabel *modificationDateLabel;
 
 @property (nonatomic, weak) IBOutlet UIImageView *notificationImage;
-@property (nonatomic, weak) IBOutlet UILabel *notificationDateLabel;
+@property (nonatomic, weak) IBOutlet UIButton *notificationButton;
+
+@property (nonatomic, strong) UIActionSheet *deleteNoteSheet;
+
+@property (nonatomic, weak) IBOutlet UIView *setNotificationDateView;
+@property (nonatomic, weak) IBOutlet UIDatePicker *setNotificationDatePicker;
 
 @end
 
@@ -57,6 +67,7 @@
 {
     [super viewDidLoad];
     [self setupNote];
+    [self setupNotificationSetting];
     [self setupNavigationButtonsForReading];
 }
 
@@ -71,7 +82,7 @@
         self.modificationDateLabel.hidden = YES;
         
         self.notificationImage.hidden = YES;
-        self.notificationDateLabel.hidden = YES;
+        self.notificationButton.hidden = YES;
         
         self.noteText.hidden = YES;
         
@@ -100,8 +111,29 @@
     if(self.note.notificationDate != nil &&
        [self.note.notificationDate laterDate:[NSDate date]] == self.note.notificationDate)
     {
+        self.notificationImage.hidden = NO;
+        self.notificationButton.hidden = NO;
+        self.notificationButton.titleLabel.text = [self.note.notificationDate formatAsShortNiceString];
     } else {
+        self.notificationImage.hidden = NO;
+        self.notificationButton.hidden = NO;
+        [self.notificationButton setTitle:Localize(@"Set Notification") forState:UIControlStateNormal];
+        self.note.notificationDate = nil;
     }
+}
+
+
+- (void)setupNotificationSetting
+{
+    [[NSBundle mainBundle] loadNibNamed:@"SetNotificationView" owner:self options:nil];
+    [self.view addSubview:self.setNotificationDateView];
+    
+    CGRect setNotificationDateRect = self.setNotificationDateView.frame;
+    setNotificationDateRect.origin.y = -self.setNotificationDatePicker.frame.size.height;
+    self.setNotificationDateView.frame = setNotificationDateRect;
+    
+    self.setNotificationDateView.userInteractionEnabled = NO;
+    self.setNotificationDateView.alpha = 0.0;
 }
 
 
@@ -111,12 +143,11 @@
     
     if(self.note == nil)
         return;
-    
-    UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:@"N"
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:self
-                                                                             action:@selector(notificationButtonAction:)];
-    self.navigationItem.rightBarButtonItem = setNotificationButton;
+    UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                  target:self
+                                                  action:@selector(deleteButtonAction:)];
+
+    self.navigationItem.rightBarButtonItem = deleteButton;
 }
 
 
@@ -132,6 +163,21 @@
                                                                          action:@selector(saveNoteEditingAction:)];
     self.navigationItem.leftBarButtonItem = cancelEditingButton;
     self.navigationItem.rightBarButtonItem = saveEditingButton;
+}
+
+
+- (void)setupNavigationButtonsForSettingNotificationDate
+{
+    UIBarButtonItem *cancelSettingNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
+                                                                                        style:UIBarButtonItemStylePlain
+                                                                                       target:self
+                                                                                       action:@selector(cancelSettingNotificationDateAction:)];
+    UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set Notification")
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(setNotificationDateAction:)];
+    self.navigationItem.leftBarButtonItem = cancelSettingNotificationButton;
+    self.navigationItem.rightBarButtonItem = setNotificationButton;
 }
 
 #pragma mark - Internal Control
@@ -157,6 +203,56 @@
 }
 
 
+- (void)deleteNote
+{
+    self.deleteNoteSheet = [[UIActionSheet alloc] initWithTitle:Localize(@"Are you suere that want to delete this note?")
+                                                       delegate:self
+                                              cancelButtonTitle:Localize(@"Cancel")
+                                         destructiveButtonTitle:Localize(@"Delete")
+                                              otherButtonTitles:nil];
+    
+    [self.deleteNoteSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+}
+
+
+- (void)showSetNotificationDate
+{
+    [self setupNavigationButtonsForSettingNotificationDate];
+    
+    CGRect setNotificationDateRect = self.setNotificationDateView.frame;
+    setNotificationDateRect.origin.y = 0.0;
+    self.setNotificationDateView.userInteractionEnabled = YES;
+    
+    [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:NOTIFICATION_ANIMATION_DURATION];
+        self.setNotificationDateView.alpha = 1.0;
+        self.setNotificationDateView.frame = setNotificationDateRect;
+    [UIView commitAnimations];
+}
+
+
+- (void)hideSetNotificationDate
+{
+    [self setupNavigationButtonsForReading];
+    
+    CGRect setNotificationDateRect = self.setNotificationDateView.frame;
+    setNotificationDateRect.origin.y = -self.setNotificationDatePicker.frame.size.height;
+    self.setNotificationDateView.userInteractionEnabled = NO;
+    
+    [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:NOTIFICATION_ANIMATION_DURATION];
+        self.setNotificationDateView.alpha = 0.0;
+        self.setNotificationDateView.frame = setNotificationDateRect;
+    [UIView commitAnimations];
+}
+
+
+- (void)disableNotification
+{
+    
+}
+
+
 #pragma mark - Control
 - (void)configureWithNote:(Note *)note_
 {
@@ -172,22 +268,54 @@
 }
 
 
-#pragma mark - Acitons
-- (void)notificationButtonAction:(id)sender_
+#pragma mark - Action Sheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet_ clickedButtonAtIndex:(NSInteger)buttonIndex_
 {
-    
+    if(actionSheet_ == self.deleteNoteSheet && buttonIndex_ == 0) {
+        [[DataManager sharedInstance] deleteNote:self.note];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 
-- (void)cancelNoteEditingAction:(id)sender_
+#pragma mark - Acitons
+- (IBAction)notificationButtonAction:(id)sender_
+{
+    if(self.note.notificationDate != nil)
+        [self disableNotification];
+    else
+        [self showSetNotificationDate];
+}
+
+
+- (IBAction)cancelNoteEditingAction:(id)sender_
 {
     [self cancelNoteEditing];
 }
 
 
-- (void)saveNoteEditingAction:(id)sender_
+- (IBAction)saveNoteEditingAction:(id)sender_
 {
     [self saveNoteEditing];
+}
+
+- (IBAction)deleteButtonAction:(id)sender_
+{
+    [self deleteNote];
+}
+
+
+- (IBAction)setNotificationDateAction:(id)sender_
+{
+    self.note.notificationDate = self.setNotificationDatePicker.date;
+    [self setupNote];
+    [self hideSetNotificationDate];
+}
+
+
+- (IBAction)cancelSettingNotificationDateAction:(id)sender_
+{
+    [self hideSetNotificationDate];
 }
 
 @end

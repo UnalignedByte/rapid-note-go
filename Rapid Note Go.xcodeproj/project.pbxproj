@@ -35,6 +35,7 @@
 		B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */; };
 		B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */; };
 		B5081F6216BACB6000C3F248 /* NoteDetailsViewPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */; };
+		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
 		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteDetailsVC.m; path = Source/Views/NoteDetailsVC.m; sourceTree = "<group>"; };
 		B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPhone.xib; path = Source/Views/NoteDetailsViewPhone.xib; sourceTree = "<group>"; };
 		B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPad.xib; path = Source/Views/NoteDetailsViewPad.xib; sourceTree = "<group>"; };
+		B5081F6316BC082900C3F248 /* SetNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetNotificationView.xib; path = Source/Views/SetNotificationView.xib; sourceTree = "<group>"; };
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,6 +251,7 @@
 				B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */,
 				B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */,
 				B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */,
+				B5081F6316BC082900C3F248 /* SetNotificationView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */,
 				B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */,
 				B5081F6216BACB6000C3F248 /* NoteDetailsViewPad.xib in Resources */,
+				B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
