@@ -9,6 +9,7 @@
 #import "NoteDetailsVC.h"
 
 #import "DataManager.h"
+#import "NotificationsManager.h"
 
 #import "Note.h"
 
@@ -31,6 +32,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *notificationButton;
 
 @property (nonatomic, strong) UIActionSheet *deleteNoteSheet;
+@property (nonatomic, strong) UIActionSheet *disableNotificaitonSheet;
 
 @property (nonatomic, weak) IBOutlet UIView *setNotificationDateView;
 @property (nonatomic, weak) IBOutlet UIDatePicker *setNotificationDatePicker;
@@ -109,11 +111,11 @@
     
     //notificaiton
     if(self.note.notificationDate != nil &&
-       [self.note.notificationDate laterDate:[NSDate date]] == self.note.notificationDate)
+       [self.note.notificationDate compare:[NSDate date]] == NSOrderedDescending)
     {
         self.notificationImage.hidden = NO;
         self.notificationButton.hidden = NO;
-        self.notificationButton.titleLabel.text = [self.note.notificationDate formatAsShortNiceString];
+        [self.notificationButton setTitle:[self.note.notificationDate formatAsShortNiceString] forState:UIControlStateNormal];
     } else {
         self.notificationImage.hidden = NO;
         self.notificationButton.hidden = NO;
@@ -247,9 +249,34 @@
 }
 
 
+- (void)setNotification
+{
+    NSDate *date = self.setNotificationDatePicker.date;
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *nowDateComponents = [gregorianCalendar components:calendarUnits
+                                                               fromDate:date];
+    nowDateComponents.second = 0;
+    date = [gregorianCalendar dateFromComponents:nowDateComponents];
+    self.note.notificationDate = date;
+    
+    [self setupNote];
+    
+    [[NotificationsManager sharedInstance] addNotificationForNote:self.note];
+    [self hideSetNotificationDate];
+}
+
+
 - (void)disableNotification
 {
-    
+    self.disableNotificaitonSheet = [[UIActionSheet alloc] initWithTitle:Localize(@"Are you sure you want to disable notification for this note?")
+                                                                delegate:self
+                                                       cancelButtonTitle:Localize(@"Cancel")
+                                                  destructiveButtonTitle:Localize(@"Disable Notification")
+                                                       otherButtonTitles:nil];
+    [self.disableNotificaitonSheet showFromRect:self.notificationButton.frame
+                                         inView:self.view
+                                       animated:YES];
 }
 
 
@@ -272,8 +299,14 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet_ clickedButtonAtIndex:(NSInteger)buttonIndex_
 {
     if(actionSheet_ == self.deleteNoteSheet && buttonIndex_ == 0) {
+        [[NotificationsManager sharedInstance] removeNotificationForNote:self.note];
         [[DataManager sharedInstance] deleteNote:self.note];
         [self.navigationController popViewControllerAnimated:YES];
+    } else if(actionSheet_ == self.disableNotificaitonSheet && buttonIndex_ == 0) {
+        if(buttonIndex_ == 0) {
+            self.note.notificationDate = nil;
+            [self setupNote];
+        }
     }
 }
 
@@ -307,9 +340,7 @@
 
 - (IBAction)setNotificationDateAction:(id)sender_
 {
-    self.note.notificationDate = self.setNotificationDatePicker.date;
-    [self setupNote];
-    [self hideSetNotificationDate];
+    [self setNotification];
 }
 
 

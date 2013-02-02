@@ -41,6 +41,13 @@
 }
 
 
+#pragma mark - Control
+- (void)showNoteForTag:(NSString *)tag_
+{
+    [self.notesListVC showNoteForTag:tag_];
+}
+
+
 #pragma mark - Split View Controller Delegate
 - (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
 {

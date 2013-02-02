@@ -103,6 +103,12 @@
                                                inManagedObjectContext:_notesContext];
     
     note.creationDate = [NSDate date];
+    note.modificationDate = note.creationDate;
+    
+    //tag  uniquely identify each note
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    note.tag = (NSString *)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuid));
+    CFRelease(uuid);
     
     return note;
 }
@@ -111,6 +117,24 @@
 - (void)deleteNote:(Note *)note_
 {
     [_notesContext deleteObject:note_];
+}
+
+
+- (NSArray *)allNotes
+{
+    NSFetchRequest *notesFetchRequest = [[NSFetchRequest alloc] init];
+    //entity
+    NSEntityDescription *notesEntityDescription = [NSEntityDescription entityForName:@"Note"
+                                                              inManagedObjectContext:[DataManager sharedInstance].notesContext];
+    [notesFetchRequest setEntity:notesEntityDescription];
+    //sorting
+    NSSortDescriptor *notesSort = [[NSSortDescriptor alloc] initWithKey:@"modificationDate" ascending:NO];
+    [notesFetchRequest setSortDescriptors:@[notesSort]];
+    
+    NSError *error;
+    NSArray *notes = [_notesContext executeFetchRequest:notesFetchRequest error:&error];
+
+    return notes;
 }
 
 @end

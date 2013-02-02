@@ -12,7 +12,7 @@
 
 
 #pragma mark - Private properties
-@interface PhoneRootVC()
+@interface PhoneRootVC ()
 
 @property (nonatomic, strong) NotesListVC *notesListVC;
 
@@ -31,6 +31,13 @@
     self.viewControllers = @[self.notesListVC];
     
     return self;
+}
+
+
+#pragma mark - Control
+- (void)showNoteForTag:(NSString *)tag_
+{
+    [self.notesListVC showNoteForTag:tag_];
 }
 
 @end

@@ -15,5 +15,6 @@
 @dynamic creationDate;
 @dynamic modificationDate;
 @dynamic notificationDate;
+@dynamic tag;
 
 @end

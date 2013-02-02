@@ -19,4 +19,7 @@
 //Initialization
 - (id)init;
 
+//Control
+- (void)showNoteForTag:(NSString *)tag_;
+
 @end

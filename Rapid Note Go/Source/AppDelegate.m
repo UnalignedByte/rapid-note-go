@@ -23,8 +23,8 @@
 @implementation AppDelegate
 
 #pragma mark - Initialization
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application_ didFinishLaunchingWithOptions:(NSDictionary *)options_
+{    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -35,7 +35,32 @@
     self.window.rootViewController = self.rootVC;
     [self.window makeKeyAndVisible];
     
+    //propagate handling of notification
+    UILocalNotification *notification = options_[UIApplicationLaunchOptionsLocalNotificationKey];
+    if(notification != nil) {
+        [self application:nil didReceiveLocalNotification:notification];
+    }
+    
     return YES;
+}
+
+
+#pragma mark - Local Notifications Delegate
+- (void)application:(UIApplication *)application_ didReceiveLocalNotification:(UILocalNotification *)notification_
+{
+    [[UIApplication sharedApplication] cancelLocalNotification:notification_];
+    
+    NSString *tag = notification_.userInfo[@"tag"];
+    if(tag == nil)
+        return;
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        PadRootVC *rootVC = (PadRootVC *)self.rootVC;
+        [rootVC showNoteForTag:tag];
+    } else {
+        PhoneRootVC *rootVC = (PhoneRootVC *)self.rootVC;
+        [rootVC showNoteForTag:tag];
+    }
 }
 
 @end

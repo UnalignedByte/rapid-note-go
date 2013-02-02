@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSDate *creationDate;
 @property (nonatomic, retain) NSDate *modificationDate;
 @property (nonatomic, retain) NSDate *notificationDate;
+@property (nonatomic, retain) NSString *tag;
 
 @end

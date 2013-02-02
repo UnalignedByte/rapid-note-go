@@ -9,6 +9,7 @@
 #import "NotesListVC.h"
 
 #import "DataManager.h"
+#import "NotificationsManager.h"
 
 #import "Note.h"
 
@@ -59,7 +60,7 @@
 
 - (void)setupTable
 {
-    self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     CGRect tableRect = self.view.frame;
     tableRect.origin.y = 0;
     self.tableVC.tableView.frame = tableRect;
@@ -117,7 +118,7 @@
                                                               inManagedObjectContext:[DataManager sharedInstance].notesContext];
     [notesFetchRequest setEntity:notesEntityDescription];
     //sorting
-    NSSortDescriptor *notesSort = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
+    NSSortDescriptor *notesSort = [[NSSortDescriptor alloc] initWithKey:@"modificationDate" ascending:NO];
     [notesFetchRequest setSortDescriptors:@[notesSort]];
     //fetch size
     [notesFetchRequest setFetchBatchSize:10];
@@ -222,6 +223,20 @@
 }
 
 
+#pragma mark - Control
+- (void)showNoteForTag:(NSString *)tag_
+{
+    NSArray *notes = [[DataManager sharedInstance] allNotes];
+    for(int i=0; i<notes.count; i++) {
+        Note *note = notes[i];
+        if([note.tag isEqualToString:tag_]) {
+            [self tableView:self.tableVC.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            return;
+        }
+    }
+}
+
+
 #pragma mark - Table View Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView_
 {
@@ -263,8 +278,12 @@
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.noteDetailsVC configureWithNote:note];
     } else {
-        NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] initWithNote:note];
-        [self.navigationController pushViewController:noteDetailsVC animated:YES];
+        if([self.navigationController.topViewController class] == [NoteDetailsVC class]) {
+            [self.noteDetailsVC configureWithNote:note];
+        } else {
+            NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] initWithNote:note];
+            [self.navigationController pushViewController:noteDetailsVC animated:YES];
+        }
     }
 }
 
@@ -280,6 +299,7 @@
             if(indexPath_.row == [self.tableVC.tableView indexPathForSelectedRow].row) {
                 [self.noteDetailsVC configureWithNote:nil];
             }
+            [[NotificationsManager sharedInstance] removeNotificationForNote:note];
             [[DataManager sharedInstance] deleteNote:note];
             break;
         }
