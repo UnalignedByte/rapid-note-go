@@ -36,6 +36,8 @@
 		B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */; };
 		B5081F6216BACB6000C3F248 /* NoteDetailsViewPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */; };
 		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
+		B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3A16C3D94C00B5EDEE /* Icon-72.png */; };
+		B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */; };
 		B53651E316BD3AB20090C926 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B53651E216BD3AB20090C926 /* NotificationsManager.m */; };
 		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,8 @@
 		B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPhone.xib; path = Source/Views/NoteDetailsViewPhone.xib; sourceTree = "<group>"; };
 		B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPad.xib; path = Source/Views/NoteDetailsViewPad.xib; sourceTree = "<group>"; };
 		B5081F6316BC082900C3F248 /* SetNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetNotificationView.xib; path = Source/Views/SetNotificationView.xib; sourceTree = "<group>"; };
+		B5269B3A16C3D94C00B5EDEE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Graphics/Icons/Icon-72.png"; sourceTree = "<group>"; };
+		B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Graphics/Icons/Icon-72@2x.png"; sourceTree = "<group>"; };
 		B53651E116BD3AB20090C926 /* NotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationsManager.h; path = Source/Managers/NotificationsManager.h; sourceTree = "<group>"; };
 		B53651E216BD3AB20090C926 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationsManager.m; path = Source/Managers/NotificationsManager.m; sourceTree = "<group>"; };
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 			children = (
 				891B93BD16B8113400EE24C9 /* Icon.png */,
 				891B93BE16B8113400EE24C9 /* Icon@2x.png */,
+				B5269B3A16C3D94C00B5EDEE /* Icon-72.png */,
+				B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -338,6 +344,8 @@
 				B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */,
 				B5081F6216BACB6000C3F248 /* NoteDetailsViewPad.xib in Resources */,
 				B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */,
+				B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */,
+				B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
