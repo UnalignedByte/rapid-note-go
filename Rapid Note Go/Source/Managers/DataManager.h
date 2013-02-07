@@ -15,6 +15,7 @@
 @interface DataManager : NSObject
 
 @property (nonatomic, readonly) NSManagedObjectContext *notesContext;
+@property (nonatomic, readonly) BOOL isUsingCloud;
 
 
 //Singleton
