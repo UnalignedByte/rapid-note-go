@@ -52,12 +52,6 @@
 }
 
 
-- (void)viewDidAppear:(BOOL)animated_
-{
-    [self.tableVC.tableView deselectRowAtIndexPath:[self.tableVC.tableView indexPathForSelectedRow] animated:YES];
-}
-
-
 - (void)setupTable
 {
     self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -67,6 +61,10 @@
     [self.view addSubview:self.tableVC.tableView];
     self.tableVC.tableView.dataSource = self;
     self.tableVC.tableView.delegate = self;
+    UIView *tableBackgroundView = [[UIView alloc] initWithFrame:self.tableVC.tableView.frame];
+    tableBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
+    self.tableVC.tableView.backgroundView = tableBackgroundView;
+    self.view.backgroundColor = [UIColor blueColor];
 }
 
 
@@ -144,9 +142,10 @@
     [self.view addSubview:self.noteInputView];
     [self.view bringSubviewToFront:self.noteInputView];
     //move input view up
-    CGRect noteInputRect = self.noteInputView.frame;
-    noteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
-    self.noteInputView.frame = noteInputRect;
+    //CGRect noteInputRect = self.noteInputView.frame;
+    //noteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
+    //self.noteInputView.frame = noteInputRect;
+    self.noteInputView.frame = self.view.frame;
     //hide the view for the moment
     self.noteInputView.alpha = 0.0;
 }
@@ -155,6 +154,11 @@
 #pragma mark - Internal Control
 - (void)showInput
 {
+    //set original position
+    CGRect originalNoteInputRect = self.noteInputView.frame;
+    originalNoteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
+    self.noteInputView.frame = originalNoteInputRect;
+    
     self.inputView.userInteractionEnabled = YES;
     CGRect noteInputRect = self.noteInputView.frame;
     noteInputRect.origin.y = 0.0;
@@ -273,6 +277,8 @@
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath_
 {
+    [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
+    
     Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -317,6 +323,7 @@
     [self.tableVC.tableView beginUpdates];
 }
 
+
 - (void)controller:(NSFetchedResultsController *)controller_ didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo_
            atIndex:(NSUInteger)sectionIndex_ forChangeType:(NSFetchedResultsChangeType)type_
 {
@@ -345,7 +352,7 @@
             break;
         case NSFetchedResultsChangeUpdate:
         {
-            [self.tableVC.tableView reloadRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableVC.tableView reloadRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
         case NSFetchedResultsChangeMove:

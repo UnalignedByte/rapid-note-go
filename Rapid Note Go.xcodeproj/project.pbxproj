@@ -39,7 +39,46 @@
 		B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3A16C3D94C00B5EDEE /* Icon-72.png */; };
 		B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */; };
 		B53651E316BD3AB20090C926 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B53651E216BD3AB20090C926 /* NotificationsManager.m */; };
+		B570355B16D81650001A1D8A /* Background Pattern Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355916D81650001A1D8A /* Background Pattern Dark.png */; };
+		B570355C16D81650001A1D8A /* Background Pattern Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */; };
+		B589443F16D94CA000B9E435 /* Note Entry Background Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */; };
+		B589444016D94CA000B9E435 /* Note Entry Background Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589443E16D94CA000B9E435 /* Note Entry Background Dark@2x.png */; };
+		B589444716DA672100B9E435 /* Created Icon Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444116DA672100B9E435 /* Created Icon Dark.png */; };
+		B589444816DA672100B9E435 /* Created Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444216DA672100B9E435 /* Created Icon Dark@2x.png */; };
+		B589444B16DA672100B9E435 /* Modified Icon Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444516DA672100B9E435 /* Modified Icon Dark.png */; };
+		B589444C16DA672100B9E435 /* Modified Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444616DA672100B9E435 /* Modified Icon Dark@2x.png */; };
+		B589444F16DA674F00B9E435 /* Notification Icon Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444D16DA674F00B9E435 /* Notification Icon Dark.png */; };
+		B589445016DA674F00B9E435 /* Notification Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */; };
+		B589445316DA694C00B9E435 /* Set Notification Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445116DA694C00B9E435 /* Set Notification Dark.png */; };
+		B589445416DA694C00B9E435 /* Set Notification Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */; };
+		B589445B16DA6EA600B9E435 /* Note Viewer Bottom Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445516DA6EA600B9E435 /* Note Viewer Bottom Dark.png */; };
+		B589445C16DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445616DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png */; };
+		B589445D16DA6EA600B9E435 /* Note Viewer Middle Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445716DA6EA600B9E435 /* Note Viewer Middle Dark.png */; };
+		B589445E16DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445816DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png */; };
+		B589445F16DA6EA600B9E435 /* Note Viewer Top Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445916DA6EA600B9E435 /* Note Viewer Top Dark.png */; };
+		B589446016DA6EA600B9E435 /* Note Viewer Top Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445A16DA6EA600B9E435 /* Note Viewer Top Dark@2x.png */; };
+		B589446316DA6F0B00B9E435 /* NoteViewerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */; };
+		B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446416DA792200B9E435 /* Notification Icon Small Dark.png */; };
+		B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */; };
+		B589446B16DABB9E00B9E435 /* IXPickerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B589446A16DABB9E00B9E435 /* IXPickerOverlayView.m */; };
+		B589447916DABBBE00B9E435 /* ixPickerOverlayGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446D16DABBBE00B9E435 /* ixPickerOverlayGlass.png */; };
+		B589447A16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446E16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png */; };
+		B589447B16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446F16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png */; };
+		B589447C16DABBBE00B9E435 /* ixPickerOverlayLeftPane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447016DABBBE00B9E435 /* ixPickerOverlayLeftPane@2x.png */; };
+		B589447D16DABBBE00B9E435 /* ixPickerOverlayRightPane.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447116DABBBE00B9E435 /* ixPickerOverlayRightPane.png */; };
+		B589447E16DABBBE00B9E435 /* ixPickerOverlayRightPane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447216DABBBE00B9E435 /* ixPickerOverlayRightPane@2x.png */; };
+		B589447F16DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447316DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator.png */; };
+		B589448016DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447416DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator@2x.png */; };
+		B589448116DABBBE00B9E435 /* ixPickerOverlaySectionWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447516DABBBE00B9E435 /* ixPickerOverlaySectionWheel.png */; };
+		B589448216DABBBE00B9E435 /* ixPickerOverlaySectionWheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447616DABBBE00B9E435 /* ixPickerOverlaySectionWheel@2x.png */; };
+		B589448316DABBBE00B9E435 /* ixPickerOverlayTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447716DABBBE00B9E435 /* ixPickerOverlayTexture.png */; };
+		B589448416DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447816DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png */; };
+		B589448616DABEBE00B9E435 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B589448516DABEBE00B9E435 /* QuartzCore.framework */; };
 		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
+		B5B70F5916C3F0CB00CBAC2C /* APAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B70F5016C3F0CB00CBAC2C /* APAttribute.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5B70F5A16C3F0CB00CBAC2C /* APDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B70F5216C3F0CB00CBAC2C /* APDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5B70F5B16C3F0CB00CBAC2C /* APElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B70F5416C3F0CB00CBAC2C /* APElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5B70F6016C3F48700CBAC2C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B70F5F16C3F48700CBAC2C /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,8 +128,53 @@
 		B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Graphics/Icons/Icon-72@2x.png"; sourceTree = "<group>"; };
 		B53651E116BD3AB20090C926 /* NotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationsManager.h; path = Source/Managers/NotificationsManager.h; sourceTree = "<group>"; };
 		B53651E216BD3AB20090C926 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationsManager.m; path = Source/Managers/NotificationsManager.m; sourceTree = "<group>"; };
+		B570355916D81650001A1D8A /* Background Pattern Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark.png"; path = "Graphics/Various/Background Pattern Dark.png"; sourceTree = "<group>"; };
+		B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark@2x.png"; path = "Graphics/Various/Background Pattern Dark@2x.png"; sourceTree = "<group>"; };
+		B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Entry Background Dark.png"; path = "Graphics/Various/Note Entry Background Dark.png"; sourceTree = "<group>"; };
+		B589443E16D94CA000B9E435 /* Note Entry Background Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Entry Background Dark@2x.png"; path = "Graphics/Various/Note Entry Background Dark@2x.png"; sourceTree = "<group>"; };
+		B589444116DA672100B9E435 /* Created Icon Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Created Icon Dark.png"; path = "Graphics/Various/Created Icon Dark.png"; sourceTree = "<group>"; };
+		B589444216DA672100B9E435 /* Created Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Created Icon Dark@2x.png"; path = "Graphics/Various/Created Icon Dark@2x.png"; sourceTree = "<group>"; };
+		B589444516DA672100B9E435 /* Modified Icon Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Modified Icon Dark.png"; path = "Graphics/Various/Modified Icon Dark.png"; sourceTree = "<group>"; };
+		B589444616DA672100B9E435 /* Modified Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Modified Icon Dark@2x.png"; path = "Graphics/Various/Modified Icon Dark@2x.png"; sourceTree = "<group>"; };
+		B589444D16DA674F00B9E435 /* Notification Icon Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Dark.png"; path = "Graphics/Various/Notification Icon Dark.png"; sourceTree = "<group>"; };
+		B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Dark@2x.png"; path = "Graphics/Various/Notification Icon Dark@2x.png"; sourceTree = "<group>"; };
+		B589445116DA694C00B9E435 /* Set Notification Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Dark.png"; path = "Graphics/Various/Set Notification Dark.png"; sourceTree = "<group>"; };
+		B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Dark@2x.png"; path = "Graphics/Various/Set Notification Dark@2x.png"; sourceTree = "<group>"; };
+		B589445516DA6EA600B9E435 /* Note Viewer Bottom Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Bottom Dark.png"; path = "Graphics/Various/Note Viewer Bottom Dark.png"; sourceTree = "<group>"; };
+		B589445616DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Bottom Dark@2x.png"; path = "Graphics/Various/Note Viewer Bottom Dark@2x.png"; sourceTree = "<group>"; };
+		B589445716DA6EA600B9E435 /* Note Viewer Middle Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Middle Dark.png"; path = "Graphics/Various/Note Viewer Middle Dark.png"; sourceTree = "<group>"; };
+		B589445816DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Middle Dark@2x.png"; path = "Graphics/Various/Note Viewer Middle Dark@2x.png"; sourceTree = "<group>"; };
+		B589445916DA6EA600B9E435 /* Note Viewer Top Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Top Dark.png"; path = "Graphics/Various/Note Viewer Top Dark.png"; sourceTree = "<group>"; };
+		B589445A16DA6EA600B9E435 /* Note Viewer Top Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Top Dark@2x.png"; path = "Graphics/Various/Note Viewer Top Dark@2x.png"; sourceTree = "<group>"; };
+		B589446116DA6F0B00B9E435 /* NoteViewerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewerBackgroundView.h; path = Source/Views/NoteViewerBackgroundView.h; sourceTree = "<group>"; };
+		B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewerBackgroundView.m; path = Source/Views/NoteViewerBackgroundView.m; sourceTree = "<group>"; };
+		B589446416DA792200B9E435 /* Notification Icon Small Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Small Dark.png"; path = "Graphics/Various/Notification Icon Small Dark.png"; sourceTree = "<group>"; };
+		B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Small Dark@2x.png"; path = "Graphics/Various/Notification Icon Small Dark@2x.png"; sourceTree = "<group>"; };
+		B589446916DABB9E00B9E435 /* IXPickerOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXPickerOverlayView.h; sourceTree = "<group>"; };
+		B589446A16DABB9E00B9E435 /* IXPickerOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXPickerOverlayView.m; sourceTree = "<group>"; };
+		B589446D16DABBBE00B9E435 /* ixPickerOverlayGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayGlass.png; sourceTree = "<group>"; };
+		B589446E16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlayGlass@2x.png"; sourceTree = "<group>"; };
+		B589446F16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayLeftPane.png; sourceTree = "<group>"; };
+		B589447016DABBBE00B9E435 /* ixPickerOverlayLeftPane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlayLeftPane@2x.png"; sourceTree = "<group>"; };
+		B589447116DABBBE00B9E435 /* ixPickerOverlayRightPane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayRightPane.png; sourceTree = "<group>"; };
+		B589447216DABBBE00B9E435 /* ixPickerOverlayRightPane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlayRightPane@2x.png"; sourceTree = "<group>"; };
+		B589447316DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlaySectionsSeparator.png; sourceTree = "<group>"; };
+		B589447416DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlaySectionsSeparator@2x.png"; sourceTree = "<group>"; };
+		B589447516DABBBE00B9E435 /* ixPickerOverlaySectionWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlaySectionWheel.png; sourceTree = "<group>"; };
+		B589447616DABBBE00B9E435 /* ixPickerOverlaySectionWheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlaySectionWheel@2x.png"; sourceTree = "<group>"; };
+		B589447716DABBBE00B9E435 /* ixPickerOverlayTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayTexture.png; sourceTree = "<group>"; };
+		B589447816DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlayTexture@2x.png"; sourceTree = "<group>"; };
+		B589448516DABEBE00B9E435 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
+		B5B70F4F16C3F0CB00CBAC2C /* APAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAttribute.h; sourceTree = "<group>"; };
+		B5B70F5016C3F0CB00CBAC2C /* APAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAttribute.m; sourceTree = "<group>"; };
+		B5B70F5116C3F0CB00CBAC2C /* APDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDocument.h; sourceTree = "<group>"; };
+		B5B70F5216C3F0CB00CBAC2C /* APDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDocument.m; sourceTree = "<group>"; };
+		B5B70F5316C3F0CB00CBAC2C /* APElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APElement.h; sourceTree = "<group>"; };
+		B5B70F5416C3F0CB00CBAC2C /* APElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APElement.m; sourceTree = "<group>"; };
+		B5B70F5516C3F0CB00CBAC2C /* APXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APXML.h; sourceTree = "<group>"; };
+		B5B70F5F16C3F48700CBAC2C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B589448616DABEBE00B9E435 /* QuartzCore.framework in Frameworks */,
+				B5B70F6016C3F48700CBAC2C /* libz.dylib in Frameworks */,
 				890EAE9416A831F0000CFA48 /* UIKit.framework in Frameworks */,
 				890EAE9616A831F0000CFA48 /* Foundation.framework in Frameworks */,
 				890EAE9816A831F0000CFA48 /* CoreGraphics.framework in Frameworks */,
@@ -131,10 +217,12 @@
 		890EAE9216A831F0000CFA48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B589448516DABEBE00B9E435 /* QuartzCore.framework */,
 				890EAE9316A831F0000CFA48 /* UIKit.framework */,
 				890EAE9516A831F0000CFA48 /* Foundation.framework */,
 				890EAE9716A831F0000CFA48 /* CoreGraphics.framework */,
 				890EAE9916A831F0000CFA48 /* CoreData.framework */,
+				B5B70F5F16C3F48700CBAC2C /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -172,6 +260,8 @@
 			children = (
 				891B93BB16B8112900EE24C9 /* Icons */,
 				8986400B16B68CD200446007 /* Defaults */,
+				B570355816D81629001A1D8A /* Various */,
+				B589446C16DABBBE00B9E435 /* Custom UIDatePicker */,
 			);
 			name = Graphics;
 			path = "Rapid Note Go";
@@ -263,6 +353,8 @@
 				B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */,
 				B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */,
 				B5081F6316BC082900C3F248 /* SetNotificationView.xib */,
+				B589446116DA6F0B00B9E435 /* NoteViewerBackgroundView.h */,
+				B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -272,8 +364,82 @@
 			children = (
 				B5081F5916BA8B3D00C3F248 /* NSDate+NiceFormatting.h */,
 				B5081F5A16BA8B4900C3F248 /* NSDate+NiceFormatting.m */,
+				B5B70F4E16C3F0CB00CBAC2C /* APXML */,
+				B589446816DABB9D00B9E435 /* IXPickerOverlayView */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		B570355816D81629001A1D8A /* Various */ = {
+			isa = PBXGroup;
+			children = (
+				B570355916D81650001A1D8A /* Background Pattern Dark.png */,
+				B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */,
+				B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */,
+				B589443E16D94CA000B9E435 /* Note Entry Background Dark@2x.png */,
+				B589444116DA672100B9E435 /* Created Icon Dark.png */,
+				B589444216DA672100B9E435 /* Created Icon Dark@2x.png */,
+				B589444516DA672100B9E435 /* Modified Icon Dark.png */,
+				B589444616DA672100B9E435 /* Modified Icon Dark@2x.png */,
+				B589444D16DA674F00B9E435 /* Notification Icon Dark.png */,
+				B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */,
+				B589445116DA694C00B9E435 /* Set Notification Dark.png */,
+				B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */,
+				B589445916DA6EA600B9E435 /* Note Viewer Top Dark.png */,
+				B589445A16DA6EA600B9E435 /* Note Viewer Top Dark@2x.png */,
+				B589445716DA6EA600B9E435 /* Note Viewer Middle Dark.png */,
+				B589445816DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png */,
+				B589445516DA6EA600B9E435 /* Note Viewer Bottom Dark.png */,
+				B589445616DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png */,
+				B589446416DA792200B9E435 /* Notification Icon Small Dark.png */,
+				B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */,
+			);
+			name = Various;
+			sourceTree = "<group>";
+		};
+		B589446816DABB9D00B9E435 /* IXPickerOverlayView */ = {
+			isa = PBXGroup;
+			children = (
+				B589446916DABB9E00B9E435 /* IXPickerOverlayView.h */,
+				B589446A16DABB9E00B9E435 /* IXPickerOverlayView.m */,
+			);
+			name = IXPickerOverlayView;
+			path = Source/Utilities/IXPickerOverlayView;
+			sourceTree = "<group>";
+		};
+		B589446C16DABBBE00B9E435 /* Custom UIDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B589446D16DABBBE00B9E435 /* ixPickerOverlayGlass.png */,
+				B589446E16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png */,
+				B589446F16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png */,
+				B589447016DABBBE00B9E435 /* ixPickerOverlayLeftPane@2x.png */,
+				B589447116DABBBE00B9E435 /* ixPickerOverlayRightPane.png */,
+				B589447216DABBBE00B9E435 /* ixPickerOverlayRightPane@2x.png */,
+				B589447316DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator.png */,
+				B589447416DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator@2x.png */,
+				B589447516DABBBE00B9E435 /* ixPickerOverlaySectionWheel.png */,
+				B589447616DABBBE00B9E435 /* ixPickerOverlaySectionWheel@2x.png */,
+				B589447716DABBBE00B9E435 /* ixPickerOverlayTexture.png */,
+				B589447816DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png */,
+			);
+			name = "Custom UIDatePicker";
+			path = "Graphics/Custom UIDatePicker";
+			sourceTree = "<group>";
+		};
+		B5B70F4E16C3F0CB00CBAC2C /* APXML */ = {
+			isa = PBXGroup;
+			children = (
+				B5B70F4F16C3F0CB00CBAC2C /* APAttribute.h */,
+				B5B70F5016C3F0CB00CBAC2C /* APAttribute.m */,
+				B5B70F5116C3F0CB00CBAC2C /* APDocument.h */,
+				B5B70F5216C3F0CB00CBAC2C /* APDocument.m */,
+				B5B70F5316C3F0CB00CBAC2C /* APElement.h */,
+				B5B70F5416C3F0CB00CBAC2C /* APElement.m */,
+				B5B70F5516C3F0CB00CBAC2C /* APXML.h */,
+			);
+			name = APXML;
+			path = Source/Utilities/APXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +512,38 @@
 				B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */,
 				B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */,
 				B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */,
+				B570355B16D81650001A1D8A /* Background Pattern Dark.png in Resources */,
+				B570355C16D81650001A1D8A /* Background Pattern Dark@2x.png in Resources */,
+				B589443F16D94CA000B9E435 /* Note Entry Background Dark.png in Resources */,
+				B589444016D94CA000B9E435 /* Note Entry Background Dark@2x.png in Resources */,
+				B589444716DA672100B9E435 /* Created Icon Dark.png in Resources */,
+				B589444816DA672100B9E435 /* Created Icon Dark@2x.png in Resources */,
+				B589444B16DA672100B9E435 /* Modified Icon Dark.png in Resources */,
+				B589444C16DA672100B9E435 /* Modified Icon Dark@2x.png in Resources */,
+				B589444F16DA674F00B9E435 /* Notification Icon Dark.png in Resources */,
+				B589445016DA674F00B9E435 /* Notification Icon Dark@2x.png in Resources */,
+				B589445316DA694C00B9E435 /* Set Notification Dark.png in Resources */,
+				B589445416DA694C00B9E435 /* Set Notification Dark@2x.png in Resources */,
+				B589445B16DA6EA600B9E435 /* Note Viewer Bottom Dark.png in Resources */,
+				B589445C16DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png in Resources */,
+				B589445D16DA6EA600B9E435 /* Note Viewer Middle Dark.png in Resources */,
+				B589445E16DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png in Resources */,
+				B589445F16DA6EA600B9E435 /* Note Viewer Top Dark.png in Resources */,
+				B589446016DA6EA600B9E435 /* Note Viewer Top Dark@2x.png in Resources */,
+				B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */,
+				B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */,
+				B589447916DABBBE00B9E435 /* ixPickerOverlayGlass.png in Resources */,
+				B589447A16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png in Resources */,
+				B589447B16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png in Resources */,
+				B589447C16DABBBE00B9E435 /* ixPickerOverlayLeftPane@2x.png in Resources */,
+				B589447D16DABBBE00B9E435 /* ixPickerOverlayRightPane.png in Resources */,
+				B589447E16DABBBE00B9E435 /* ixPickerOverlayRightPane@2x.png in Resources */,
+				B589447F16DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator.png in Resources */,
+				B589448016DABBBE00B9E435 /* ixPickerOverlaySectionsSeparator@2x.png in Resources */,
+				B589448116DABBBE00B9E435 /* ixPickerOverlaySectionWheel.png in Resources */,
+				B589448216DABBBE00B9E435 /* ixPickerOverlaySectionWheel@2x.png in Resources */,
+				B589448316DABBBE00B9E435 /* ixPickerOverlayTexture.png in Resources */,
+				B589448416DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +582,11 @@
 				B5081F5B16BA8B4900C3F248 /* NSDate+NiceFormatting.m in Sources */,
 				B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */,
 				B53651E316BD3AB20090C926 /* NotificationsManager.m in Sources */,
+				B5B70F5916C3F0CB00CBAC2C /* APAttribute.m in Sources */,
+				B5B70F5A16C3F0CB00CBAC2C /* APDocument.m in Sources */,
+				B5B70F5B16C3F0CB00CBAC2C /* APElement.m in Sources */,
+				B589446316DA6F0B00B9E435 /* NoteViewerBackgroundView.m in Sources */,
+				B589446B16DABB9E00B9E435 /* IXPickerOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,8 @@
     if((self = [super init]) == nil)
         return nil;
     
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
     self.notesListVC = [[NotesListVC alloc] init];
     self.noteDetailsVC = [[NoteDetailsVC alloc] init];
     self.notesListVC.noteDetailsVC = self.noteDetailsVC;

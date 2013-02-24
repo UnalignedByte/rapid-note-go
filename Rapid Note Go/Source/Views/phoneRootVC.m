@@ -27,6 +27,8 @@
     if((self = [super init]) == nil)
         return nil;
     
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
     self.notesListVC = [[NotesListVC alloc] init];
     self.viewControllers = @[self.notesListVC];
     

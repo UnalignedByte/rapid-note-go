@@ -25,5 +25,6 @@
 - (Note *)addNewNote;
 - (void)deleteNote:(Note *)note_;
 - (NSArray *)allNotes;
+- (void)deleteAllNotes;
 
 @end

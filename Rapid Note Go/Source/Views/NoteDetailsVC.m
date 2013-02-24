@@ -68,9 +68,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupBackground];
     [self setupNote];
     [self setupNotificationSetting];
     [self setupNavigationButtonsForReading];
+}
+
+
+- (void)setupBackground
+{
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.view.frame];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
+    
+    [backgroundView addSubview:self.view];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view = backgroundView;
 }
 
 
@@ -99,7 +111,7 @@
     self.creationDateLabel.text = [self.note.creationDate formatAsShortNiceString];
     
     //modification
-    if(self.note.modificationDate != nil) {
+    if([self.note.modificationDate compare:self.note.creationDate] == NSOrderedDescending) {
         self.modificationImage.hidden = NO;
         self.modificationDateLabel.hidden = NO;
         self.modificationDateLabel.text = [self.note.modificationDate formatAsShortNiceString];
@@ -150,6 +162,8 @@
                                                   action:@selector(deleteButtonAction:)];
 
     self.navigationItem.rightBarButtonItem = deleteButton;
+    
+    self.notificationButton.userInteractionEnabled = YES;
 }
 
 
@@ -165,6 +179,8 @@
                                                                          action:@selector(saveNoteEditingAction:)];
     self.navigationItem.leftBarButtonItem = cancelEditingButton;
     self.navigationItem.rightBarButtonItem = saveEditingButton;
+    
+    self.notificationButton.userInteractionEnabled = NO;
 }
 
 
@@ -212,6 +228,7 @@
                                               cancelButtonTitle:Localize(@"Cancel")
                                          destructiveButtonTitle:Localize(@"Delete")
                                               otherButtonTitles:nil];
+    self.deleteNoteSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     
     [self.deleteNoteSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
@@ -274,6 +291,8 @@
                                                        cancelButtonTitle:Localize(@"Cancel")
                                                   destructiveButtonTitle:Localize(@"Disable Notification")
                                                        otherButtonTitles:nil];
+    self.disableNotificaitonSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    
     [self.disableNotificaitonSheet showFromRect:self.notificationButton.frame
                                          inView:self.view
                                        animated:YES];
