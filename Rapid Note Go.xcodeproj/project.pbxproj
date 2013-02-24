@@ -60,7 +60,6 @@
 		B589446316DA6F0B00B9E435 /* NoteViewerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */; };
 		B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446416DA792200B9E435 /* Notification Icon Small Dark.png */; };
 		B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */; };
-		B589446B16DABB9E00B9E435 /* IXPickerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B589446A16DABB9E00B9E435 /* IXPickerOverlayView.m */; };
 		B589447916DABBBE00B9E435 /* ixPickerOverlayGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446D16DABBBE00B9E435 /* ixPickerOverlayGlass.png */; };
 		B589447A16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446E16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png */; };
 		B589447B16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446F16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png */; };
@@ -75,10 +74,11 @@
 		B589448416DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447816DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png */; };
 		B589448616DABEBE00B9E435 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B589448516DABEBE00B9E435 /* QuartzCore.framework */; };
 		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
-		B5B70F5916C3F0CB00CBAC2C /* APAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B70F5016C3F0CB00CBAC2C /* APAttribute.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B5B70F5A16C3F0CB00CBAC2C /* APDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B70F5216C3F0CB00CBAC2C /* APDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B5B70F5B16C3F0CB00CBAC2C /* APElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B70F5416C3F0CB00CBAC2C /* APElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5B70F6016C3F48700CBAC2C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B70F5F16C3F48700CBAC2C /* libz.dylib */; };
+		B5D67A2C16DAC7C200360647 /* APAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2716DAC7C200360647 /* APAttribute.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5D67A2D16DAC7C200360647 /* APDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2916DAC7C200360647 /* APDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5D67A2E16DAC7C200360647 /* APElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2B16DAC7C200360647 /* APElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5D67A3116DAC7DD00360647 /* IXPickerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,8 +117,8 @@
 		89B7BBF716B6C57000294BBA /* PadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootVC.m; path = Source/Views/PadRootVC.m; sourceTree = "<group>"; };
 		89D6CA5916B6920A0023F1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89D6CA6116B692240023F1C8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B5081F5916BA8B3D00C3F248 /* NSDate+NiceFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NiceFormatting.h"; path = "Source/Utilities/NSDate+NiceFormatting.h"; sourceTree = "<group>"; };
-		B5081F5A16BA8B4900C3F248 /* NSDate+NiceFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NiceFormatting.m"; path = "Source/Utilities/NSDate+NiceFormatting.m"; sourceTree = "<group>"; };
+		B5081F5916BA8B3D00C3F248 /* NSDate+NiceFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NiceFormatting.h"; path = "Source/Utils/NSDate+NiceFormatting.h"; sourceTree = "<group>"; };
+		B5081F5A16BA8B4900C3F248 /* NSDate+NiceFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NiceFormatting.m"; path = "Source/Utils/NSDate+NiceFormatting.m"; sourceTree = "<group>"; };
 		B5081F5C16BA8CD000C3F248 /* NoteDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteDetailsVC.h; path = Source/Views/NoteDetailsVC.h; sourceTree = "<group>"; };
 		B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteDetailsVC.m; path = Source/Views/NoteDetailsVC.m; sourceTree = "<group>"; };
 		B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPhone.xib; path = Source/Views/NoteDetailsViewPhone.xib; sourceTree = "<group>"; };
@@ -150,8 +150,6 @@
 		B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewerBackgroundView.m; path = Source/Views/NoteViewerBackgroundView.m; sourceTree = "<group>"; };
 		B589446416DA792200B9E435 /* Notification Icon Small Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Small Dark.png"; path = "Graphics/Various/Notification Icon Small Dark.png"; sourceTree = "<group>"; };
 		B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Small Dark@2x.png"; path = "Graphics/Various/Notification Icon Small Dark@2x.png"; sourceTree = "<group>"; };
-		B589446916DABB9E00B9E435 /* IXPickerOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXPickerOverlayView.h; sourceTree = "<group>"; };
-		B589446A16DABB9E00B9E435 /* IXPickerOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXPickerOverlayView.m; sourceTree = "<group>"; };
 		B589446D16DABBBE00B9E435 /* ixPickerOverlayGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayGlass.png; sourceTree = "<group>"; };
 		B589446E16DABBBE00B9E435 /* ixPickerOverlayGlass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlayGlass@2x.png"; sourceTree = "<group>"; };
 		B589446F16DABBBE00B9E435 /* ixPickerOverlayLeftPane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayLeftPane.png; sourceTree = "<group>"; };
@@ -167,14 +165,16 @@
 		B589448516DABEBE00B9E435 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
-		B5B70F4F16C3F0CB00CBAC2C /* APAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAttribute.h; sourceTree = "<group>"; };
-		B5B70F5016C3F0CB00CBAC2C /* APAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAttribute.m; sourceTree = "<group>"; };
-		B5B70F5116C3F0CB00CBAC2C /* APDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDocument.h; sourceTree = "<group>"; };
-		B5B70F5216C3F0CB00CBAC2C /* APDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDocument.m; sourceTree = "<group>"; };
-		B5B70F5316C3F0CB00CBAC2C /* APElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APElement.h; sourceTree = "<group>"; };
-		B5B70F5416C3F0CB00CBAC2C /* APElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APElement.m; sourceTree = "<group>"; };
-		B5B70F5516C3F0CB00CBAC2C /* APXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APXML.h; sourceTree = "<group>"; };
 		B5B70F5F16C3F48700CBAC2C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B5D67A2516DAC7AC00360647 /* APXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APXML.h; path = "Rapid Note Go/Source/Utils/APXML/APXML.h"; sourceTree = SOURCE_ROOT; };
+		B5D67A2616DAC7C200360647 /* APAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APAttribute.h; path = "Rapid Note Go/Source/Utils/APXML/APAttribute.h"; sourceTree = SOURCE_ROOT; };
+		B5D67A2716DAC7C200360647 /* APAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APAttribute.m; path = "Rapid Note Go/Source/Utils/APXML/APAttribute.m"; sourceTree = SOURCE_ROOT; };
+		B5D67A2816DAC7C200360647 /* APDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDocument.h; path = "Rapid Note Go/Source/Utils/APXML/APDocument.h"; sourceTree = SOURCE_ROOT; };
+		B5D67A2916DAC7C200360647 /* APDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDocument.m; path = "Rapid Note Go/Source/Utils/APXML/APDocument.m"; sourceTree = SOURCE_ROOT; };
+		B5D67A2A16DAC7C200360647 /* APElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APElement.h; path = "Rapid Note Go/Source/Utils/APXML/APElement.h"; sourceTree = SOURCE_ROOT; };
+		B5D67A2B16DAC7C200360647 /* APElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APElement.m; path = "Rapid Note Go/Source/Utils/APXML/APElement.m"; sourceTree = SOURCE_ROOT; };
+		B5D67A2F16DAC7DD00360647 /* IXPickerOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IXPickerOverlayView.h; path = "Rapid Note Go/Source/Utils/IXPickerOverlayView/IXPickerOverlayView.h"; sourceTree = SOURCE_ROOT; };
+		B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IXPickerOverlayView.m; path = "Rapid Note Go/Source/Utils/IXPickerOverlayView/IXPickerOverlayView.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,7 +238,7 @@
 				89B7BBEF16B6C34800294BBA /* Views */,
 				891B93C116B8224C00EE24C9 /* Managers */,
 				89253EE116B6C7D300A9D1E9 /* Models */,
-				B5081F5816BA8AFE00C3F248 /* Utilities */,
+				B5081F5816BA8AFE00C3F248 /* Utils */,
 			);
 			name = Source;
 			path = "Rapid Note Go";
@@ -359,7 +359,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		B5081F5816BA8AFE00C3F248 /* Utilities */ = {
+		B5081F5816BA8AFE00C3F248 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				B5081F5916BA8B3D00C3F248 /* NSDate+NiceFormatting.h */,
@@ -367,7 +367,7 @@
 				B5B70F4E16C3F0CB00CBAC2C /* APXML */,
 				B589446816DABB9D00B9E435 /* IXPickerOverlayView */,
 			);
-			name = Utilities;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		B570355816D81629001A1D8A /* Various */ = {
@@ -400,8 +400,8 @@
 		B589446816DABB9D00B9E435 /* IXPickerOverlayView */ = {
 			isa = PBXGroup;
 			children = (
-				B589446916DABB9E00B9E435 /* IXPickerOverlayView.h */,
-				B589446A16DABB9E00B9E435 /* IXPickerOverlayView.m */,
+				B5D67A2F16DAC7DD00360647 /* IXPickerOverlayView.h */,
+				B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */,
 			);
 			name = IXPickerOverlayView;
 			path = Source/Utilities/IXPickerOverlayView;
@@ -430,13 +430,13 @@
 		B5B70F4E16C3F0CB00CBAC2C /* APXML */ = {
 			isa = PBXGroup;
 			children = (
-				B5B70F4F16C3F0CB00CBAC2C /* APAttribute.h */,
-				B5B70F5016C3F0CB00CBAC2C /* APAttribute.m */,
-				B5B70F5116C3F0CB00CBAC2C /* APDocument.h */,
-				B5B70F5216C3F0CB00CBAC2C /* APDocument.m */,
-				B5B70F5316C3F0CB00CBAC2C /* APElement.h */,
-				B5B70F5416C3F0CB00CBAC2C /* APElement.m */,
-				B5B70F5516C3F0CB00CBAC2C /* APXML.h */,
+				B5D67A2516DAC7AC00360647 /* APXML.h */,
+				B5D67A2616DAC7C200360647 /* APAttribute.h */,
+				B5D67A2716DAC7C200360647 /* APAttribute.m */,
+				B5D67A2816DAC7C200360647 /* APDocument.h */,
+				B5D67A2916DAC7C200360647 /* APDocument.m */,
+				B5D67A2A16DAC7C200360647 /* APElement.h */,
+				B5D67A2B16DAC7C200360647 /* APElement.m */,
 			);
 			name = APXML;
 			path = Source/Utilities/APXML;
@@ -582,11 +582,11 @@
 				B5081F5B16BA8B4900C3F248 /* NSDate+NiceFormatting.m in Sources */,
 				B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */,
 				B53651E316BD3AB20090C926 /* NotificationsManager.m in Sources */,
-				B5B70F5916C3F0CB00CBAC2C /* APAttribute.m in Sources */,
-				B5B70F5A16C3F0CB00CBAC2C /* APDocument.m in Sources */,
-				B5B70F5B16C3F0CB00CBAC2C /* APElement.m in Sources */,
 				B589446316DA6F0B00B9E435 /* NoteViewerBackgroundView.m in Sources */,
-				B589446B16DABB9E00B9E435 /* IXPickerOverlayView.m in Sources */,
+				B5D67A2C16DAC7C200360647 /* APAttribute.m in Sources */,
+				B5D67A2D16DAC7C200360647 /* APDocument.m in Sources */,
+				B5D67A2E16DAC7C200360647 /* APElement.m in Sources */,
+				B5D67A3116DAC7DD00360647 /* IXPickerOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
