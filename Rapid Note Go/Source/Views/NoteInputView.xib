@@ -106,7 +106,6 @@
 						<reference key="IBUITextColor" ref="615967470"/>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
-							<int key="IBUIAutocorrectionType">1</int>
 							<bool key="IBUIEnablesReturnKeyAutomatically">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -259,40 +258,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NotesListVC</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="addNoteAction:">id</string>
-						<string key="cancelNoteAction:">id</string>
-						<string key="editNotesListAction:">id</string>
-						<string key="finishEditingNotesListAction:">id</string>
-						<string key="hideNoteInputAction:">id</string>
-						<string key="showNoteInputAction:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="addNoteAction:">
-							<string key="name">addNoteAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="cancelNoteAction:">
-							<string key="name">cancelNoteAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="editNotesListAction:">
-							<string key="name">editNotesListAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="finishEditingNotesListAction:">
-							<string key="name">finishEditingNotesListAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="hideNoteInputAction:">
-							<string key="name">hideNoteInputAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showNoteInputAction:">
-							<string key="name">showNoteInputAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="noteInputBackground">UIView</string>
 						<string key="noteInputText">UITextView</string>

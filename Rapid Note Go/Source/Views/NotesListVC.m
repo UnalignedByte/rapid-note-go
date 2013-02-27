@@ -30,6 +30,8 @@
 @property (nonatomic, strong) IBOutlet UITextView *noteInputText;
 @property (nonatomic, strong) IBOutlet UIView *noteInputBackground;
 
+@property (nonatomic) BOOL isEditingSingleRow;
+
 @end
 
 
@@ -99,10 +101,19 @@
 
 - (void)setupNavigationButtonsForListEditing
 {
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Done")
-                                                                   style:UIBarButtonItemStyleDone
-                                                                  target:self
-                                                                  action:@selector(finishEditingNotesListAction:)];
+    
+    UIBarButtonItem *doneButton;
+    if(self.isEditingSingleRow) {
+        doneButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
+                                                      style:UIBarButtonItemStyleDone
+                                                     target:self
+                                                     action:@selector(finishEditingNotesListAction:)];
+    } else {
+        doneButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Done")
+                                                      style:UIBarButtonItemStyleDone
+                                                     target:self
+                                                     action:@selector(finishEditingNotesListAction:)];
+    }
     self.navigationItem.leftBarButtonItem = doneButton;
     self.navigationItem.rightBarButtonItem = nil;
 }
@@ -221,6 +232,8 @@
 
 - (void)finishEditingNotesList
 {
+    self.isEditingSingleRow = NO;
+    
     [self setupNavigationButtonsForAdding];
     
     [self.tableVC.tableView setEditing:NO animated:YES];
@@ -307,6 +320,11 @@
             }
             [[NotificationsManager sharedInstance] removeNotificationForNote:note];
             [[DataManager sharedInstance] deleteNote:note];
+            
+            if(self.isEditingSingleRow) {
+                [self finishEditingNotesList];
+                self.isEditingSingleRow = NO;
+            }
             break;
         }
         case UITableViewCellEditingStyleInsert:
@@ -314,6 +332,20 @@
         case UITableViewCellEditingStyleNone:
             break;
     }
+}
+
+
+- (void)tableView:(UITableView *)tableView_ willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath_
+{
+    self.isEditingSingleRow = YES;
+    
+    [self setupNavigationButtonsForListEditing];
+}
+
+
+- (void)tableView:(UITableView *)tableView_ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath_
+{
+    [self finishEditingNotesList];
 }
 
 

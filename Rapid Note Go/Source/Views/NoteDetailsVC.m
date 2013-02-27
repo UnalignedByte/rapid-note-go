@@ -188,6 +188,9 @@
 
 - (void)setupNavigationButtonsForSettingNotificationDate
 {
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return;
+    
     UIBarButtonItem *cancelSettingNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
                                                                                         style:UIBarButtonItemStylePlain
                                                                                        target:self
@@ -252,33 +255,55 @@
         [UIView commitAnimations];
     } else {
         if(self.setNotificationDatePickerVC == nil) {
-            self.setNotificationDatePickerVC = [[UIViewController alloc] init];
-            self.setNotificationDatePickerVC.view = self.setNotificationDatePicker;
+            UIViewController *pickerVC = [[UIViewController alloc] init];
+            
+            pickerVC.view = self.setNotificationDatePicker;
+            
+            UIBarButtonItem *cancelSettingNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
+                                                                                                style:UIBarButtonItemStylePlain
+                                                                                               target:self
+                                                                                               action:@selector(cancelSettingNotificationDateAction:)];
+            UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set Notification")
+                                                                                      style:UIBarButtonItemStylePlain
+                                                                                     target:self
+                                                                                     action:@selector(setNotificationDateAction:)];
+            pickerVC.navigationItem.leftBarButtonItem = cancelSettingNotificationButton;
+            pickerVC.navigationItem.rightBarButtonItem = setNotificationButton;
+            
+            self.setNotificationDatePickerVC = [[UINavigationController alloc] initWithRootViewController:pickerVC];
         }
         
         if(self.setNotificationDatePickerPopover == nil) {
             self.setNotificationDatePickerPopover = [[UIPopoverController alloc] initWithContentViewController:self.setNotificationDatePickerVC];
-            self.setNotificationDatePickerPopover.popoverContentSize = CGSizeMake(self.setNotificationDatePicker.frame.size.width, self.setNotificationDatePicker.frame.size.height);
+            self.setNotificationDatePickerPopover.delegate = self;
+            CGSize popoverSize = CGSizeMake(self.setNotificationDatePicker.frame.size.width, self.setNotificationDatePicker.frame.size.height);
+            popoverSize.height += 5.0;
+            self.setNotificationDatePickerPopover.popoverContentSize = popoverSize;
         }
 
-        [self.setNotificationDatePickerPopover presentPopoverFromRect:self.notificationButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [self.setNotificationDatePickerPopover presentPopoverFromRect:self.notificationButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
     }
 }
 
 
 - (void)hideSetNotificationDate
 {
-    [self setupNavigationButtonsForReading];
-    
-    CGRect setNotificationDateRect = self.setNotificationDateView.frame;
-    setNotificationDateRect.origin.y = -self.setNotificationDatePicker.frame.size.height;
-    self.setNotificationDateView.userInteractionEnabled = NO;
-    
-    [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:NOTIFICATION_ANIMATION_DURATION];
-        self.setNotificationDateView.alpha = 0.0;
-        self.setNotificationDateView.frame = setNotificationDateRect;
-    [UIView commitAnimations];
+    NSLog(@"hide");
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.setNotificationDatePickerPopover dismissPopoverAnimated:YES];
+    } else {
+        [self setupNavigationButtonsForReading];
+        
+        CGRect setNotificationDateRect = self.setNotificationDateView.frame;
+        setNotificationDateRect.origin.y = -self.setNotificationDatePicker.frame.size.height;
+        self.setNotificationDateView.userInteractionEnabled = NO;
+        
+        [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:NOTIFICATION_ANIMATION_DURATION];
+            self.setNotificationDateView.alpha = 0.0;
+            self.setNotificationDateView.frame = setNotificationDateRect;
+        [UIView commitAnimations];
+    }
 }
 
 
@@ -347,6 +372,15 @@
             self.note.notificationDate = nil;
             [self setupNote];
         }
+    }
+}
+
+
+#pragma  mark - Popover Delegate
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController_
+{
+    if(popoverController_ == self.setNotificationDatePickerPopover) {
+        [self hideSetNotificationDate];
     }
 }
 

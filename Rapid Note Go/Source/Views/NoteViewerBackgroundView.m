@@ -9,6 +9,7 @@
 #import "NoteViewerBackgroundView.h"
 
 
+#pragma mark - Private properties
 @interface NoteViewerBackgroundView ()
 
 @property (nonatomic, strong) UIImage *phoneTopImage;
@@ -25,14 +26,12 @@
 
 @end
 
+
 @implementation NoteViewerBackgroundView
 
 #pragma mark - Drawing
 - (void)drawRect:(CGRect)rect_
 {
-    NSLog(@"width: %f", self.frame.size.width);
-    
-    
     UIImage *topImage;
     UIImage *middleImage;
     UIImage *bottomImage;

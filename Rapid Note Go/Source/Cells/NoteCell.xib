@@ -34,7 +34,7 @@
 			</object>
 			<object class="IBUITableViewCell" id="239508551">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
+				<int key="NSvFlags">301</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="707658588">
 						<reference key="NSNextResponder" ref="239508551"/>
@@ -57,7 +57,7 @@
 							</object>
 							<object class="IBUILabel" id="971307106">
 								<reference key="NSNextResponder" ref="707658588"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">290</int>
 								<string key="NSFrame">{{18, 3}, {274, 10}}</string>
 								<reference key="NSSuperview" ref="707658588"/>
 								<reference key="NSWindow"/>
@@ -100,7 +100,7 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">4</int>
+								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Thingy</string>
@@ -149,6 +149,7 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="707658588"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<int key="IBUIContentMode">3</int>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISelectionStyle">2</int>
 				<int key="IBUIAccessoryType">1</int>
