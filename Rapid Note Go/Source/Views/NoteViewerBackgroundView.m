@@ -14,6 +14,7 @@
 #pragma mark - Drawing
 - (void)drawRect:(CGRect)rect_
 {
+    NSLog(@"width: %f", self.frame.size.width);
     //check if images are loaded, if not, load them
     if(self.viewerTopImage == nil)
         self.viewerTopImage = [UIImage imageNamed:@"Note Viewer Top Dark"];

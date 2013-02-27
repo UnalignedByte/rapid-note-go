@@ -78,7 +78,7 @@
 					</object>
 					<object class="IBUIImageView" id="644394975">
 						<reference key="NSNextResponder" ref="533524382"/>
-						<int key="NSvFlags">290</int>
+						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 150}</string>
 						<reference key="NSSuperview" ref="533524382"/>
 						<reference key="NSWindow"/>
@@ -259,6 +259,40 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NotesListVC</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addNoteAction:">id</string>
+						<string key="cancelNoteAction:">id</string>
+						<string key="editNotesListAction:">id</string>
+						<string key="finishEditingNotesListAction:">id</string>
+						<string key="hideNoteInputAction:">id</string>
+						<string key="showNoteInputAction:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addNoteAction:">
+							<string key="name">addNoteAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="cancelNoteAction:">
+							<string key="name">cancelNoteAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="editNotesListAction:">
+							<string key="name">editNotesListAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="finishEditingNotesListAction:">
+							<string key="name">finishEditingNotesListAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hideNoteInputAction:">
+							<string key="name">hideNoteInputAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showNoteInputAction:">
+							<string key="name">showNoteInputAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="noteInputBackground">UIView</string>
 						<string key="noteInputText">UITextView</string>

@@ -16,6 +16,7 @@
 
 @property (nonatomic, readonly) NSManagedObjectContext *notesContext;
 @property (nonatomic, readonly) BOOL isUsingCloud;
+@property (nonatomic) BOOL shouldIgnoreNotesContextChanges;
 
 
 //Singleton

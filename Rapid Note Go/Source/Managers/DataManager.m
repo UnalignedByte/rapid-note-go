@@ -27,7 +27,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 @property (nonatomic, strong) NSMetadataQuery *notesCloudQuery;
 @property (nonatomic) id lastCloudId;
 
-@property (nonatomic, assign) BOOL shouldIgnoreNotesContextChanges;
+@property (nonatomic, strong) void (^downloadBlock)();
 
 @end
 
@@ -59,8 +59,8 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     [self setupNotesModel];
     [self setupNotesStoreCoordinator];
     [self setupNotesContext];
-    //[self setupCloudObservers];
-    //[self setupCloud];
+    [self setupCloudObservers];
+    [self setupCloud];
 
     return self;
 }
@@ -100,12 +100,12 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
                                                object:nil];
     
     self.notesCloudQuery = [[NSMetadataQuery alloc] init];
-    self.notesCloudQuery.predicate = [NSPredicate predicateWithFormat:@"NSMetadataItemFSNameKey == '*'"];
+    self.notesCloudQuery.predicate = [NSPredicate predicateWithFormat:@"%K == 'notes.xml'", NSMetadataItemFSNameKey];
     self.notesCloudQuery.searchScopes = @[NSMetadataQueryUbiquitousDocumentsScope];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(cloudDataChanged:)
                                                  name:NSMetadataQueryDidUpdateNotification
-                                               object:nil];
+                                               object:self.notesCloudQuery];
     [self.notesCloudQuery startQuery];
 }
 
@@ -128,17 +128,26 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     //first time using iCloud
     if(self.lastCloudId == nil) {
+        NSLog(@"First time");
         self.lastCloudId = cloudId;
-        [self mergeNotesFromCloud];
-        [self exportNotesToCloud];
+        [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
+            [self mergeNotesFromCloud];
+            //[self exportNotesToCloud];
+        }];
     //same iCloud account as the last time
     } else if([self.lastCloudId isEqual:cloudId]) {
-        [self mergeNotesFromCloud];
-        [self exportNotesToCloud];
+        NSLog(@"Again");
+        [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
+            [self mergeNotesFromCloud];
+            //[self exportNotesToCloud];
+        }];
     //different iCloud account
     } else {
+        NSLog(@"Other");
         self.lastCloudId = cloudId;
-        [self importNotesFromCloud];
+        [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
+            [self importNotesFromCloud];
+        }];
     }
     
     _isUsingCloud = YES;
@@ -181,15 +190,19 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     if(self.shouldIgnoreNotesContextChanges)
         return;
     
+    NSLog(@"context changed and saved");
     [self.notesContext save:nil];
     
-    //[self exportNotesToCloud];
+    [self exportNotesToCloud];
 }
 
 
 #pragma mark - Internal Control
 - (void)exportNotesToCloud
 {
+    NSLog(@"export");
+    self.shouldIgnoreNotesContextChanges = YES;
+    
     //create new xml and save it
     APElement *notesRootNode = [[APElement alloc] initWithName:@"rapid"];
     for(Note *note in [self allNotes]) {
@@ -238,29 +251,25 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         NSLog(@"iCloud export failed: %d, %@", error.code, error.localizedDescription);
         return;
     }
+    
+    self.shouldIgnoreNotesContextChanges = NO;
 }
 
 
 - (void)importNotesFromCloud
 {
+    NSLog(@"import");
+    
+    self.shouldIgnoreNotesContextChanges = YES;
+    
     [self deleteAllNotes];
     
-    //check if xml exits, if no, exit
-    if(![[NSFileManager defaultManager] fileExistsAtPath:self.notesCloudUrl.path]) {
-        return;
-    }
-    
-    //download file
-    [self downloadCloudFileAtUrl:self.notesCloudUrl];
-
     NSError *error;
     NSString *xmlString = [NSString stringWithContentsOfFile:self.notesCloudUrl.path encoding:NSUTF8StringEncoding error:&error];
     if(error != nil) {
         NSLog(@"iCloud import failed: %d, %@", error.code, error.localizedDescription);
         return;
     }
-    
-    self.shouldIgnoreNotesContextChanges = YES;
     
     APDocument *notesDocument = [[APDocument alloc] initWithString:xmlString];
 
@@ -298,19 +307,16 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         note.notificationDate = notificationDate;
     }
     
+    [self.notesContext save:nil];
     self.shouldIgnoreNotesContextChanges = NO;
 }
 
 
 - (void)mergeNotesFromCloud
 {
-    //check if xml exits, if no, exit
-    if(![[NSFileManager defaultManager] fileExistsAtPath:self.notesCloudUrl.path]) {
-        return;
-    }
+    NSLog(@"merge");
     
-    //download file
-    [self downloadCloudFileAtUrl:self.notesCloudUrl];
+    self.shouldIgnoreNotesContextChanges = YES;
     
     NSError *error;
     NSString *xmlString = [NSString stringWithContentsOfFile:self.notesCloudUrl.path encoding:NSUTF8StringEncoding error:&error];
@@ -318,8 +324,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         NSLog(@"iCloud merge failed: %d, %@", error.code, error.localizedDescription);
         return;
     }
-    
-    self.shouldIgnoreNotesContextChanges = YES;
     
     APDocument *notesDocument = [[APDocument alloc] initWithString:xmlString];
     
@@ -376,7 +380,31 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         }
     }
     
+    [self.notesContext save:nil];
     self.shouldIgnoreNotesContextChanges = NO;
+    NSLog(@"merge finished");
+}
+
+
+- (void)downloadCloudFileAtUrl:(NSURL *)url_ downloadFinished:(void (^)())block_
+{
+    if(self.downloadBlock != nil)
+        return;
+    
+    //check if file exists
+    if(![[NSFileManager defaultManager] fileExistsAtPath:self.notesCloudUrl.path]) {
+        return;
+    }
+    
+    self.downloadBlock = block_;
+    
+    //start downloading
+    NSError *error;
+    [[NSFileManager defaultManager] startDownloadingUbiquitousItemAtURL:url_ error:&error];
+    if(error != nil) {
+        NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
+        return;
+    }
 }
 
 
@@ -440,9 +468,31 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)cloudDataChanged:(NSNotification *)notification_
 {
-    NSLog(@"Data changed");
+    static BOOL wasUploading = NO;
     
-    [self mergeNotesFromCloud];
+    if([notification_.object resultCount] <= 0)
+        return;
+    
+    NSLog(@"Data changed");
+    NSMetadataItem *metadataItem =  (NSMetadataItem *)[[notification_ object] resultAtIndex:0];
+    
+    BOOL isDownloading = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsDownloadingKey] boolValue];
+    BOOL isDownloaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue];
+    
+    BOOL isUploading = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadingKey] boolValue];
+    BOOL isUploaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadedKey] boolValue];
+    
+    NSLog(@"Downloaded: %d, Downloading: %d", isDownloaded, isDownloading);
+    NSLog(@"Uploaded: %d, Uploading: %d", isUploaded, isUploading);
+
+    if(isDownloaded && isUploaded && self.downloadBlock != nil) {
+        self.downloadBlock();
+        self.downloadBlock = nil;
+    } else if(isDownloaded && isUploaded && !wasUploading) {
+        [self mergeNotesFromCloud];
+    }
+    
+    wasUploading = isUploading;
 }
 
 
@@ -481,40 +531,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
     NSDate *date = [dateFormatter dateFromString:string_];
     return date;
-}
-
-
-- (void)downloadCloudFileAtUrl:(NSURL *)url_
-{
-    NSNumber *isDownloaded;
-    NSNumber *isDownloading;
-    NSError *error;
-    
-    [url_ getResourceValue:&isDownloaded forKey:NSURLUbiquitousItemIsDownloadedKey error:&error];
-    if(error != nil) {
-        NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
-        return;
-    }
-    
-    if(isDownloaded.boolValue)
-        return;
-    
-    [[NSFileManager defaultManager] startDownloadingUbiquitousItemAtURL:url_ error:&error];
-    if(error != nil) {
-        NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
-        return;
-    }
-    
-    do {
-        [NSThread sleepForTimeInterval:0.1];
-        
-        [url_ getResourceValue:&isDownloaded forKey:NSURLUbiquitousItemIsDownloadedKey error:&error];
-        [url_ getResourceValue:&isDownloading forKey:NSURLUbiquitousItemIsDownloadingKey error:&error];
-        if(error != nil) {
-            NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
-            return;
-        }
-    } while(!isDownloaded.boolValue);
 }
 
 @end
