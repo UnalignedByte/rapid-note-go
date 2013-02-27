@@ -38,6 +38,24 @@
 		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
 		B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3A16C3D94C00B5EDEE /* Icon-72.png */; };
 		B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */; };
+		B5325B2A16DE564600426252 /* Note Viewer Pad Bottom Horizontal Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1616DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark.png */; };
+		B5325B2B16DE564600426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1716DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png */; };
+		B5325B2C16DE564600426252 /* Note Viewer Pad Middle Horizontal Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1816DE564500426252 /* Note Viewer Pad Middle Horizontal Dark.png */; };
+		B5325B2D16DE564600426252 /* Note Viewer Pad Middle Horizontal Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1916DE564500426252 /* Note Viewer Pad Middle Horizontal Dark@2x.png */; };
+		B5325B2E16DE564600426252 /* Note Viewer Pad Top Horizontal Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1A16DE564500426252 /* Note Viewer Pad Top Horizontal Dark.png */; };
+		B5325B2F16DE564600426252 /* Note Viewer Pad Top Horizontal Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1B16DE564500426252 /* Note Viewer Pad Top Horizontal Dark@2x.png */; };
+		B5325B3016DE564600426252 /* Note Viewer Pad Bottom Vertical Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1D16DE564500426252 /* Note Viewer Pad Bottom Vertical Dark.png */; };
+		B5325B3116DE564600426252 /* Note Viewer Pad Bottom Vertical Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1E16DE564500426252 /* Note Viewer Pad Bottom Vertical Dark@2x.png */; };
+		B5325B3216DE564600426252 /* Note Viewer Pad Middle Vertical Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1F16DE564500426252 /* Note Viewer Pad Middle Vertical Dark.png */; };
+		B5325B3316DE564600426252 /* Note Viewer Pad Middle Vertical Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2016DE564500426252 /* Note Viewer Pad Middle Vertical Dark@2x.png */; };
+		B5325B3416DE564600426252 /* Note Viewer Pad Top Vertical Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2116DE564500426252 /* Note Viewer Pad Top Vertical Dark.png */; };
+		B5325B3516DE564600426252 /* Note Viewer Pad Top Vertical Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2216DE564500426252 /* Note Viewer Pad Top Vertical Dark@2x.png */; };
+		B5325B3616DE564600426252 /* Note Viewer Bottom Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2416DE564600426252 /* Note Viewer Bottom Dark.png */; };
+		B5325B3716DE564600426252 /* Note Viewer Bottom Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2516DE564600426252 /* Note Viewer Bottom Dark@2x.png */; };
+		B5325B3816DE564600426252 /* Note Viewer Middle Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2616DE564600426252 /* Note Viewer Middle Dark.png */; };
+		B5325B3916DE564600426252 /* Note Viewer Middle Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2716DE564600426252 /* Note Viewer Middle Dark@2x.png */; };
+		B5325B3A16DE564600426252 /* Note Viewer Top Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2816DE564600426252 /* Note Viewer Top Dark.png */; };
+		B5325B3B16DE564600426252 /* Note Viewer Top Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2916DE564600426252 /* Note Viewer Top Dark@2x.png */; };
 		B53651E316BD3AB20090C926 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B53651E216BD3AB20090C926 /* NotificationsManager.m */; };
 		B570355B16D81650001A1D8A /* Background Pattern Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355916D81650001A1D8A /* Background Pattern Dark.png */; };
 		B570355C16D81650001A1D8A /* Background Pattern Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */; };
@@ -51,12 +69,6 @@
 		B589445016DA674F00B9E435 /* Notification Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */; };
 		B589445316DA694C00B9E435 /* Set Notification Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445116DA694C00B9E435 /* Set Notification Dark.png */; };
 		B589445416DA694C00B9E435 /* Set Notification Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */; };
-		B589445B16DA6EA600B9E435 /* Note Viewer Bottom Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445516DA6EA600B9E435 /* Note Viewer Bottom Dark.png */; };
-		B589445C16DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445616DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png */; };
-		B589445D16DA6EA600B9E435 /* Note Viewer Middle Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445716DA6EA600B9E435 /* Note Viewer Middle Dark.png */; };
-		B589445E16DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445816DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png */; };
-		B589445F16DA6EA600B9E435 /* Note Viewer Top Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445916DA6EA600B9E435 /* Note Viewer Top Dark.png */; };
-		B589446016DA6EA600B9E435 /* Note Viewer Top Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445A16DA6EA600B9E435 /* Note Viewer Top Dark@2x.png */; };
 		B589446316DA6F0B00B9E435 /* NoteViewerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */; };
 		B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446416DA792200B9E435 /* Notification Icon Small Dark.png */; };
 		B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */; };
@@ -126,6 +138,24 @@
 		B5081F6316BC082900C3F248 /* SetNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetNotificationView.xib; path = Source/Views/SetNotificationView.xib; sourceTree = "<group>"; };
 		B5269B3A16C3D94C00B5EDEE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Graphics/Icons/Icon-72.png"; sourceTree = "<group>"; };
 		B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Graphics/Icons/Icon-72@2x.png"; sourceTree = "<group>"; };
+		B5325B1616DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Bottom Horizontal Dark.png"; sourceTree = "<group>"; };
+		B5325B1716DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Bottom Horizontal Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B1816DE564500426252 /* Note Viewer Pad Middle Horizontal Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Middle Horizontal Dark.png"; sourceTree = "<group>"; };
+		B5325B1916DE564500426252 /* Note Viewer Pad Middle Horizontal Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Middle Horizontal Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B1A16DE564500426252 /* Note Viewer Pad Top Horizontal Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Top Horizontal Dark.png"; sourceTree = "<group>"; };
+		B5325B1B16DE564500426252 /* Note Viewer Pad Top Horizontal Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Top Horizontal Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B1D16DE564500426252 /* Note Viewer Pad Bottom Vertical Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Bottom Vertical Dark.png"; sourceTree = "<group>"; };
+		B5325B1E16DE564500426252 /* Note Viewer Pad Bottom Vertical Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Bottom Vertical Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B1F16DE564500426252 /* Note Viewer Pad Middle Vertical Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Middle Vertical Dark.png"; sourceTree = "<group>"; };
+		B5325B2016DE564500426252 /* Note Viewer Pad Middle Vertical Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Middle Vertical Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B2116DE564500426252 /* Note Viewer Pad Top Vertical Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Top Vertical Dark.png"; sourceTree = "<group>"; };
+		B5325B2216DE564500426252 /* Note Viewer Pad Top Vertical Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Top Vertical Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B2416DE564600426252 /* Note Viewer Bottom Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Bottom Dark.png"; sourceTree = "<group>"; };
+		B5325B2516DE564600426252 /* Note Viewer Bottom Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Bottom Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B2616DE564600426252 /* Note Viewer Middle Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Middle Dark.png"; sourceTree = "<group>"; };
+		B5325B2716DE564600426252 /* Note Viewer Middle Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Middle Dark@2x.png"; sourceTree = "<group>"; };
+		B5325B2816DE564600426252 /* Note Viewer Top Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Top Dark.png"; sourceTree = "<group>"; };
+		B5325B2916DE564600426252 /* Note Viewer Top Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Top Dark@2x.png"; sourceTree = "<group>"; };
 		B53651E116BD3AB20090C926 /* NotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationsManager.h; path = Source/Managers/NotificationsManager.h; sourceTree = "<group>"; };
 		B53651E216BD3AB20090C926 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationsManager.m; path = Source/Managers/NotificationsManager.m; sourceTree = "<group>"; };
 		B570355916D81650001A1D8A /* Background Pattern Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark.png"; path = "Graphics/Various/Background Pattern Dark.png"; sourceTree = "<group>"; };
@@ -140,12 +170,6 @@
 		B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Dark@2x.png"; path = "Graphics/Various/Notification Icon Dark@2x.png"; sourceTree = "<group>"; };
 		B589445116DA694C00B9E435 /* Set Notification Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Dark.png"; path = "Graphics/Various/Set Notification Dark.png"; sourceTree = "<group>"; };
 		B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Dark@2x.png"; path = "Graphics/Various/Set Notification Dark@2x.png"; sourceTree = "<group>"; };
-		B589445516DA6EA600B9E435 /* Note Viewer Bottom Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Bottom Dark.png"; path = "Graphics/Various/Note Viewer Bottom Dark.png"; sourceTree = "<group>"; };
-		B589445616DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Bottom Dark@2x.png"; path = "Graphics/Various/Note Viewer Bottom Dark@2x.png"; sourceTree = "<group>"; };
-		B589445716DA6EA600B9E435 /* Note Viewer Middle Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Middle Dark.png"; path = "Graphics/Various/Note Viewer Middle Dark.png"; sourceTree = "<group>"; };
-		B589445816DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Middle Dark@2x.png"; path = "Graphics/Various/Note Viewer Middle Dark@2x.png"; sourceTree = "<group>"; };
-		B589445916DA6EA600B9E435 /* Note Viewer Top Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Top Dark.png"; path = "Graphics/Various/Note Viewer Top Dark.png"; sourceTree = "<group>"; };
-		B589445A16DA6EA600B9E435 /* Note Viewer Top Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Viewer Top Dark@2x.png"; path = "Graphics/Various/Note Viewer Top Dark@2x.png"; sourceTree = "<group>"; };
 		B589446116DA6F0B00B9E435 /* NoteViewerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewerBackgroundView.h; path = Source/Views/NoteViewerBackgroundView.h; sourceTree = "<group>"; };
 		B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewerBackgroundView.m; path = Source/Views/NoteViewerBackgroundView.m; sourceTree = "<group>"; };
 		B589446416DA792200B9E435 /* Notification Icon Small Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Small Dark.png"; path = "Graphics/Various/Notification Icon Small Dark.png"; sourceTree = "<group>"; };
@@ -370,6 +394,48 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		B5325B1516DE564500426252 /* Note Viewer Pad Horizontal */ = {
+			isa = PBXGroup;
+			children = (
+				B5325B1616DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark.png */,
+				B5325B1716DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png */,
+				B5325B1816DE564500426252 /* Note Viewer Pad Middle Horizontal Dark.png */,
+				B5325B1916DE564500426252 /* Note Viewer Pad Middle Horizontal Dark@2x.png */,
+				B5325B1A16DE564500426252 /* Note Viewer Pad Top Horizontal Dark.png */,
+				B5325B1B16DE564500426252 /* Note Viewer Pad Top Horizontal Dark@2x.png */,
+			);
+			name = "Note Viewer Pad Horizontal";
+			path = "Graphics/Various/Note Viewer Pad Horizontal";
+			sourceTree = "<group>";
+		};
+		B5325B1C16DE564500426252 /* Note Viewer Pad Vertical */ = {
+			isa = PBXGroup;
+			children = (
+				B5325B1D16DE564500426252 /* Note Viewer Pad Bottom Vertical Dark.png */,
+				B5325B1E16DE564500426252 /* Note Viewer Pad Bottom Vertical Dark@2x.png */,
+				B5325B1F16DE564500426252 /* Note Viewer Pad Middle Vertical Dark.png */,
+				B5325B2016DE564500426252 /* Note Viewer Pad Middle Vertical Dark@2x.png */,
+				B5325B2116DE564500426252 /* Note Viewer Pad Top Vertical Dark.png */,
+				B5325B2216DE564500426252 /* Note Viewer Pad Top Vertical Dark@2x.png */,
+			);
+			name = "Note Viewer Pad Vertical";
+			path = "Graphics/Various/Note Viewer Pad Vertical";
+			sourceTree = "<group>";
+		};
+		B5325B2316DE564500426252 /* Note Viewer Phone */ = {
+			isa = PBXGroup;
+			children = (
+				B5325B2416DE564600426252 /* Note Viewer Bottom Dark.png */,
+				B5325B2516DE564600426252 /* Note Viewer Bottom Dark@2x.png */,
+				B5325B2616DE564600426252 /* Note Viewer Middle Dark.png */,
+				B5325B2716DE564600426252 /* Note Viewer Middle Dark@2x.png */,
+				B5325B2816DE564600426252 /* Note Viewer Top Dark.png */,
+				B5325B2916DE564600426252 /* Note Viewer Top Dark@2x.png */,
+			);
+			name = "Note Viewer Phone";
+			path = "Graphics/Various/Note Viewer Phone";
+			sourceTree = "<group>";
+		};
 		B570355816D81629001A1D8A /* Various */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,14 +451,11 @@
 				B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */,
 				B589445116DA694C00B9E435 /* Set Notification Dark.png */,
 				B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */,
-				B589445916DA6EA600B9E435 /* Note Viewer Top Dark.png */,
-				B589445A16DA6EA600B9E435 /* Note Viewer Top Dark@2x.png */,
-				B589445716DA6EA600B9E435 /* Note Viewer Middle Dark.png */,
-				B589445816DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png */,
-				B589445516DA6EA600B9E435 /* Note Viewer Bottom Dark.png */,
-				B589445616DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png */,
 				B589446416DA792200B9E435 /* Notification Icon Small Dark.png */,
 				B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */,
+				B5325B1516DE564500426252 /* Note Viewer Pad Horizontal */,
+				B5325B1C16DE564500426252 /* Note Viewer Pad Vertical */,
+				B5325B2316DE564500426252 /* Note Viewer Phone */,
 			);
 			name = Various;
 			sourceTree = "<group>";
@@ -524,12 +587,6 @@
 				B589445016DA674F00B9E435 /* Notification Icon Dark@2x.png in Resources */,
 				B589445316DA694C00B9E435 /* Set Notification Dark.png in Resources */,
 				B589445416DA694C00B9E435 /* Set Notification Dark@2x.png in Resources */,
-				B589445B16DA6EA600B9E435 /* Note Viewer Bottom Dark.png in Resources */,
-				B589445C16DA6EA600B9E435 /* Note Viewer Bottom Dark@2x.png in Resources */,
-				B589445D16DA6EA600B9E435 /* Note Viewer Middle Dark.png in Resources */,
-				B589445E16DA6EA600B9E435 /* Note Viewer Middle Dark@2x.png in Resources */,
-				B589445F16DA6EA600B9E435 /* Note Viewer Top Dark.png in Resources */,
-				B589446016DA6EA600B9E435 /* Note Viewer Top Dark@2x.png in Resources */,
 				B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */,
 				B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */,
 				B589447916DABBBE00B9E435 /* ixPickerOverlayGlass.png in Resources */,
@@ -544,6 +601,24 @@
 				B589448216DABBBE00B9E435 /* ixPickerOverlaySectionWheel@2x.png in Resources */,
 				B589448316DABBBE00B9E435 /* ixPickerOverlayTexture.png in Resources */,
 				B589448416DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png in Resources */,
+				B5325B2A16DE564600426252 /* Note Viewer Pad Bottom Horizontal Dark.png in Resources */,
+				B5325B2B16DE564600426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png in Resources */,
+				B5325B2C16DE564600426252 /* Note Viewer Pad Middle Horizontal Dark.png in Resources */,
+				B5325B2D16DE564600426252 /* Note Viewer Pad Middle Horizontal Dark@2x.png in Resources */,
+				B5325B2E16DE564600426252 /* Note Viewer Pad Top Horizontal Dark.png in Resources */,
+				B5325B2F16DE564600426252 /* Note Viewer Pad Top Horizontal Dark@2x.png in Resources */,
+				B5325B3016DE564600426252 /* Note Viewer Pad Bottom Vertical Dark.png in Resources */,
+				B5325B3116DE564600426252 /* Note Viewer Pad Bottom Vertical Dark@2x.png in Resources */,
+				B5325B3216DE564600426252 /* Note Viewer Pad Middle Vertical Dark.png in Resources */,
+				B5325B3316DE564600426252 /* Note Viewer Pad Middle Vertical Dark@2x.png in Resources */,
+				B5325B3416DE564600426252 /* Note Viewer Pad Top Vertical Dark.png in Resources */,
+				B5325B3516DE564600426252 /* Note Viewer Pad Top Vertical Dark@2x.png in Resources */,
+				B5325B3616DE564600426252 /* Note Viewer Bottom Dark.png in Resources */,
+				B5325B3716DE564600426252 /* Note Viewer Bottom Dark@2x.png in Resources */,
+				B5325B3816DE564600426252 /* Note Viewer Middle Dark.png in Resources */,
+				B5325B3916DE564600426252 /* Note Viewer Middle Dark@2x.png in Resources */,
+				B5325B3A16DE564600426252 /* Note Viewer Top Dark.png in Resources */,
+				B5325B3B16DE564600426252 /* Note Viewer Top Dark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

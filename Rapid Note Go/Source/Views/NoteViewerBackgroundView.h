@@ -11,8 +11,4 @@
 
 @interface NoteViewerBackgroundView : UIView
 
-@property (nonatomic, strong) UIImage *viewerTopImage;
-@property (nonatomic, strong) UIImage *viewerMiddleImage;
-@property (nonatomic, strong) UIImage *viewerBottomImage;
-
 @end
