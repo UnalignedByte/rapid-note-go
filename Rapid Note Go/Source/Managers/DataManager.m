@@ -234,7 +234,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         
         //add modification node (if modificaiton date !=)
         if(note.modificationDate != nil) {
-            APElement *modificationDateNode = [[APElement alloc] initWithName:@"modificaiton_date_time"];
+            APElement *modificationDateNode = [[APElement alloc] initWithName:@"modification_date_time"];
             [modificationDateNode appendValue:[note.modificationDate description]];
             [noteNode addChild:modificationDateNode];
         }
@@ -445,8 +445,9 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note"
                                                inManagedObjectContext:_notesContext];
     
-    note.creationDate = [NSDate date];
-    note.modificationDate = note.creationDate;
+    NSDate *nowDate = [NSDate date];
+    note.creationDate = nowDate;
+    note.modificationDate = nowDate;
     note.isUploaded = NO;
     
     //tag  uniquely identify each note
