@@ -19,7 +19,6 @@
 		891B93BF16B8113400EE24C9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 891B93BD16B8113400EE24C9 /* Icon.png */; };
 		891B93C016B8113400EE24C9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891B93BE16B8113400EE24C9 /* Icon@2x.png */; };
 		891B93C416B8227300EE24C9 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B93C316B8227300EE24C9 /* DataManager.m */; };
-		891B93C716B8244900EE24C9 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B93C616B8244900EE24C9 /* Note.m */; };
 		891B93CA16B8249C00EE24C9 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 891B93C916B8249C00EE24C9 /* NoteCell.xib */; };
 		891B93CD16B824F800EE24C9 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B93CC16B824F800EE24C9 /* NoteCell.m */; };
 		897FA6E316A8386400EB2D18 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 897FA6E116A8386400EB2D18 /* Notes.xcdatamodeld */; };
@@ -91,6 +90,7 @@
 		B5D67A2D16DAC7C200360647 /* APDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2916DAC7C200360647 /* APDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D67A2E16DAC7C200360647 /* APElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2B16DAC7C200360647 /* APElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D67A3116DAC7DD00360647 /* IXPickerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */; };
+		B5D9B3D416DF686900DC6CF8 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D9B3D316DF686900DC6CF8 /* Note.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,8 +111,6 @@
 		891B93BE16B8113400EE24C9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Graphics/Icons/Icon@2x.png"; sourceTree = "<group>"; };
 		891B93C216B8227300EE24C9 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = Source/Managers/DataManager.h; sourceTree = "<group>"; };
 		891B93C316B8227300EE24C9 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = Source/Managers/DataManager.m; sourceTree = "<group>"; };
-		891B93C516B8244900EE24C9 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = Source/Models/Note.h; sourceTree = "<group>"; };
-		891B93C616B8244900EE24C9 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = Source/Models/Note.m; sourceTree = "<group>"; };
 		891B93C916B8249C00EE24C9 /* NoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteCell.xib; path = Source/Cells/NoteCell.xib; sourceTree = "<group>"; };
 		891B93CB16B824F800EE24C9 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteCell.h; path = Source/Cells/NoteCell.h; sourceTree = "<group>"; };
 		891B93CC16B824F800EE24C9 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteCell.m; path = Source/Cells/NoteCell.m; sourceTree = "<group>"; };
@@ -199,6 +197,8 @@
 		B5D67A2B16DAC7C200360647 /* APElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APElement.m; path = "Rapid Note Go/Source/Utils/APXML/APElement.m"; sourceTree = SOURCE_ROOT; };
 		B5D67A2F16DAC7DD00360647 /* IXPickerOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IXPickerOverlayView.h; path = "Rapid Note Go/Source/Utils/IXPickerOverlayView/IXPickerOverlayView.h"; sourceTree = SOURCE_ROOT; };
 		B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IXPickerOverlayView.m; path = "Rapid Note Go/Source/Utils/IXPickerOverlayView/IXPickerOverlayView.m"; sourceTree = SOURCE_ROOT; };
+		B5D9B3D216DF686900DC6CF8 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = Source/Models/Note.h; sourceTree = "<group>"; };
+		B5D9B3D316DF686900DC6CF8 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = Source/Models/Note.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,8 +326,8 @@
 		89253EE116B6C7D300A9D1E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				891B93C516B8244900EE24C9 /* Note.h */,
-				891B93C616B8244900EE24C9 /* Note.m */,
+				B5D9B3D216DF686900DC6CF8 /* Note.h */,
+				B5D9B3D316DF686900DC6CF8 /* Note.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -652,7 +652,6 @@
 				89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */,
 				89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */,
 				891B93C416B8227300EE24C9 /* DataManager.m in Sources */,
-				891B93C716B8244900EE24C9 /* Note.m in Sources */,
 				891B93CD16B824F800EE24C9 /* NoteCell.m in Sources */,
 				B5081F5B16BA8B4900C3F248 /* NSDate+NiceFormatting.m in Sources */,
 				B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */,
@@ -662,6 +661,7 @@
 				B5D67A2D16DAC7C200360647 /* APDocument.m in Sources */,
 				B5D67A2E16DAC7C200360647 /* APElement.m in Sources */,
 				B5D67A3116DAC7DD00360647 /* IXPickerOverlayView.m in Sources */,
+				B5D9B3D416DF686900DC6CF8 /* Note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

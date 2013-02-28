@@ -131,15 +131,15 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         NSLog(@"First time");
         self.lastCloudId = cloudId;
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            [self mergeNotesFromCloud];
-            //[self exportNotesToCloud];
+            if([self mergeNotesFromCloud])
+                [self exportNotesToCloud];
         }];
     //same iCloud account as the last time
     } else if([self.lastCloudId isEqual:cloudId]) {
         NSLog(@"Again");
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            [self mergeNotesFromCloud];
-            //[self exportNotesToCloud];
+            if([self mergeNotesFromCloud])
+                [self exportNotesToCloud];
         }];
     //different iCloud account
     } else {
@@ -312,8 +312,10 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 }
 
 
-- (void)mergeNotesFromCloud
+- (BOOL)mergeNotesFromCloud
 {
+    BOOL addedAnyNote = NO;
+    
     NSLog(@"merge");
     
     self.shouldIgnoreNotesContextChanges = YES;
@@ -322,8 +324,11 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSString *xmlString = [NSString stringWithContentsOfFile:self.notesCloudUrl.path encoding:NSUTF8StringEncoding error:&error];
     if(error != nil) {
         NSLog(@"iCloud merge failed: %d, %@", error.code, error.localizedDescription);
-        return;
+        return NO;
     }
+    
+    //this will be used to delete notes
+    NSMutableArray *tagsFromXml = [NSMutableArray array];
     
     APDocument *notesDocument = [[APDocument alloc] initWithString:xmlString];
     
@@ -353,6 +358,8 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             modificationDate = [self stringToDate:[(APElement *)[note childElements:@"modification_date_time"][0] value]];
         }
         
+        [tagsFromXml addObject:tag];
+        
         //Check if we already have note with the same tag
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
@@ -362,6 +369,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         //note exist, merge them together
         if(fetchResult != nil && fetchResult.count > 0) {
             Note *existingNote = fetchResult[0];
+            existingNote.isUploaded = @YES;
             if([existingNote.modificationDate compare:modificationDate] == NSOrderedDescending) {
                 continue;
             } else {
@@ -377,12 +385,30 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             note.creationDate = creationDate;
             note.modificationDate = modificationDate;
             note.notificationDate = notificationDate;
+            note.isUploaded = @YES;
+        }
+        
+        addedAnyNote = YES;
+    }
+    
+    //remove all remotely deleted notes
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
+    fetchRequest.entity = entityDescription;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @YES]];
+    NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
+    for(Note *note in fetchResult) {
+        if([tagsFromXml indexOfObject:note.tag] == NSNotFound) {
+            [self deleteNote:note];
         }
     }
+    
     
     [self.notesContext save:nil];
     self.shouldIgnoreNotesContextChanges = NO;
     NSLog(@"merge finished");
+    
+    return addedAnyNote;
 }
 
 
@@ -416,6 +442,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     note.creationDate = [NSDate date];
     note.modificationDate = note.creationDate;
+    note.isUploaded = NO;
     
     //tag  uniquely identify each note
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
@@ -483,13 +510,29 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     BOOL isUploaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadedKey] boolValue];
     
     NSLog(@"Downloaded: %d, Downloading: %d", isDownloaded, isDownloading);
-    NSLog(@"Uploaded: %d, Uploading: %d", isUploaded, isUploading);
+    NSLog(@"Uploaded: %d, Uploading: %d, Was Uploading: %d", isUploaded, isUploading, wasUploading);
 
+    //new data is downloaded
     if(isDownloaded && isUploaded && self.downloadBlock != nil) {
         self.downloadBlock();
         self.downloadBlock = nil;
     } else if(isDownloaded && isUploaded && !wasUploading) {
         [self mergeNotesFromCloud];
+    //new data is uploaded
+    } else if(isUploaded && wasUploading && !isUploading) {
+        self.shouldIgnoreNotesContextChanges = YES;
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
+        fetchRequest.entity = entityDescription;
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @NO]];
+        NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
+        for(Note *note in fetchResult) {
+            note.isUploaded = @YES;
+        }
+        
+        [_notesContext save:nil];
+        self.shouldIgnoreNotesContextChanges = NO;
     }
     
     wasUploading = isUploading;
