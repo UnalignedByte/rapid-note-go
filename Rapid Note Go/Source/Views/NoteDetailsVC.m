@@ -134,7 +134,6 @@
         self.notificationImage.hidden = NO;
         self.notificationButton.hidden = NO;
         [self.notificationButton setTitle:Localize(@"Set Notification") forState:UIControlStateNormal];
-        self.note.notificationDate = nil;
     }
 }
 

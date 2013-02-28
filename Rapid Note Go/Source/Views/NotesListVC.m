@@ -32,6 +32,8 @@
 
 @property (nonatomic) BOOL isEditingSingleRow;
 
+@property (nonatomic, strong) NSString *currentNoteTag;
+
 @end
 
 
@@ -149,16 +151,20 @@
 - (void)setupNoteInput
 {
     [[NSBundle mainBundle] loadNibNamed:@"NoteInputView" owner:self options:nil];
-    //[self.view addSubview:self.noteInputView];
     [self.view addSubview:self.noteInputView];
     [self.view bringSubviewToFront:self.noteInputView];
     //move input view up
-    //CGRect noteInputRect = self.noteInputView.frame;
-    //noteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
-    //self.noteInputView.frame = noteInputRect;
     self.noteInputView.frame = self.view.frame;
     //hide the view for the moment
     self.noteInputView.alpha = 0.0;
+}
+
+
+- (void)viewWillAppear:(BOOL)animated_
+{
+    [super viewWillAppear:animated_];
+    
+    self.currentNoteTag = nil;
 }
 
 
@@ -290,9 +296,12 @@
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath_
 {
-    [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
+    }
     
     Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
+    self.currentNoteTag = note.tag;
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.noteDetailsVC configureWithNote:note];
@@ -398,6 +407,25 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller_
 {
     [self.tableVC.tableView endUpdates];
+    
+    if(self.currentNoteTag == nil)
+        return;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:[DataManager sharedInstance].notesContext];
+    fetchRequest.entity = entityDescription;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"tag == '%@'", self.currentNoteTag]];
+    NSArray *fetchResult = [[DataManager sharedInstance].notesContext executeFetchRequest:fetchRequest error:nil];
+    if(fetchResult.count > 0) {
+        Note *currentNote = (Note *)fetchResult[0];
+        NSIndexPath *currentIndexPath = [self.notesResultsController indexPathForObject:currentNote];
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            [self.tableVC.tableView selectRowAtIndexPath:currentIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        }
+        [self.noteDetailsVC configureWithNote:currentNote];
+    } else if(self.noteDetailsVC != nil) {
+        [self.noteDetailsVC configureWithNote:nil];
+    }
 }
 
 
