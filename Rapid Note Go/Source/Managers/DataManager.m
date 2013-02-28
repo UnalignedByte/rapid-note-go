@@ -126,6 +126,8 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     self.notesCloudUrl = [self.notesCloudUrl URLByAppendingPathComponent:@"notes.xml"];
     [self createDirectoryIfNecessary:self.notesCloudUrl];
     
+    [self setupCloudObservers];
+    
     //first time using iCloud
     if(self.lastCloudId == nil) {
         NSLog(@"First time");
@@ -193,13 +195,17 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSLog(@"context changed and saved");
     [self.notesContext save:nil];
     
-    [self exportNotesToCloud];
+    if(_isUsingCloud)
+        [self exportNotesToCloud];
 }
 
 
 #pragma mark - Internal Control
 - (void)exportNotesToCloud
 {
+    if(!_isUsingCloud)
+        return;
+    
     NSLog(@"export");
     self.shouldIgnoreNotesContextChanges = YES;
     
@@ -249,7 +255,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     [xmlString writeToFile:self.notesCloudUrl.path atomically:NO encoding:NSUTF8StringEncoding error:&error];
     if(error != nil) {
         NSLog(@"iCloud export failed: %d, %@", error.code, error.localizedDescription);
-        return;
     }
     
     self.shouldIgnoreNotesContextChanges = NO;
@@ -414,7 +419,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)downloadCloudFileAtUrl:(NSURL *)url_ downloadFinished:(void (^)())block_
 {
-    if(self.downloadBlock != nil)
+    if(block_ == nil)
         return;
     
     //check if file exists
