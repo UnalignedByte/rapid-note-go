@@ -41,7 +41,6 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 216}</string>
 						<reference key="NSSuperview" ref="721983183"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="483723713"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -79,7 +78,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 216}</string>
 						<reference key="NSSuperview" ref="721983183"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="23058684"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -90,7 +88,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 216}, {320, 645}}</string>
 						<reference key="NSSuperview" ref="721983183"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -126,7 +123,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				</array>
 				<string key="NSFrameSize">{320, 856}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="53875336"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -154,6 +150,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<reference key="destination" ref="53875336"/>
 					</object>
 					<int key="connectionID">23</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">setNotificationDatePickerOverlayView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="483723713"/>
+					</object>
+					<int key="connectionID">40</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -240,7 +244,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">40</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -266,6 +270,40 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<object class="IBPartialClassDescription">
 					<string key="className">NoteDetailsVC</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancelNoteEditingAction:">id</string>
+						<string key="cancelSettingNotificationDateAction:">id</string>
+						<string key="deleteButtonAction:">id</string>
+						<string key="notificationButtonAction:">id</string>
+						<string key="saveNoteEditingAction:">id</string>
+						<string key="setNotificationDateAction:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancelNoteEditingAction:">
+							<string key="name">cancelNoteEditingAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="cancelSettingNotificationDateAction:">
+							<string key="name">cancelSettingNotificationDateAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="deleteButtonAction:">
+							<string key="name">deleteButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="notificationButtonAction:">
+							<string key="name">notificationButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="saveNoteEditingAction:">
+							<string key="name">saveNoteEditingAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setNotificationDateAction:">
+							<string key="name">setNotificationDateAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="creationDateLabel">UILabel</string>
 						<string key="creationImage">UIImageView</string>
@@ -275,6 +313,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="notificationButton">UIButton</string>
 						<string key="notificationImage">UIImageView</string>
 						<string key="setNotificationDatePicker">UIDatePicker</string>
+						<string key="setNotificationDatePickerOverlayView">UIView</string>
 						<string key="setNotificationDateView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -309,6 +348,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="setNotificationDatePicker">
 							<string key="name">setNotificationDatePicker</string>
 							<string key="candidateClassName">UIDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePickerOverlayView">
+							<string key="name">setNotificationDatePickerOverlayView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="setNotificationDateView">
 							<string key="name">setNotificationDateView</string>

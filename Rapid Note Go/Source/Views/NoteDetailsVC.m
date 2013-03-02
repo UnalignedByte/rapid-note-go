@@ -36,6 +36,7 @@
 
 @property (nonatomic, weak) IBOutlet UIView *setNotificationDateView;
 @property (nonatomic, weak) IBOutlet UIDatePicker *setNotificationDatePicker;
+@property (nonatomic, weak) IBOutlet UIView *setNotificationDatePickerOverlayView;
 @property (nonatomic, strong) UIViewController *setNotificationDatePickerVC;
 @property (nonatomic, strong) UIPopoverController *setNotificationDatePickerPopover;
 
@@ -257,6 +258,7 @@
             UIViewController *pickerVC = [[UIViewController alloc] init];
             
             pickerVC.view = self.setNotificationDatePicker;
+            [pickerVC.view addSubview:self.setNotificationDatePickerOverlayView];
             
             UIBarButtonItem *cancelSettingNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
                                                                                                 style:UIBarButtonItemStylePlain
@@ -276,7 +278,7 @@
             self.setNotificationDatePickerPopover = [[UIPopoverController alloc] initWithContentViewController:self.setNotificationDatePickerVC];
             self.setNotificationDatePickerPopover.delegate = self;
             CGSize popoverSize = CGSizeMake(self.setNotificationDatePicker.frame.size.width, self.setNotificationDatePicker.frame.size.height);
-            popoverSize.height += 5.0;
+            popoverSize.height += 40.0;
             self.setNotificationDatePickerPopover.popoverContentSize = popoverSize;
         }
 
