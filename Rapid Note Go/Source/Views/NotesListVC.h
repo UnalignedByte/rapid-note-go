@@ -12,7 +12,7 @@
 @class NoteDetailsVC;
 
 
-@interface NotesListVC : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface NotesListVC : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) NoteDetailsVC *noteDetailsVC;
 

@@ -34,6 +34,12 @@
 
 @property (nonatomic, strong) NSString *currentNoteTag;
 
+//note input for iPad
+@property (nonatomic, weak) IBOutlet UIDatePicker *setNotificationDatePicker;
+@property (nonatomic, weak) IBOutlet UIView *setNotificationDatePickerOverlayView;
+@property (nonatomic, strong) UIViewController *noteInputPadVC;
+@property (nonatomic, strong) UIPopoverController *noteInputPadPopover;
+
 @end
 
 
@@ -171,6 +177,15 @@
 #pragma mark - Internal Control
 - (void)showInput
 {
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        [self showInputForPhone];
+    else
+        [self showInputForPad];
+}
+
+
+- (void)showInputForPhone
+{
     //set original position
     CGRect originalNoteInputRect = self.noteInputView.frame;
     originalNoteInputRect.origin.y = -self.noteInputBackground.frame.size.height;
@@ -184,14 +199,65 @@
     [self setupNavigationButtonsForEditing];
     
     [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:INPUT_ANIMATION_DURATION];
-        self.noteInputView.alpha = 1.0;
-        self.noteInputView.frame = noteInputRect;
+    [UIView setAnimationDuration:INPUT_ANIMATION_DURATION];
+    self.noteInputView.alpha = 1.0;
+    self.noteInputView.frame = noteInputRect;
     [UIView commitAnimations];
 }
 
 
+- (void)showInputForPad
+{
+    if(self.noteInputPadPopover != nil && self.noteInputPadPopover.isPopoverVisible) {
+        [self hideInputForPad];
+    }
+    
+    if(self.noteInputPadVC == nil) {
+        UIViewController *noteInpuVC = [[UIViewController alloc] init];
+        noteInpuVC.view = self.noteInputText;
+        self.noteInputText.backgroundColor = [UIColor whiteColor];
+        
+        UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Add")
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(addNoteAction:)];
+        UIBarButtonItem *cancelNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(cancelNoteAction:)];
+        noteInpuVC.navigationItem.rightBarButtonItem = addNoteButton;
+        noteInpuVC.navigationItem.leftBarButtonItem = cancelNoteButton;
+        
+        self.noteInputPadVC = [[UINavigationController alloc] initWithRootViewController:noteInpuVC];
+    }
+    
+    if(self.noteInputPadPopover == nil) {
+        self.noteInputPadPopover = [[UIPopoverController alloc] initWithContentViewController:self.noteInputPadVC];
+        self.noteInputPadPopover.delegate = self;
+        //CGSize popoverSize = CGSizeMake(self.noteInputText.frame.size.width, self.noteInputText.frame.size.height);
+        //popoverSize.height += 40.0;
+        CGSize popoverSize = CGSizeMake(400.0, 200.0);
+        self.noteInputPadPopover.popoverContentSize = popoverSize;
+    }
+    
+    [self.noteInputPadPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+    [self.noteInputText becomeFirstResponder];
+}
+
+
 - (void)hideInput
+{
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self hideInputeForPhone];
+    } else {
+        [self hideInputForPad];
+    }
+    
+    self.noteInputText.text = @"";
+}
+
+
+- (void)hideInputeForPhone
 {
     self.inputView.userInteractionEnabled = NO;
     CGRect noteInputRect = self.noteInputView.frame;
@@ -201,12 +267,16 @@
     [self setupNavigationButtonsForAdding];
     
     [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:INPUT_ANIMATION_DURATION];
-        self.noteInputView.alpha = 0.0;
-        self.noteInputView.frame = noteInputRect;
+    [UIView setAnimationDuration:INPUT_ANIMATION_DURATION];
+    self.noteInputView.alpha = 0.0;
+    self.noteInputView.frame = noteInputRect;
     [UIView commitAnimations];
-    
-    self.noteInputText.text = @"";
+}
+
+
+- (void)hideInputForPad
+{
+    [self.noteInputPadPopover dismissPopoverAnimated:YES];
 }
 
 
@@ -230,6 +300,13 @@
 
 - (void)editNotesList
 {
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if(self.noteInputPadPopover != nil && self.noteInputPadPopover.isPopoverVisible) {
+            [self hideInputForPad];
+            return;
+        }
+    }
+    
     [self setupNavigationButtonsForListEditing];
     
     [self.tableVC.tableView setEditing:YES animated:YES];
@@ -425,6 +502,15 @@
         [self.noteDetailsVC configureWithNote:currentNote];
     } else if(self.noteDetailsVC != nil) {
         [self.noteDetailsVC configureWithNote:nil];
+    }
+}
+
+
+#pragma  mark - Popover Delegate
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController_
+{
+    if(popoverController_ == self.noteInputPadPopover) {
+        [self hideInput];
     }
 }
 
