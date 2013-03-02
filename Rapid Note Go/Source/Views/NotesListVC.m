@@ -426,6 +426,8 @@
     self.isEditingSingleRow = YES;
     
     [self setupNavigationButtonsForListEditing];
+    
+    [self.noteDetailsVC configureWithNote:nil];
 }
 
 
