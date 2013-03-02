@@ -301,6 +301,8 @@
 - (void)editNotesList
 {
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.noteDetailsVC configureWithNote:nil];
+        
         if(self.noteInputPadPopover != nil && self.noteInputPadPopover.isPopoverVisible) {
             [self hideInputForPad];
             return;

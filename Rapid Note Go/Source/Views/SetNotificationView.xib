@@ -38,9 +38,10 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIDatePicker" id="53875336">
 						<reference key="NSNextResponder" ref="721983183"/>
-						<int key="NSvFlags">290</int>
+						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 216}</string>
 						<reference key="NSSuperview" ref="721983183"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="483723713"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -78,6 +79,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 216}</string>
 						<reference key="NSSuperview" ref="721983183"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="23058684"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -88,6 +90,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 216}, {320, 645}}</string>
 						<reference key="NSSuperview" ref="721983183"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -123,6 +126,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				</array>
 				<string key="NSFrameSize">{320, 856}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="53875336"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
