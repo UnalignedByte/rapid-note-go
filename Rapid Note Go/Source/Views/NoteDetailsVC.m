@@ -20,6 +20,7 @@
 @interface NoteDetailsVC ()
 
 @property (nonatomic, strong) Note *note;
+@property (nonatomic, weak) IBOutlet UIView *noteTextBackgroundView;
 @property (nonatomic, weak) IBOutlet UITextView *noteText;
 
 @property (nonatomic, weak) IBOutlet UIImageView *creationImage;
@@ -71,10 +72,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self setupBackground];
     [self configureWithNote:self.note];
     [self setupNotificationSetting];
     [self setupNavigationButtonsForReading];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 
@@ -91,6 +96,8 @@
 
 - (void)setupNote
 {
+    [self.noteText resignFirstResponder];
+    
     if(self.note == nil) {
         self.creationImage.hidden = YES;
         self.creationDateLabel.hidden = YES;
@@ -296,7 +303,6 @@
     }
     
     [self.setNotificationDatePickerPopover presentPopoverFromRect:self.notificationButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
-    NSLog(@"w: %f, h: %f", self.setNotificationDatePickerPopover.popoverContentSize.width, self.setNotificationDatePickerPopover.popoverContentSize.height);
 }
 
 
@@ -412,6 +418,53 @@
         [self.setNotificationDatePickerPopover dismissPopoverAnimated:NO];
         [self.setNotificationDatePickerPopover presentPopoverFromRect:self.notificationButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
     }
+}
+
+
+#pragma mark - Handle Keyboard
+- (void)keyboardWillShow:(NSNotification *)notification_
+{
+    [self resizeTextBackgroundUpwards:YES keyboardInfo:notification_.userInfo];
+}
+
+
+- (void)keyboardWillHide:(NSNotification *)notification_
+{
+    [self resizeTextBackgroundUpwards:NO keyboardInfo:notification_.userInfo];
+}
+
+
+- (void)resizeTextBackgroundUpwards:(BOOL)resizeUpwards_ keyboardInfo:(NSDictionary *)keyboardInfo_
+{
+    if(!self.noteText.isFirstResponder)
+        return;
+    
+    static CGFloat resizeHeight;
+    
+    if(resizeUpwards_) {
+        CGRect keyboardFrame = [keyboardInfo_[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        if(keyboardFrame.size.height < keyboardFrame.size.width)
+            resizeHeight = -keyboardFrame.size.height;
+        else
+            resizeHeight = -keyboardFrame.size.width;
+    } else {
+        resizeHeight = -resizeHeight;
+    }
+    
+    CGRect backgroundRect = self.noteTextBackgroundView.frame;
+    backgroundRect.size.height += resizeHeight;
+    
+    UIViewAnimationCurve keyboardAnimationCurve;
+    NSTimeInterval keyboardAnimationDuration;
+    
+    [keyboardInfo_[UIKeyboardAnimationCurveUserInfoKey] getValue:&keyboardAnimationCurve];
+    [keyboardInfo_[UIKeyboardAnimationDurationUserInfoKey] getValue:&keyboardAnimationDuration];
+    
+    [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationCurve:keyboardAnimationCurve];
+        [UIView setAnimationDuration:keyboardAnimationDuration];
+        self.noteTextBackgroundView.frame = backgroundRect;
+    [UIView commitAnimations];
 }
 
 

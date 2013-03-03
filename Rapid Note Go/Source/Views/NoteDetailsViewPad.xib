@@ -47,8 +47,11 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{10, 10}, {402, 944}}</string>
 								<reference key="NSSuperview" ref="98812133"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="346468800"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">2</int>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -75,6 +78,7 @@
 						</array>
 						<string key="NSFrame">{{10, 50}, {422, 964}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="742768989"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -86,6 +90,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{15, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1061850737"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -100,6 +105,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{36, 10}, {100, 30}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="216657669"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -133,6 +139,7 @@
 								<int key="NSvFlags">293</int>
 								<string key="NSFrame">{{0, 7}, {16, 16}}</string>
 								<reference key="NSSuperview" ref="216657669"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="329708905"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -147,6 +154,7 @@
 								<int key="NSvFlags">293</int>
 								<string key="NSFrame">{{21, 0}, {100, 30}}</string>
 								<reference key="NSSuperview" ref="216657669"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="633809297"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -165,6 +173,7 @@
 						</array>
 						<string key="NSFrame">{{171, 10}, {121, 30}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="416742894"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -175,6 +184,7 @@
 						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{306, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="357472888"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -189,7 +199,7 @@
 						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{327, 10}, {100, 30}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
-						<reference key="NSNextKeyView" ref="98812133"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -211,7 +221,8 @@
 				</array>
 				<string key="NSFrameSize">{442, 1024}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="346468800"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="98812133"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -271,14 +282,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">noteText</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="742768989"/>
-					</object>
-					<int key="connectionID">46</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">modificationImage</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="416742894"/>
@@ -292,6 +295,22 @@
 						<reference key="destination" ref="329708905"/>
 					</object>
 					<int key="connectionID">42</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">noteText</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="742768989"/>
+					</object>
+					<int key="connectionID">46</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">noteTextBackgroundView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="98812133"/>
+					</object>
+					<int key="connectionID">70</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -338,8 +357,8 @@
 							<reference ref="346468800"/>
 							<reference ref="357472888"/>
 							<reference ref="633809297"/>
-							<reference ref="98812133"/>
 							<reference ref="216657669"/>
+							<reference ref="98812133"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Note Details View</string>
@@ -373,21 +392,6 @@
 						<string key="objectName">Notification Button</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">67</int>
-						<reference key="object" ref="98812133"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="742768989"/>
-						</array>
-						<reference key="parent" ref="384187840"/>
-						<string key="objectName">Note Text Background View</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">9</int>
-						<reference key="object" ref="742768989"/>
-						<reference key="parent" ref="98812133"/>
-						<string key="objectName">Note Text</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">68</int>
 						<reference key="object" ref="216657669"/>
 						<array class="NSMutableArray" key="children">
@@ -408,6 +412,21 @@
 						<reference key="object" ref="329708905"/>
 						<reference key="parent" ref="216657669"/>
 						<string key="objectName">Modification Date Label</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">67</int>
+						<reference key="object" ref="98812133"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="742768989"/>
+						</array>
+						<reference key="parent" ref="384187840"/>
+						<string key="objectName">Note Text Background View</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">9</int>
+						<reference key="object" ref="742768989"/>
+						<reference key="parent" ref="98812133"/>
+						<string key="objectName">Note Text</string>
 					</object>
 				</array>
 			</object>
@@ -432,7 +451,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">68</int>
+			<int key="maxID">70</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -445,9 +464,11 @@
 						<string key="modificationDateLabel">UILabel</string>
 						<string key="modificationImage">UIImageView</string>
 						<string key="noteText">UITextView</string>
+						<string key="noteTextBackgroundView">UIView</string>
 						<string key="notificationButton">UIButton</string>
 						<string key="notificationImage">UIImageView</string>
 						<string key="setNotificationDatePicker">UIDatePicker</string>
+						<string key="setNotificationDatePickerOverlayView">UIView</string>
 						<string key="setNotificationDateView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -471,6 +492,10 @@
 							<string key="name">noteText</string>
 							<string key="candidateClassName">UITextView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="noteTextBackgroundView">
+							<string key="name">noteTextBackgroundView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="notificationButton">
 							<string key="name">notificationButton</string>
 							<string key="candidateClassName">UIButton</string>
@@ -482,6 +507,10 @@
 						<object class="IBToOneOutletInfo" key="setNotificationDatePicker">
 							<string key="name">setNotificationDatePicker</string>
 							<string key="candidateClassName">UIDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePickerOverlayView">
+							<string key="name">setNotificationDatePickerOverlayView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="setNotificationDateView">
 							<string key="name">setNotificationDateView</string>

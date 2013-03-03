@@ -48,7 +48,6 @@
 								<string key="NSFrame">{{10, 10}, {280, 400}}</string>
 								<reference key="NSSuperview" ref="413702104"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -297,6 +296,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">noteTextBackgroundView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="413702104"/>
+					</object>
+					<int key="connectionID">243</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="861011232"/>
 						<reference key="destination" ref="841351856"/>
@@ -427,51 +434,24 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">242</int>
+			<int key="maxID">243</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">NoteDetailsVC</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="cancelNoteEditingAction:">id</string>
-						<string key="cancelSettingNotificationDateAction:">id</string>
-						<string key="deleteButtonAction:">id</string>
-						<string key="notificationButtonAction:">id</string>
-						<string key="saveNoteEditingAction:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="cancelNoteEditingAction:">
-							<string key="name">cancelNoteEditingAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="cancelSettingNotificationDateAction:">
-							<string key="name">cancelSettingNotificationDateAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="deleteButtonAction:">
-							<string key="name">deleteButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="notificationButtonAction:">
-							<string key="name">notificationButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveNoteEditingAction:">
-							<string key="name">saveNoteEditingAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="creationDateLabel">UILabel</string>
 						<string key="creationImage">UIImageView</string>
 						<string key="modificationDateLabel">UILabel</string>
 						<string key="modificationImage">UIImageView</string>
 						<string key="noteText">UITextView</string>
+						<string key="noteTextBackgroundView">UIView</string>
 						<string key="notificationButton">UIButton</string>
 						<string key="notificationImage">UIImageView</string>
 						<string key="setNotificationDatePicker">UIDatePicker</string>
+						<string key="setNotificationDatePickerOverlayView">UIView</string>
 						<string key="setNotificationDateView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -495,6 +475,10 @@
 							<string key="name">noteText</string>
 							<string key="candidateClassName">UITextView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="noteTextBackgroundView">
+							<string key="name">noteTextBackgroundView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="notificationButton">
 							<string key="name">notificationButton</string>
 							<string key="candidateClassName">UIButton</string>
@@ -506,6 +490,10 @@
 						<object class="IBToOneOutletInfo" key="setNotificationDatePicker">
 							<string key="name">setNotificationDatePicker</string>
 							<string key="candidateClassName">UIDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePickerOverlayView">
+							<string key="name">setNotificationDatePickerOverlayView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="setNotificationDateView">
 							<string key="name">setNotificationDateView</string>
