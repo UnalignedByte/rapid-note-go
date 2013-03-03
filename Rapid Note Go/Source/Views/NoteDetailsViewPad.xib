@@ -45,9 +45,10 @@
 							<object class="IBUITextView" id="742768989">
 								<reference key="NSNextResponder" ref="98812133"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{10, 10}, {402, 944}}</string>
+								<string key="NSFrame">{{10, 10}, {403, 944}}</string>
 								<reference key="NSSuperview" ref="98812133"/>
-								<reference key="NSNextKeyView" ref="346468800"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">2</int>
@@ -75,8 +76,9 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrame">{{10, 50}, {422, 964}}</string>
+						<string key="NSFrame">{{10, 50}, {423, 964}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="742768989"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -88,6 +90,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{15, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1061850737"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -100,8 +103,9 @@
 					<object class="IBUILabel" id="1061850737">
 						<reference key="NSNextResponder" ref="384187840"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{36, 10}, {100, 30}}</string>
+						<string key="NSFrame">{{36, 10}, {110, 30}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="216657669"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -135,6 +139,7 @@
 								<int key="NSvFlags">293</int>
 								<string key="NSFrame">{{0, 7}, {16, 16}}</string>
 								<reference key="NSSuperview" ref="216657669"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="329708905"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -147,8 +152,9 @@
 							<object class="IBUILabel" id="329708905">
 								<reference key="NSNextResponder" ref="216657669"/>
 								<int key="NSvFlags">293</int>
-								<string key="NSFrame">{{21, 0}, {100, 30}}</string>
+								<string key="NSFrame">{{21, 0}, {110, 30}}</string>
 								<reference key="NSSuperview" ref="216657669"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="633809297"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -165,8 +171,9 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrame">{{171, 10}, {121, 30}}</string>
+						<string key="NSFrame">{{156, 10}, {131, 30}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="416742894"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -175,8 +182,9 @@
 					<object class="IBUIImageView" id="633809297">
 						<reference key="NSNextResponder" ref="384187840"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{306, 17}, {16, 16}}</string>
+						<string key="NSFrame">{{297, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="357472888"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -189,8 +197,10 @@
 					<object class="IBUIButton" id="357472888">
 						<reference key="NSNextResponder" ref="384187840"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{327, 10}, {100, 30}}</string>
+						<string key="NSFrame">{{318, 10}, {110, 30}}</string>
 						<reference key="NSSuperview" ref="384187840"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="98812133"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -204,15 +214,16 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Set Notification Dark.png</string>
+							<string key="NSResourceName">Set Notification Pad Dark.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="990255099"/>
 						<reference key="IBUIFont" ref="763552899"/>
 					</object>
 				</array>
-				<string key="NSFrameSize">{442, 1024}</string>
+				<string key="NSFrameSize">{443, 1024}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="98812133"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="346468800"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -343,12 +354,12 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="384187840"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1061850737"/>
 							<reference ref="346468800"/>
-							<reference ref="357472888"/>
-							<reference ref="633809297"/>
 							<reference ref="216657669"/>
 							<reference ref="98812133"/>
+							<reference ref="1061850737"/>
+							<reference ref="357472888"/>
+							<reference ref="633809297"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Note Details View</string>
@@ -443,7 +454,124 @@
 			<nil key="sourceID"/>
 			<int key="maxID">70</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">NoteDetailsVC</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancelNoteEditingAction:">id</string>
+						<string key="cancelSettingNotificationDateAction:">id</string>
+						<string key="deleteButtonAction:">id</string>
+						<string key="notificationButtonAction:">id</string>
+						<string key="saveNoteEditingAction:">id</string>
+						<string key="setNotificationDateAction:">id</string>
+						<string key="setNotificationPickerValueChanged:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancelNoteEditingAction:">
+							<string key="name">cancelNoteEditingAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="cancelSettingNotificationDateAction:">
+							<string key="name">cancelSettingNotificationDateAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="deleteButtonAction:">
+							<string key="name">deleteButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="notificationButtonAction:">
+							<string key="name">notificationButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="saveNoteEditingAction:">
+							<string key="name">saveNoteEditingAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setNotificationDateAction:">
+							<string key="name">setNotificationDateAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setNotificationPickerValueChanged:">
+							<string key="name">setNotificationPickerValueChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="creationDateLabel">UILabel</string>
+						<string key="creationImage">UIImageView</string>
+						<string key="modificationDateLabel">UILabel</string>
+						<string key="modificationImage">UIImageView</string>
+						<string key="noteText">UITextView</string>
+						<string key="noteTextBackgroundView">UIView</string>
+						<string key="notificationButton">UIButton</string>
+						<string key="notificationImage">UIImageView</string>
+						<string key="setNotificationDatePicker">UIDatePicker</string>
+						<string key="setNotificationDatePickerOverlayView">UIView</string>
+						<string key="setNotificationDateView">UIView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="creationDateLabel">
+							<string key="name">creationDateLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="creationImage">
+							<string key="name">creationImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="modificationDateLabel">
+							<string key="name">modificationDateLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="modificationImage">
+							<string key="name">modificationImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="noteText">
+							<string key="name">noteText</string>
+							<string key="candidateClassName">UITextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="noteTextBackgroundView">
+							<string key="name">noteTextBackgroundView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="notificationButton">
+							<string key="name">notificationButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="notificationImage">
+							<string key="name">notificationImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePicker">
+							<string key="name">setNotificationDatePicker</string>
+							<string key="candidateClassName">UIDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePickerOverlayView">
+							<string key="name">setNotificationDatePickerOverlayView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDateView">
+							<string key="name">setNotificationDateView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NoteDetailsVC.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NoteViewerBackgroundView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NoteViewerBackgroundView.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
@@ -460,7 +588,7 @@
 			<string key="Created Icon Dark.png">{16, 16}</string>
 			<string key="Modified Icon Dark.png">{16, 16}</string>
 			<string key="Notification Icon Dark.png">{16, 16}</string>
-			<string key="Set Notification Dark.png">{90, 30}</string>
+			<string key="Set Notification Pad Dark.png">{110, 30}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

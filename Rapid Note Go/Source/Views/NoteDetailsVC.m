@@ -468,6 +468,9 @@
         [UIView setAnimationDuration:keyboardAnimationDuration];
         self.noteTextBackgroundView.frame = backgroundRect;
     [UIView commitAnimations];
+    
+    if(!resizeUpwards_)
+        [self.noteText scrollRangeToVisible:NSMakeRange(0, 0)];
 }
 
 

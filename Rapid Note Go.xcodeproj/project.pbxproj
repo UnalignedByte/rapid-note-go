@@ -30,6 +30,8 @@
 		89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */; };
 		89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* PadRootVC.m */; };
 		89D6CA5816B6920A0023F1C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D6CA5A16B6920A0023F1C8 /* Localizable.strings */; };
+		B50106B916E3D21300F9FE4B /* Set Notification Pad Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */; };
+		B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */; };
 		B5081F5B16BA8B4900C3F248 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */; };
 		B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */; };
 		B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */; };
@@ -127,6 +129,8 @@
 		89B7BBF716B6C57000294BBA /* PadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootVC.m; path = Source/Views/PadRootVC.m; sourceTree = "<group>"; };
 		89D6CA5916B6920A0023F1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89D6CA6116B692240023F1C8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark.png"; path = "Graphics/Various/Set Notification Pad Dark.png"; sourceTree = "<group>"; };
+		B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark@2x.png"; path = "Graphics/Various/Set Notification Pad Dark@2x.png"; sourceTree = "<group>"; };
 		B5081F5916BA8B3D00C3F248 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Additions.h"; path = "Source/Utils/NSDate+Additions.h"; sourceTree = "<group>"; };
 		B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Additions.m"; path = "Source/Utils/NSDate+Additions.m"; sourceTree = "<group>"; };
 		B5081F5C16BA8CD000C3F248 /* NoteDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteDetailsVC.h; path = Source/Views/NoteDetailsVC.h; sourceTree = "<group>"; };
@@ -451,6 +455,8 @@
 				B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */,
 				B589445116DA694C00B9E435 /* Set Notification Dark.png */,
 				B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */,
+				B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */,
+				B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */,
 				B589446416DA792200B9E435 /* Notification Icon Small Dark.png */,
 				B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */,
 				B5325B1516DE564500426252 /* Note Viewer Pad Horizontal */,
@@ -619,6 +625,8 @@
 				B5325B3916DE564600426252 /* Note Viewer Middle Dark@2x.png in Resources */,
 				B5325B3A16DE564600426252 /* Note Viewer Top Dark.png in Resources */,
 				B5325B3B16DE564600426252 /* Note Viewer Top Dark@2x.png in Resources */,
+				B50106B916E3D21300F9FE4B /* Set Notification Pad Dark.png in Resources */,
+				B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
