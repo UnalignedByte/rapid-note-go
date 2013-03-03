@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSDate (NiceFormatting)
+@interface NSDate (Additions)
 
 - (NSString *)formatAsNiceString;
 - (NSString *)formatAsShortNiceString;
+- (NSDate *)dateByRemovingSeconds;
 
 @end

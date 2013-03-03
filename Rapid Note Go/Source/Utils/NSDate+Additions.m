@@ -6,9 +6,9 @@
 //  Copyright (c) 2012年 UnalignedByte. All rights reserved.
 //
 
-#import "NSDate+NiceFormatting.h"
+#import "NSDate+Additions.h"
 
-@implementation NSDate (NiceFormatting)
+@implementation NSDate (Additions)
 
 - (NSString *)formatAsNiceString
 {
@@ -27,6 +27,17 @@
     localizedDateFormatter.dateFormat = localizedDateFormat;
     
     return [localizedDateFormatter stringFromDate:self];
+}
+
+
+- (NSDate *)dateByRemovingSeconds
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *nowDateComponents = [gregorianCalendar components:calendarUnits
+                                                               fromDate:self];
+    nowDateComponents.second = 0;
+    return [gregorianCalendar dateFromComponents:nowDateComponents];
 }
 
 @end

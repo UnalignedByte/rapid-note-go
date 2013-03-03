@@ -14,7 +14,7 @@
     #import <CoreData/CoreData.h>
 #endif
 
-#import "NSDate+NiceFormatting.h"
+#import "NSDate+Additions.h"
 
 
 #define Localize(string) NSLocalizedString(string, nil)

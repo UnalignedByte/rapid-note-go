@@ -157,6 +157,8 @@
     
     self.setNotificationDateView.userInteractionEnabled = NO;
     self.setNotificationDateView.alpha = 0.0;
+    
+    self.setNotificationDatePicker.minimumDate = [NSDate date];
 }
 
 
@@ -248,6 +250,8 @@
 
 - (void)showSetNotificationDate
 {
+    self.setNotificationDatePicker.minimumDate = [NSDate date];
+    
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self showSetNotificationDateForPhone];
     } else {
@@ -328,14 +332,13 @@
 
 - (void)setNotification
 {
-    NSDate *date = self.setNotificationDatePicker.date;
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *nowDateComponents = [gregorianCalendar components:calendarUnits
-                                                               fromDate:date];
-    nowDateComponents.second = 0;
-    date = [gregorianCalendar dateFromComponents:nowDateComponents];
-    self.note.notificationDate = date;
+    NSComparisonResult cmp = [[self.setNotificationDatePicker.minimumDate dateByRemovingSeconds] compare:[self.setNotificationDatePicker.date dateByRemovingSeconds]];
+    if(cmp == NSOrderedDescending || cmp == NSOrderedSame) {
+        [self.setNotificationDatePicker setDate:self.setNotificationDatePicker.minimumDate animated:YES];
+        return;
+    }
+    
+    self.note.notificationDate = [self.setNotificationDatePicker.date dateByRemovingSeconds];
     
     [self setupNote];
     
@@ -504,6 +507,17 @@
 - (IBAction)cancelSettingNotificationDateAction:(id)sender_
 {
     [self hideSetNotificationDate];
+}
+
+
+- (IBAction)setNotificationPickerValueChanged:(id)sender_
+{
+    NSComparisonResult cmp = [[self.setNotificationDatePicker.minimumDate dateByRemovingSeconds] compare:[self.setNotificationDatePicker.date dateByRemovingSeconds]];
+    
+    if(cmp == NSOrderedDescending || cmp == NSOrderedSame) {
+        [self.setNotificationDatePicker setDate:self.setNotificationDatePicker.minimumDate animated:YES];
+        return;
+    }
 }
 
 @end
