@@ -13,6 +13,9 @@
 
 #import "Note.h"
 
+#import "KSCustomPopoverBackgroundView.h"
+#import "LTKPopoverActionSheet.h"
+
 
 #define NOTIFICATION_ANIMATION_DURATION 0.3
 
@@ -34,6 +37,9 @@
 
 @property (nonatomic, strong) UIActionSheet *deleteNoteSheet;
 @property (nonatomic, strong) UIActionSheet *disableNotificaitonSheet;
+@property (nonatomic, strong) LTKPopoverActionSheet *deleteNoteSheetPad;
+@property (nonatomic, strong) LTKPopoverActionSheet *disableNotificaitonSheetPad;
+
 
 @property (nonatomic, weak) IBOutlet UIView *setNotificationDateView;
 @property (nonatomic, weak) IBOutlet UIDatePicker *setNotificationDatePicker;
@@ -47,7 +53,7 @@
 @implementation NoteDetailsVC
 
 #pragma mark - Initialization
-- (id)initWithNote:(Note *)note_
+- (id)init
 {
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         if((self = [super initWithNibName:@"NoteDetailsViewPad" bundle:nil]) == nil)
@@ -57,29 +63,25 @@
             return nil;
     }
     
-    self.note = note_;
-    
-    return self;
-}
-
-
-- (id)init
-{
-    return [self initWithNote:nil];
-}
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    self.note = nil;
     
     [self setupBackground];
-    [self configureWithNote:self.note];
+    [self setupNote];
     [self setupNotificationSetting];
     [self setupNavigationButtonsForReading];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    return self;
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated_
+{
+    [super viewDidDisappear:animated_];
+    
+    self.note = nil;
 }
 
 
@@ -237,14 +239,26 @@
 
 - (void)deleteNote
 {
-    self.deleteNoteSheet = [[UIActionSheet alloc] initWithTitle:Localize(@"Are you suere that want to delete this note?")
-                                                       delegate:self
-                                              cancelButtonTitle:Localize(@"Cancel")
-                                         destructiveButtonTitle:Localize(@"Delete")
-                                              otherButtonTitles:nil];
-    self.deleteNoteSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    
-    [self.deleteNoteSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.deleteNoteSheet = [[UIActionSheet alloc] initWithTitle:Localize(@"Are you suere that want to delete this note?")
+                                                           delegate:self
+                                                  cancelButtonTitle:Localize(@"Cancel")
+                                             destructiveButtonTitle:Localize(@"Delete Note")
+                                                  otherButtonTitles:nil];
+        
+        self.deleteNoteSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        
+        [self.deleteNoteSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    } else {
+        self.deleteNoteSheetPad = [[LTKPopoverActionSheet alloc] initWithTitle:Localize(@"Are you suere that want to delete this note?")
+                                                                      delegate:self
+                                                        destructiveButtonTitle:Localize(@"Delete Note")
+                                                             otherButtonTitles:Localize(@"Cancel"), nil];
+        
+        self.deleteNoteSheetPad.popoverBackgroundViewClassName = NSStringFromClass([KSCustomPopoverBackgroundView class]);
+        
+        [self.deleteNoteSheetPad showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    }
 }
 
 
@@ -288,10 +302,12 @@
                                                                                             style:UIBarButtonItemStylePlain
                                                                                            target:self
                                                                                            action:@selector(cancelSettingNotificationDateAction:)];
+        cancelSettingNotificationButton.tintColor = [UIColor blackColor];
         UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set Notification")
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(setNotificationDateAction:)];
+        setNotificationButton.tintColor = [UIColor blackColor];
         pickerVC.navigationItem.leftBarButtonItem = cancelSettingNotificationButton;
         pickerVC.navigationItem.rightBarButtonItem = setNotificationButton;
         
@@ -300,6 +316,7 @@
     
     if(self.setNotificationDatePickerPopover == nil) {
         self.setNotificationDatePickerPopover = [[UIPopoverController alloc] initWithContentViewController:self.setNotificationDatePickerVC];
+        self.setNotificationDatePickerPopover.popoverBackgroundViewClass = [KSCustomPopoverBackgroundView class];
         self.setNotificationDatePickerPopover.delegate = self;
         CGSize popoverSize = CGSizeMake(self.setNotificationDatePicker.frame.size.width, self.setNotificationDatePicker.frame.size.height);
         popoverSize.height += 35.0;
@@ -349,22 +366,39 @@
 
 - (void)disableNotification
 {
-    self.disableNotificaitonSheet = [[UIActionSheet alloc] initWithTitle:Localize(@"Are you sure you want to disable notification for this note?")
-                                                                delegate:self
-                                                       cancelButtonTitle:Localize(@"Cancel")
-                                                  destructiveButtonTitle:Localize(@"Disable Notification")
-                                                       otherButtonTitles:nil];
-    self.disableNotificaitonSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    
-    [self.disableNotificaitonSheet showFromRect:self.notificationButton.frame
-                                         inView:self.view
-                                       animated:YES];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.disableNotificaitonSheet = [[UIActionSheet alloc] initWithTitle:Localize(@"Are you sure you want to disable notification for this note?")
+                                                                    delegate:self
+                                                           cancelButtonTitle:Localize(@"Cancel")
+                                                      destructiveButtonTitle:Localize(@"Disable Notification")
+                                                           otherButtonTitles:nil];
+        
+        self.disableNotificaitonSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        
+        [self.disableNotificaitonSheet showFromRect:self.notificationButton.frame
+                                             inView:self.view
+                                           animated:YES];
+    } else {
+        self.disableNotificaitonSheetPad = [[LTKPopoverActionSheet alloc] initWithTitle:Localize(@"Are you sure you want to disable notification for this note?")
+                                                                               delegate:self
+                                                                 destructiveButtonTitle:Localize(@"Disable Notification")
+                                                                      otherButtonTitles:Localize(@"Cancel"), nil];
+        
+        self.disableNotificaitonSheetPad.popoverBackgroundViewClassName = NSStringFromClass([KSCustomPopoverBackgroundView class]);
+        
+        [self.disableNotificaitonSheetPad showFromRect:self.notificationButton.frame
+                                                inView:self.view.superview
+                                              animated:YES];
+    }
 }
 
 
 #pragma mark - Control
 - (void)configureWithNote:(Note *)note_
 {
+    BOOL isDeleted = (self.note != nil) && (note_ == nil);
+    BOOL isModified = [self.note.tag isEqualToString:note_.tag];
+    
     [DataManager sharedInstance].shouldIgnoreNotesContextChanges = YES;
     
     self.note = note_;
@@ -379,6 +413,23 @@
     
     [[DataManager sharedInstance].notesContext save:nil];
     [DataManager sharedInstance].shouldIgnoreNotesContextChanges = NO;
+    
+    //Show message if has been modified remotely
+    NSString *message = nil;
+    if(isDeleted)
+        message = Localize(@"Note has been deleted remotely");
+    else if(isModified)
+        message = Localize(@"Note has been modified remotely");
+        
+    
+    if(message != nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:Localize(@"OK")
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 
@@ -397,6 +448,20 @@
         [[DataManager sharedInstance] deleteNote:self.note];
         [self.navigationController popViewControllerAnimated:YES];
     } else if(actionSheet_ == self.disableNotificaitonSheet && buttonIndex_ == 0) {
+        if(buttonIndex_ == 0) {
+            self.note.notificationDate = nil;
+            [self setupNote];
+        }
+    }
+}
+
+- (void)actionSheetLTK:(LTKPopoverActionSheet *)actionSheet_ clickedButtonAtIndex:(NSInteger)buttonIndex_
+{
+    if(actionSheet_ == self.deleteNoteSheetPad && buttonIndex_ == 0) {
+        [[NotificationsManager sharedInstance] removeNotificationForNote:self.note];
+        [[DataManager sharedInstance] deleteNote:self.note];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if(actionSheet_ == self.disableNotificaitonSheetPad && buttonIndex_ == 0) {
         if(buttonIndex_ == 0) {
             self.note.notificationDate = nil;
             [self setupNote];

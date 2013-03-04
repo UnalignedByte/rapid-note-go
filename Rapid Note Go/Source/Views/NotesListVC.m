@@ -15,6 +15,8 @@
 
 #import "NoteCell.h"
 
+#import "KSCustomPopoverBackgroundView.h"
+
 #import "NoteDetailsVC.h"
 
 
@@ -221,12 +223,15 @@
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(addNoteAction:)];
+        addNoteButton.tintColor = [UIColor blackColor];
         UIBarButtonItem *cancelNoteButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Cancel")
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(cancelNoteAction:)];
+        cancelNoteButton.tintColor = [UIColor blackColor];
         noteInpuVC.navigationItem.rightBarButtonItem = addNoteButton;
         noteInpuVC.navigationItem.leftBarButtonItem = cancelNoteButton;
+        noteInpuVC.title = Localize(@"New Note");
         
         self.noteInputPadVC = [[UINavigationController alloc] initWithRootViewController:noteInpuVC];
     }
@@ -234,8 +239,7 @@
     if(self.noteInputPadPopover == nil) {
         self.noteInputPadPopover = [[UIPopoverController alloc] initWithContentViewController:self.noteInputPadVC];
         self.noteInputPadPopover.delegate = self;
-        //CGSize popoverSize = CGSizeMake(self.noteInputText.frame.size.width, self.noteInputText.frame.size.height);
-        //popoverSize.height += 40.0;
+        self.noteInputPadPopover.popoverBackgroundViewClass = [KSCustomPopoverBackgroundView class];
         CGSize popoverSize = CGSizeMake(400.0, 200.0);
         self.noteInputPadPopover.popoverContentSize = popoverSize;
     }
@@ -388,7 +392,8 @@
         if([self.navigationController.topViewController class] == [NoteDetailsVC class]) {
             [self.noteDetailsVC configureWithNote:note];
         } else {
-            NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] initWithNote:note];
+            NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] init];
+            [noteDetailsVC configureWithNote:note];
             [self.navigationController pushViewController:noteDetailsVC animated:YES];
         }
     }

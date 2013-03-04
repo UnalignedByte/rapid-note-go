@@ -501,6 +501,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)cloudDataChanged:(NSNotification *)notification_
 {
+    static BOOL wasDownloading = NO;
     static BOOL wasUploading = NO;
     
     if([notification_.object resultCount] <= 0)
@@ -525,7 +526,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         self.downloadBlock();
         self.downloadBlock = nil;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    } else if(isDownloaded && isUploaded && !wasUploading) {
+    } else if(isDownloaded && wasDownloading && !isDownloading) {
         [self mergeNotesFromCloud];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     //new data is uploaded
@@ -546,6 +547,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
     
+    wasDownloading = isDownloading;
     wasUploading = isUploading;
 }
 

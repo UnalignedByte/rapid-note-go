@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LTKPopoverActionSheetDelegate.h"
+
 
 @class Note;
 
 
-@interface NoteDetailsVC : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, UIPickerViewDelegate>
+@interface NoteDetailsVC : UIViewController <UITextViewDelegate, UIPopoverControllerDelegate, UIPickerViewDelegate,
+                                             UIActionSheetDelegate, LTKPopoverActionSheetDelegate>
 
 //Initialization
 - (id)init;
-- (id)initWithNote:(Note *)note_;
 
 //Control
 - (void)configureWithNote:(Note *)note_;
