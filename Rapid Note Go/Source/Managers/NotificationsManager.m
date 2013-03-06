@@ -51,7 +51,6 @@
 - (void)addNotificationForNote:(Note *)note_
 {
     if([note_.notificationDate compare:[NSDate date]] != NSOrderedDescending) {
-        note_.notificationDate = nil;
         return;
     }
     

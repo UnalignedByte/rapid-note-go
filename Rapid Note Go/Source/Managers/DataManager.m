@@ -8,6 +8,8 @@
 
 #import "DataManager.h"
 
+#import "NotificationsManager.h"
+
 #import "Note.h"
 
 #import "APXML.h"
@@ -314,6 +316,10 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     }
     
     [self.notesContext save:nil];
+    
+    //reset all notifications
+    [[NotificationsManager sharedInstance] removeAllNotifications];
+    [[NotificationsManager sharedInstance] addNotificationsForNotes:[self allNotes]];
     self.shouldIgnoreNotesContextChanges = NO;
 }
 
@@ -411,6 +417,11 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     
     [self.notesContext save:nil];
+    
+    //reset all notifications
+    [[NotificationsManager sharedInstance] removeAllNotifications];
+    [[NotificationsManager sharedInstance] addNotificationsForNotes:[self allNotes]];
+    
     self.shouldIgnoreNotesContextChanges = NO;
     NSLog(@"merge finished");
     

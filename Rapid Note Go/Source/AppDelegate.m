@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "DataManager.h"
+#import "NotificationsManager.h"
+
 #import "PhoneRootVC.h"
 #import "PadRootVC.h"
 
@@ -40,6 +43,10 @@
     if(notification != nil) {
         [self application:nil didReceiveLocalNotification:notification];
     }
+    
+    //reset all notifications
+    [[NotificationsManager sharedInstance] removeAllNotifications];
+    [[NotificationsManager sharedInstance] addNotificationsForNotes:[[DataManager sharedInstance] allNotes]];
     
     return YES;
 }

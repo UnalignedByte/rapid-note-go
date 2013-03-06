@@ -134,7 +134,7 @@
     
     //notificaiton
     if(self.note.notificationDate != nil &&
-       [self.note.notificationDate compare:[NSDate date]] == NSOrderedDescending)
+       [self.note.notificationDate compare:[NSDate date]] != NSOrderedAscending)
     {
         self.notificationImage.hidden = NO;
         self.notificationButton.hidden = NO;
@@ -228,7 +228,9 @@
 {
     if(![self.noteText.text isEqualToString:self.note.message]) {
         self.note.message = self.noteText.text;
+        self.currentNoteMessage = [self.note.message copy];
         self.note.modificationDate = [NSDate date];
+        self.currentNoteModificationDate = [self.note.modificationDate copy];
         self.note.isUploaded = @NO;
     }
     
@@ -357,7 +359,8 @@
         return;
     }
     
-    self.note.notificationDate = [self.setNotificationDatePicker.date dateByRemovingSeconds];
+    self.currentNoteNotificationDate = [self.setNotificationDatePicker.date dateByRemovingSeconds];
+    self.note.notificationDate = [self.currentNoteNotificationDate copy];
     
     [self setupNote];
     
@@ -400,16 +403,24 @@
     if(note_ != self.note)
         return YES;
     
-    if(![note_.message isEqualToString:self.currentNoteMessage])
+    if((note_.message == nil && self.currentNoteMessage != nil) ||
+       (note_.message != nil && self.currentNoteMessage == nil) ||
+       (![note_.message isEqualToString:self.currentNoteMessage]))
         return YES;
     
-    if([note_.creationDate compare:self.currentNoteCreationDate] != NSOrderedSame)
+    if((note_.creationDate == nil && self.currentNoteCreationDate != nil) ||
+       (note_.creationDate != nil && self.currentNoteCreationDate == nil) ||
+       ([note_.creationDate compare:self.currentNoteCreationDate] != NSOrderedSame))
         return YES;
     
-    if([note_.modificationDate compare:self.currentNoteModificationDate] != NSOrderedSame)
+    if((note_.modificationDate == nil && self.currentNoteModificationDate != nil) ||
+       (note_.modificationDate != nil && self.currentNoteModificationDate == nil) ||
+       ([note_.modificationDate compare:self.currentNoteModificationDate] != NSOrderedSame))
         return YES;
     
-    if([note_.notificationDate compare:self.currentNoteNotificationDate] != NSOrderedSame)
+    if((note_.notificationDate == nil && self.currentNoteNotificationDate != nil) ||
+       (note_.notificationDate != nil && self.currentNoteNotificationDate == nil) ||
+       ([note_.notificationDate compare:self.currentNoteNotificationDate] != NSOrderedSame))
         return YES;
 
     return NO;
@@ -480,7 +491,9 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if(actionSheet_ == self.disableNotificaitonSheet && buttonIndex_ == 0) {
         if(buttonIndex_ == 0) {
+            self.currentNoteNotificationDate = nil;
             self.note.notificationDate = nil;
+            [[NotificationsManager sharedInstance] removeNotificationForNote:self.note];
             [self setupNote];
         }
     }
@@ -494,7 +507,9 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if(actionSheet_ == self.disableNotificaitonSheetPad && buttonIndex_ == 0) {
         if(buttonIndex_ == 0) {
+            self.currentNoteNotificationDate = nil;
             self.note.notificationDate = nil;
+            [[NotificationsManager sharedInstance] removeNotificationForNote:self.note];
             [self setupNote];
         }
     }
