@@ -269,6 +269,7 @@
 - (void)showSetNotificationDate
 {
     self.setNotificationDatePicker.minimumDate = [NSDate date];
+    self.setNotificationDatePicker.date = self.setNotificationDatePicker.minimumDate;
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self showSetNotificationDateForPhone];
