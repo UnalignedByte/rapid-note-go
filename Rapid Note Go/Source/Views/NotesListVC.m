@@ -343,6 +343,25 @@
 }
 
 
+#pragma mark - Internal Control
+- (Note *)noteForTag:(NSString *)tag_
+{
+    if(tag_ == nil)
+        return nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:[DataManager sharedInstance].notesContext];
+    fetchRequest.entity = entityDescription;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"tag == '%@'", self.currentNoteTag]];
+    NSArray *fetchResult = [[DataManager sharedInstance].notesContext executeFetchRequest:fetchRequest error:nil];
+    if(fetchResult.count > 0) {
+       return (Note *)fetchResult[0];
+    }
+    
+    return nil;
+}
+
+
 #pragma mark - Table View Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView_
 {
@@ -389,12 +408,14 @@
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.noteDetailsVC configureWithNote:note];
     } else {
-        if([self.navigationController.topViewController class] == [NoteDetailsVC class]) {
+        if(self.navigationController.topViewController == self.noteDetailsVC) {
             [self.noteDetailsVC configureWithNote:note];
         } else {
-            NoteDetailsVC *noteDetailsVC = [[NoteDetailsVC alloc] init];
-            [noteDetailsVC configureWithNote:note];
-            [self.navigationController pushViewController:noteDetailsVC animated:YES];
+            if(self.noteDetailsVC == nil)
+                self.noteDetailsVC = [[NoteDetailsVC alloc] init];
+
+            [self.noteDetailsVC configureWithNote:note];
+            [self.navigationController pushViewController:self.noteDetailsVC animated:YES];
         }
     }
 }
@@ -447,6 +468,9 @@
 #pragma mark - Fetched Results Controller Delegate
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller_
 {
+    if([DataManager sharedInstance].shouldIgnoreUpdates)
+        return;
+    
     [self.tableVC.tableView beginUpdates];
 }
 
@@ -454,6 +478,9 @@
 - (void)controller:(NSFetchedResultsController *)controller_ didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo_
            atIndex:(NSUInteger)sectionIndex_ forChangeType:(NSFetchedResultsChangeType)type_
 {
+    if([DataManager sharedInstance].shouldIgnoreUpdates)
+        return;
+    
     switch(type_) {
         case NSFetchedResultsChangeInsert:
             [self.tableVC.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
@@ -470,6 +497,9 @@
 - (void)controller:(NSFetchedResultsController *)controller_ didChangeObject:(id)object_ atIndexPath:(NSIndexPath *)oldIndexPath_
      forChangeType:(NSFetchedResultsChangeType)type_ newIndexPath:(NSIndexPath *)newIndexPath_
 {
+    if([DataManager sharedInstance].shouldIgnoreUpdates)
+        return;
+    
     switch(type_) {
         case NSFetchedResultsChangeInsert:
             [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
@@ -492,25 +522,21 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller_
 {
-    [self.tableVC.tableView endUpdates];
-    
-    if(self.currentNoteTag == nil)
+    if([DataManager sharedInstance].shouldIgnoreUpdates)
         return;
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:[DataManager sharedInstance].notesContext];
-    fetchRequest.entity = entityDescription;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"tag == '%@'", self.currentNoteTag]];
-    NSArray *fetchResult = [[DataManager sharedInstance].notesContext executeFetchRequest:fetchRequest error:nil];
-    if(fetchResult.count > 0) {
-        Note *currentNote = (Note *)fetchResult[0];
-        NSIndexPath *currentIndexPath = [self.notesResultsController indexPathForObject:currentNote];
-        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            [self.tableVC.tableView selectRowAtIndexPath:currentIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-        }
+
+    [self.tableVC.tableView endUpdates];
+
+    if(self.currentNoteTag != nil) {
+        Note *currentNote = [self noteForTag:self.currentNoteTag];
         [self.noteDetailsVC configureWithNote:currentNote];
-    } else if(self.noteDetailsVC != nil) {
-        [self.noteDetailsVC configureWithNote:nil];
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            if(currentNote != nil) {
+                [self.tableVC.tableView selectRowAtIndexPath:[self.notesResultsController indexPathForObject:currentNote]
+                                                    animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            }
+        }
     }
 }
 

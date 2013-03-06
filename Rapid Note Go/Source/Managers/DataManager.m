@@ -26,6 +26,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 @property (nonatomic, strong) NSURL *notesCloudUrl;
 @property (nonatomic, strong) NSMetadataQuery *notesCloudQuery;
 @property (nonatomic) id lastCloudId;
+@property (nonatomic) BOOL shouldIgnoreNotesContextChanges;
 
 @property (nonatomic, strong) void (^downloadBlock)();
 
@@ -421,17 +422,31 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 {
     if(block_ == nil)
         return;
-    
+
     //check if file exists
     if(![[NSFileManager defaultManager] fileExistsAtPath:self.notesCloudUrl.path]) {
         return;
     }
     
+    NSError *error;
+    NSNumber *isDownloaded;
+    
+    [url_ getResourceValue:&isDownloaded forKey:NSURLUbiquitousItemIsDownloadedKey error:&error];
+    if(error != nil) {
+        NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
+        return;
+    }
+    
+    NSLog(@"Is downloaded: %d", isDownloaded.boolValue);
+    
+    if(isDownloaded.boolValue)
+        return;
+    
     self.downloadBlock = block_;
     
     //start downloading
-    NSError *error;
-    [[NSFileManager defaultManager] startDownloadingUbiquitousItemAtURL:url_ error:&error];
+    BOOL started = [[NSFileManager defaultManager] startDownloadingUbiquitousItemAtURL:url_ error:&error];
+    NSLog(@"started: %d", started);
     if(error != nil) {
         NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
         return;
@@ -448,7 +463,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSDate *nowDate = [NSDate date];
     note.creationDate = nowDate;
     note.modificationDate = nowDate;
-    note.isUploaded = NO;
+    note.isUploaded = @NO;
     
     //tag  uniquely identify each note
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
@@ -501,8 +516,8 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)cloudDataChanged:(NSNotification *)notification_
 {
-    static BOOL wasDownloading = NO;
-    static BOOL wasUploading = NO;
+    static BOOL wasDownloaded = NO;
+    static BOOL wasUploaded = NO;
     
     if([notification_.object resultCount] <= 0)
         return;
@@ -519,18 +534,18 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     BOOL isUploaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadedKey] boolValue];
     
     NSLog(@"Downloaded: %d, Downloading: %d", isDownloaded, isDownloading);
-    NSLog(@"Uploaded: %d, Uploading: %d, Was Uploading: %d", isUploaded, isUploading, wasUploading);
+    NSLog(@"Uploaded: %d, Uploading: %d", isUploaded, isUploading);
 
     //new data is downloaded
-    if(isDownloaded && isUploaded && self.downloadBlock != nil) {
+    if(isDownloaded && !wasDownloaded && isUploaded && self.downloadBlock != nil) {
         self.downloadBlock();
         self.downloadBlock = nil;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    } else if(isDownloaded && wasDownloading && !isDownloading) {
+    } else if(isDownloaded && !wasDownloaded && isUploaded) {
         [self mergeNotesFromCloud];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     //new data is uploaded
-    } else if(isUploaded && wasUploading && !isUploading) {
+    } else if(isUploaded && !wasUploaded && isDownloaded) {
         self.shouldIgnoreNotesContextChanges = YES;
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -542,13 +557,16 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             note.isUploaded = @YES;
         }
         
+        _shouldIgnoreUpdates = YES;
         [_notesContext save:nil];
+        _shouldIgnoreUpdates = NO;
+
         self.shouldIgnoreNotesContextChanges = NO;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
     
-    wasDownloading = isDownloading;
-    wasUploading = isUploading;
+    wasDownloaded = isDownloaded;
+    wasUploaded = isUploaded;
 }
 
 

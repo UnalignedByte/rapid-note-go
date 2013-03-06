@@ -23,6 +23,7 @@
 @interface NoteDetailsVC ()
 
 @property (nonatomic, strong) Note *note;
+
 @property (nonatomic, weak) IBOutlet UIView *noteTextBackgroundView;
 @property (nonatomic, weak) IBOutlet UITextView *noteText;
 
@@ -47,6 +48,13 @@
 @property (nonatomic, strong) UIViewController *setNotificationDatePickerVC;
 @property (nonatomic, strong) UIPopoverController *setNotificationDatePickerPopover;
 
+//current data
+@property (nonatomic, strong) NSString *currentNoteTag;
+@property (nonatomic, strong) NSString *currentNoteMessage;
+@property (nonatomic, strong) NSDate *currentNoteCreationDate;
+@property (nonatomic, strong) NSDate *currentNoteModificationDate;
+@property (nonatomic, strong) NSDate *currentNoteNotificationDate;
+
 @end
 
 
@@ -63,25 +71,16 @@
             return nil;
     }
     
-    self.note = nil;
-    
     [self setupBackground];
     [self setupNote];
     [self setupNotificationSetting];
     [self setupNavigationButtonsForReading];
+    [self configureWithNote:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     return self;
-}
-
-
-- (void)viewDidDisappear:(BOOL)animated_
-{
-    [super viewDidDisappear:animated_];
-    
-    self.note = nil;
 }
 
 
@@ -227,8 +226,11 @@
 
 - (void)saveNoteEditing
 {
-    self.note.message = self.noteText.text;
-    self.note.modificationDate = [NSDate date];
+    if(![self.noteText.text isEqualToString:self.note.message]) {
+        self.note.message = self.noteText.text;
+        self.note.modificationDate = [NSDate date];
+        self.note.isUploaded = @NO;
+    }
     
     [self setupNote];
     [self setupNavigationButtonsForReading];
@@ -393,32 +395,58 @@
 }
 
 
+- (BOOL)isNoteDifferent:(Note *)note_
+{
+    if(note_ != self.note)
+        return YES;
+    
+    if(![note_.message isEqualToString:self.currentNoteMessage])
+        return YES;
+    
+    if([note_.creationDate compare:self.currentNoteCreationDate] != NSOrderedSame)
+        return YES;
+    
+    if([note_.modificationDate compare:self.currentNoteModificationDate] != NSOrderedSame)
+        return YES;
+    
+    if([note_.notificationDate compare:self.currentNoteNotificationDate] != NSOrderedSame)
+        return YES;
+
+    return NO;
+}
+
+
 #pragma mark - Control
 - (void)configureWithNote:(Note *)note_
 {
-    BOOL isDeleted = (self.note != nil) && (note_ == nil);
-    BOOL isModified = [self.note.tag isEqualToString:note_.tag];
+    BOOL isModified = [self isNoteDifferent:note_];
     
-    [DataManager sharedInstance].shouldIgnoreNotesContextChanges = YES;
+    BOOL isDeletedRemotely = (self.note != nil) && (note_ == nil);
+    BOOL isModifiedRemotely = note_ != nil && [self.currentNoteTag isEqualToString:note_.tag] &&
+                      note_.isUploaded.boolValue && isModified;
     
-    self.note = note_;
-    [self setupNote];
+    if(isModified) {
+        self.note = note_;
+        self.currentNoteTag = [note_.tag copy];
+        self.currentNoteMessage = [note_.message copy];
+        self.currentNoteCreationDate = [note_.creationDate copy];
+        self.currentNoteModificationDate = [note_.modificationDate copy];
+        self.currentNoteNotificationDate = [note_.notificationDate copy];
+    
+        [self setupNote];
+        [self setupNavigationButtonsForReading];
+    }
     
     if(note_ == nil) {
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = nil;
-    } else {
-        [self setupNavigationButtonsForReading];
     }
-    
-    [[DataManager sharedInstance].notesContext save:nil];
-    [DataManager sharedInstance].shouldIgnoreNotesContextChanges = NO;
     
     //Show message if has been modified remotely
     NSString *message = nil;
-    if(isDeleted)
+    if(isDeletedRemotely)
         message = Localize(@"Note has been deleted remotely");
-    else if(isModified)
+    else if(isModifiedRemotely)
         message = Localize(@"Note has been modified remotely");
         
     
@@ -430,6 +458,9 @@
                                               otherButtonTitles:nil];
         [alert show];
     }
+    
+    if(isDeletedRemotely)
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 
