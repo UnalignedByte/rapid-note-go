@@ -21,6 +21,6 @@
 - (id)init;
 
 //Control
-- (void)configureWithNote:(Note *)note_;
+- (void)configureWithNote:(Note *)note_ isRemoteChange:(BOOL)isRemoteChange_;
 
 @end

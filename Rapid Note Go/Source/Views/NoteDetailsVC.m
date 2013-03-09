@@ -75,7 +75,7 @@
     [self setupNote];
     [self setupNotificationSetting];
     [self setupNavigationButtonsForReading];
-    [self configureWithNote:nil];
+    [self configureWithNote:nil isRemoteChange:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -429,13 +429,13 @@
 
 
 #pragma mark - Control
-- (void)configureWithNote:(Note *)note_
+- (void)configureWithNote:(Note *)note_ isRemoteChange:(BOOL)isRemoteChange_;
 {
     BOOL isModified = [self isNoteDifferent:note_];
     
-    BOOL isDeletedRemotely = (self.note != nil) && (note_ == nil);
+    BOOL isDeletedRemotely = (self.note != nil) && (note_ == nil) && isRemoteChange_;
     BOOL isModifiedRemotely = note_ != nil && [self.currentNoteTag isEqualToString:note_.tag] &&
-                      note_.isUploaded.boolValue && isModified;
+                      note_.isUploaded.boolValue && isModified && isRemoteChange_;
     
     if(isModified) {
         self.note = note_;

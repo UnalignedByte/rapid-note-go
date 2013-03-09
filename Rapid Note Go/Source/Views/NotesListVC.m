@@ -305,7 +305,7 @@
 - (void)editNotesList
 {
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.noteDetailsVC configureWithNote:nil];
+        [self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
         
         if(self.noteInputPadPopover != nil && self.noteInputPadPopover.isPopoverVisible) {
             [self hideInputForPad];
@@ -408,15 +408,15 @@
     self.currentNoteTag = note.tag;
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.noteDetailsVC configureWithNote:note];
+        [self.noteDetailsVC configureWithNote:note isRemoteChange:NO];
     } else {
         if(self.navigationController.topViewController == self.noteDetailsVC) {
-            [self.noteDetailsVC configureWithNote:note];
+            [self.noteDetailsVC configureWithNote:note isRemoteChange:NO];
         } else {
             if(self.noteDetailsVC == nil)
                 self.noteDetailsVC = [[NoteDetailsVC alloc] init];
 
-            [self.noteDetailsVC configureWithNote:note];
+            [self.noteDetailsVC configureWithNote:note isRemoteChange:NO];
             [self.navigationController pushViewController:self.noteDetailsVC animated:YES];
         }
     }
@@ -432,7 +432,7 @@
         case UITableViewCellEditingStyleDelete:
         {
             if(indexPath_.row == [self.tableVC.tableView indexPathForSelectedRow].row) {
-                [self.noteDetailsVC configureWithNote:nil];
+                [self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
             }
             [[NotificationsManager sharedInstance] removeNotificationForNote:note];
             [[DataManager sharedInstance] deleteNote:note];
@@ -457,7 +457,7 @@
     
     [self setupNavigationButtonsForListEditing];
     
-    [self.noteDetailsVC configureWithNote:nil];
+    [self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
 }
 
 
@@ -531,7 +531,7 @@
 
     if(self.currentNoteTag != nil) {
         Note *currentNote = [self noteForTag:self.currentNoteTag];
-        [self.noteDetailsVC configureWithNote:currentNote];
+        [self.noteDetailsVC configureWithNote:currentNote isRemoteChange:YES];
         
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             if(currentNote != nil) {
