@@ -62,7 +62,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     [self setupNotesModel];
     [self setupNotesStoreCoordinator];
     [self setupNotesContext];
-    [self setupCloudObservers];
     [self setupCloud];
 
     return self;
@@ -113,6 +112,14 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 }
 
 
+- (void)removeCloudObservers
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUbiquityIdentityDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidUpdateNotification object:self.notesCloudQuery];
+    [self.notesCloudQuery stopQuery];
+}
+
+
 - (void)setupCloud
 {
     _isUsingCloud = NO;
@@ -150,8 +157,13 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     } else {
         NSLog(@"Other");
         self.lastCloudId = cloudId;
+        self.shouldIgnoreNotesContextChanges = YES;
+            [self deleteAllNotes];
+            [_notesContext save:nil];
+        self.shouldIgnoreNotesContextChanges = NO;
+        
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            [self importNotesFromCloud];
+            [self mergeNotesFromCloud];
         }];
     }
     
@@ -260,66 +272,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         NSLog(@"iCloud export failed: %d, %@", error.code, error.localizedDescription);
     }
     
-    self.shouldIgnoreNotesContextChanges = NO;
-}
-
-
-- (void)importNotesFromCloud
-{
-    NSLog(@"import");
-    
-    self.shouldIgnoreNotesContextChanges = YES;
-    
-    [self deleteAllNotes];
-    
-    NSError *error;
-    NSString *xmlString = [NSString stringWithContentsOfFile:self.notesCloudUrl.path encoding:NSUTF8StringEncoding error:&error];
-    if(error != nil) {
-        NSLog(@"iCloud import failed: %d, %@", error.code, error.localizedDescription);
-        return;
-    }
-    
-    APDocument *notesDocument = [[APDocument alloc] initWithString:xmlString];
-
-    NSArray *notes = [[notesDocument rootElement] childElements:@"note"];
-    
-    for(APElement *note in notes) {
-        if([note childElements:@"message"].count <= 0)
-            continue;
-        if([note childElements:@"date"].count <= 0)
-            continue;
-        if([note childElements:@"tag"].count <= 0)
-            continue;
-        
-        NSString *message = [(APElement *)[note childElements:@"message"][0] value];
-        NSDate *creationDate = [self stringToDate:[(APElement *)[note childElements:@"date"][0] value]];
-        NSString *tag = [(APElement *)[note childElements:@"tag"][0] value];
-        NSDate *notificationDate = nil;
-        NSDate *modificationDate = nil;
-        
-        //timer date & time
-        if([note childElements:@"timer_date_time"].count >= 1) {
-            notificationDate = [self stringToDate:[(APElement *)[note childElements:@"timer_date_time"][0] value]];
-        }
-        
-        //modification date
-        if([note childElements:@"modification_date_time"].count >= 1) {
-            modificationDate = [self stringToDate:[(APElement *)[note childElements:@"modification_date_time"][0] value]];
-        }
-
-        Note *note = [self addNewNote];
-        note.message = message;
-        note.tag = tag;
-        note.creationDate = creationDate;
-        note.modificationDate = modificationDate;
-        note.notificationDate = notificationDate;
-    }
-    
-    [self.notesContext save:nil];
-    
-    //reset all notifications
-    [[NotificationsManager sharedInstance] removeAllNotifications];
-    [[NotificationsManager sharedInstance] addNotificationsForNotes:[self allNotes]];
     self.shouldIgnoreNotesContextChanges = NO;
 }
 
@@ -511,8 +463,10 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 - (void)deleteAllNotes
 {
     NSArray *notes = [self allNotes];
-    for(Note *note in notes)
+    for(Note *note in notes) {
+        [[NotificationsManager sharedInstance] removeNotificationForNote:note];
         [self deleteNote:note];
+    }
 }
 
 
@@ -521,6 +475,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 {
     NSLog(@"Availability changed");
     
+    [self removeCloudObservers];
     [self setupCloud];
 }
 
@@ -548,13 +503,11 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSLog(@"Uploaded: %d, Uploading: %d", isUploaded, isUploading);
 
     //new data is downloaded
-    if(isDownloaded && !wasDownloaded && isUploaded && self.downloadBlock != nil) {
+    if(isDownloaded && isUploaded && self.downloadBlock != nil) {
         self.downloadBlock();
         self.downloadBlock = nil;
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     } else if(isDownloaded && !wasDownloaded && isUploaded) {
         [self mergeNotesFromCloud];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     //new data is uploaded
     } else if(isUploaded && !wasUploaded && isDownloaded) {
         self.shouldIgnoreNotesContextChanges = YES;
@@ -573,11 +526,14 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         _shouldIgnoreUpdates = NO;
 
         self.shouldIgnoreNotesContextChanges = NO;
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
     
     wasDownloaded = isDownloaded;
     wasUploaded = isUploaded;
+    
+    if(isDownloaded && isUploaded) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }
 }
 
 
