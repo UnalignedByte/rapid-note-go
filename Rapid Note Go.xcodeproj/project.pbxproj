@@ -39,6 +39,14 @@
 		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
 		B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3A16C3D94C00B5EDEE /* Icon-72.png */; };
 		B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */; };
+		B52DD15A16EE3C7B00D13B07 /* Open Homepage Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15816EE3C7B00D13B07 /* Open Homepage Dark.png */; };
+		B52DD15B16EE3C7B00D13B07 /* Open Homepage Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15916EE3C7B00D13B07 /* Open Homepage Dark@2x.png */; };
+		B52DD15E16EE3F8200D13B07 /* Rapid Note Go.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15C16EE3F8200D13B07 /* Rapid Note Go.png */; };
+		B52DD15F16EE3F8200D13B07 /* Rapid Note Go@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15D16EE3F8200D13B07 /* Rapid Note Go@2x.png */; };
+		B52DD16216EE41FF00D13B07 /* iCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD16016EE41FF00D13B07 /* iCloud.png */; };
+		B52DD16316EE41FF00D13B07 /* iCloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD16116EE41FF00D13B07 /* iCloud@2x.png */; };
+		B52DD16516EE4A6700D13B07 /* Setings and Info.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD16416EE4A6700D13B07 /* Setings and Info.png */; };
+		B52DD16716EE51DB00D13B07 /* Setings and Info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD16616EE51DB00D13B07 /* Setings and Info@2x.png */; };
 		B5325B2A16DE564600426252 /* Note Viewer Pad Bottom Horizontal Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1616DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark.png */; };
 		B5325B2B16DE564600426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1716DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png */; };
 		B5325B2C16DE564600426252 /* Note Viewer Pad Middle Horizontal Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B1816DE564500426252 /* Note Viewer Pad Middle Horizontal Dark.png */; };
@@ -113,6 +121,8 @@
 		B5D67A2E16DAC7C200360647 /* APElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2B16DAC7C200360647 /* APElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D67A3116DAC7DD00360647 /* IXPickerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */; };
 		B5D9B3D416DF686900DC6CF8 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D9B3D316DF686900DC6CF8 /* Note.m */; };
+		B5DD607E16EE1E99008F3842 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DD607D16EE1E99008F3842 /* SettingsVC.m */; };
+		B5DD608016EE1EAE008F3842 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DD607F16EE1EAE008F3842 /* SettingsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +170,14 @@
 		B5081F6316BC082900C3F248 /* SetNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetNotificationView.xib; path = Source/Views/SetNotificationView.xib; sourceTree = "<group>"; };
 		B5269B3A16C3D94C00B5EDEE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Graphics/Icons/Icon-72.png"; sourceTree = "<group>"; };
 		B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Graphics/Icons/Icon-72@2x.png"; sourceTree = "<group>"; };
+		B52DD15816EE3C7B00D13B07 /* Open Homepage Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Open Homepage Dark.png"; sourceTree = "<group>"; };
+		B52DD15916EE3C7B00D13B07 /* Open Homepage Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Open Homepage Dark@2x.png"; sourceTree = "<group>"; };
+		B52DD15C16EE3F8200D13B07 /* Rapid Note Go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rapid Note Go.png"; sourceTree = "<group>"; };
+		B52DD15D16EE3F8200D13B07 /* Rapid Note Go@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rapid Note Go@2x.png"; sourceTree = "<group>"; };
+		B52DD16016EE41FF00D13B07 /* iCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iCloud.png; sourceTree = "<group>"; };
+		B52DD16116EE41FF00D13B07 /* iCloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iCloud@2x.png"; sourceTree = "<group>"; };
+		B52DD16416EE4A6700D13B07 /* Setings and Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setings and Info.png"; sourceTree = "<group>"; };
+		B52DD16616EE51DB00D13B07 /* Setings and Info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setings and Info@2x.png"; sourceTree = "<group>"; };
 		B5325B1616DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Bottom Horizontal Dark.png"; sourceTree = "<group>"; };
 		B5325B1716DE564500426252 /* Note Viewer Pad Bottom Horizontal Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Bottom Horizontal Dark@2x.png"; sourceTree = "<group>"; };
 		B5325B1816DE564500426252 /* Note Viewer Pad Middle Horizontal Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Pad Middle Horizontal Dark.png"; sourceTree = "<group>"; };
@@ -246,6 +264,9 @@
 		B5D67A3016DAC7DD00360647 /* IXPickerOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IXPickerOverlayView.m; path = "Rapid Note Go/Source/Utils/IXPickerOverlayView/IXPickerOverlayView.m"; sourceTree = SOURCE_ROOT; };
 		B5D9B3D216DF686900DC6CF8 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = Source/Models/Note.h; sourceTree = "<group>"; };
 		B5D9B3D316DF686900DC6CF8 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = Source/Models/Note.m; sourceTree = "<group>"; };
+		B5DD607C16EE1E99008F3842 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsVC.h; path = Source/Views/SettingsVC.h; sourceTree = "<group>"; };
+		B5DD607D16EE1E99008F3842 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsVC.m; path = Source/Views/SettingsVC.m; sourceTree = "<group>"; };
+		B5DD607F16EE1EAE008F3842 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = Source/Views/SettingsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +353,7 @@
 				891B93BB16B8112900EE24C9 /* Icons */,
 				8986400B16B68CD200446007 /* Defaults */,
 				B570355816D81629001A1D8A /* Various */,
+				B52DD15716EE3C7B00D13B07 /* Settings */,
 				B589446C16DABBBE00B9E435 /* Custom UIDatePicker */,
 				B59A035716E4B19E00A37055 /* Custom UIPopover */,
 			);
@@ -427,6 +449,9 @@
 				B5081F6316BC082900C3F248 /* SetNotificationView.xib */,
 				B589446116DA6F0B00B9E435 /* NoteViewerBackgroundView.h */,
 				B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */,
+				B5DD607C16EE1E99008F3842 /* SettingsVC.h */,
+				B5DD607D16EE1E99008F3842 /* SettingsVC.m */,
+				B5DD607F16EE1EAE008F3842 /* SettingsView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -442,6 +467,22 @@
 				B59A037016E4BA3F00A37055 /* LTKPopoverActionSheet */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		B52DD15716EE3C7B00D13B07 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B52DD15816EE3C7B00D13B07 /* Open Homepage Dark.png */,
+				B52DD15916EE3C7B00D13B07 /* Open Homepage Dark@2x.png */,
+				B52DD15C16EE3F8200D13B07 /* Rapid Note Go.png */,
+				B52DD15D16EE3F8200D13B07 /* Rapid Note Go@2x.png */,
+				B52DD16016EE41FF00D13B07 /* iCloud.png */,
+				B52DD16116EE41FF00D13B07 /* iCloud@2x.png */,
+				B52DD16416EE4A6700D13B07 /* Setings and Info.png */,
+				B52DD16616EE51DB00D13B07 /* Setings and Info@2x.png */,
+			);
+			name = Settings;
+			path = Graphics/Settings;
 			sourceTree = "<group>";
 		};
 		B5325B1516DE564500426252 /* Note Viewer Pad Horizontal */ = {
@@ -746,6 +787,15 @@
 				B59A038316E4BA3F00A37055 /* PopoverDestroyButton@2x.png in Resources */,
 				B59A038416E4BA3F00A37055 /* PopoverDestroyButtonPressed.png in Resources */,
 				B59A038516E4BA3F00A37055 /* PopoverDestroyButtonPressed@2x.png in Resources */,
+				B5DD608016EE1EAE008F3842 /* SettingsView.xib in Resources */,
+				B52DD15A16EE3C7B00D13B07 /* Open Homepage Dark.png in Resources */,
+				B52DD15B16EE3C7B00D13B07 /* Open Homepage Dark@2x.png in Resources */,
+				B52DD15E16EE3F8200D13B07 /* Rapid Note Go.png in Resources */,
+				B52DD15F16EE3F8200D13B07 /* Rapid Note Go@2x.png in Resources */,
+				B52DD16216EE41FF00D13B07 /* iCloud.png in Resources */,
+				B52DD16316EE41FF00D13B07 /* iCloud@2x.png in Resources */,
+				B52DD16516EE4A6700D13B07 /* Setings and Info.png in Resources */,
+				B52DD16716EE51DB00D13B07 /* Setings and Info@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,6 +841,7 @@
 				B5D9B3D416DF686900DC6CF8 /* Note.m in Sources */,
 				B59A035616E4B11B00A37055 /* KSCustomPopoverBackgroundView.m in Sources */,
 				B59A037D16E4BA3F00A37055 /* LTKPopoverActionSheet.m in Sources */,
+				B5DD607E16EE1E99008F3842 /* SettingsVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

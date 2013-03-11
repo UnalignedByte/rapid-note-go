@@ -18,6 +18,7 @@
 #import "KSCustomPopoverBackgroundView.h"
 
 #import "NoteDetailsVC.h"
+#import "SettingsVC.h"
 
 
 #define INPUT_ANIMATION_DURATION 0.3
@@ -56,6 +57,7 @@
     self.title = Localize(@"Notes");
     
     [self setupTable];
+    [self setupSettingsButton];
     [self setupNavigationButtonsForAdding];
     [self setupNotesResultsController];
     [self setupNoteInput];
@@ -69,14 +71,32 @@
     self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     CGRect tableRect = self.view.frame;
     tableRect.origin.y = 0;
+    tableRect.size.height -= 30.0;
     self.tableVC.tableView.frame = tableRect;
     [self.view addSubview:self.tableVC.tableView];
     self.tableVC.tableView.dataSource = self;
     self.tableVC.tableView.delegate = self;
-    UIView *tableBackgroundView = [[UIView alloc] initWithFrame:self.tableVC.tableView.frame];
-    tableBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
-    self.tableVC.tableView.backgroundView = tableBackgroundView;
-    self.view.backgroundColor = [UIColor blueColor];
+
+    self.tableVC.tableView.backgroundView = nil;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
+}
+
+
+- (void)setupSettingsButton
+{
+    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 60.0, 20.0)];
+    
+    CGRect settingsButtonRect = settingsButton.frame;
+    settingsButtonRect.origin.x = (self.view.frame.size.width - settingsButtonRect.size.width)/2.0;
+    settingsButtonRect.origin.y = self.view.frame.size.height - 70.0;
+    settingsButton.frame = settingsButtonRect;
+
+    [settingsButton setBackgroundImage:[UIImage imageNamed:@"Setings and Info"] forState:UIControlStateNormal];
+    [settingsButton addTarget:self
+                       action:@selector(settingsButtonAction:)
+             forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:settingsButton];
 }
 
 
@@ -326,6 +346,15 @@
     [self setupNavigationButtonsForAdding];
     
     [self.tableVC.tableView setEditing:NO animated:YES];
+}
+
+
+- (void)showSettings
+{
+    NSLog(@"show settings");
+    SettingsVC *settingsVC = [[SettingsVC alloc] init];
+    [self.navigationController presentModalViewController:[[UINavigationController alloc] initWithRootViewController:settingsVC]
+                                                 animated:YES];
 }
 
 
@@ -586,6 +615,12 @@
 - (IBAction)finishEditingNotesListAction:(id)sender_
 {
     [self finishEditingNotesList];
+}
+
+
+- (IBAction)settingsButtonAction:(id)sender_
+{
+    [self showSettings];
 }
 
 @end

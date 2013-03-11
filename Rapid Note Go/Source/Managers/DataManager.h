@@ -15,14 +15,16 @@
 @interface DataManager : NSObject
 
 @property (nonatomic, readonly) NSManagedObjectContext *notesContext;
-@property (nonatomic, readonly) BOOL isUsingCloud;
 @property (nonatomic, readonly) BOOL shouldIgnoreUpdates;
+
+@property (nonatomic) NSNumber *doesUserWantCloud;
 
 
 //Singleton
 + (DataManager *)sharedInstance;
 
 //Control
+- (void)reloadCloud;
 - (Note *)addNewNote;
 - (void)deleteNote:(Note *)note_;
 - (NSArray *)allNotes;

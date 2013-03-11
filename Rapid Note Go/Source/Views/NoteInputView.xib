@@ -262,6 +262,8 @@
 						<string key="noteInputBackground">UIView</string>
 						<string key="noteInputText">UITextView</string>
 						<string key="noteInputView">UIView</string>
+						<string key="setNotificationDatePicker">UIDatePicker</string>
+						<string key="setNotificationDatePickerOverlayView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="noteInputBackground">
@@ -274,6 +276,14 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="noteInputView">
 							<string key="name">noteInputView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePicker">
+							<string key="name">setNotificationDatePicker</string>
+							<string key="candidateClassName">UIDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setNotificationDatePickerOverlayView">
+							<string key="name">setNotificationDatePickerOverlayView</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
 					</dictionary>

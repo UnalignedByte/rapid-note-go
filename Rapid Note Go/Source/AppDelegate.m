@@ -27,7 +27,16 @@
 
 #pragma mark - Initialization
 - (BOOL)application:(UIApplication *)application_ didFinishLaunchingWithOptions:(NSDictionary *)options_
-{    
+{
+    if([DataManager sharedInstance].doesUserWantCloud == nil) {
+        UIAlertView *questionAlert = [[UIAlertView alloc] initWithTitle:nil
+                                                                message:Localize(@"Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?")
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:Localize(@"Enable"), Localize(@"Don't Enable"), nil];
+        [questionAlert show];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -68,6 +77,23 @@
         PhoneRootVC *rootVC = (PhoneRootVC *)self.rootVC;
         [rootVC showNoteForTag:tag];
     }
+}
+
+
+#pragma mark - Alert View Delegate
+- (void)alertView:(UIAlertView *)alertView_ clickedButtonAtIndex:(NSInteger)buttonIndex_
+{
+    switch(buttonIndex_) {
+        case 0:
+            [DataManager sharedInstance].doesUserWantCloud = @YES;
+            break;
+            
+        case 1:
+            [DataManager sharedInstance].doesUserWantCloud = @NO;
+            break;
+    }
+    
+    [[DataManager sharedInstance] reloadCloud];
 }
 
 @end

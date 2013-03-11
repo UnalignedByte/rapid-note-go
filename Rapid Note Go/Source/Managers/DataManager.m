@@ -15,6 +15,9 @@
 #import "APXML.h"
 
 
+static NSString *kDoesUserWantCloudSetting = @"DoesUserWantCloud";
+
+
 #pragma mark - Constants
 static NSString *kLastCloudIdSetting = @"LastCloudId";
 
@@ -29,6 +32,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 @property (nonatomic, strong) NSMetadataQuery *notesCloudQuery;
 @property (nonatomic) id lastCloudId;
 @property (nonatomic) BOOL shouldIgnoreNotesContextChanges;
+@property (nonatomic, readonly) BOOL isUsingCloud;
 
 @property (nonatomic, strong) void (^downloadBlock)();
 
@@ -114,8 +118,12 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)removeCloudObservers
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUbiquityIdentityDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidUpdateNotification object:self.notesCloudQuery];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSUbiquityIdentityDidChangeNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSMetadataQueryDidUpdateNotification
+                                                  object:self.notesCloudQuery];
     [self.notesCloudQuery stopQuery];
 }
 
@@ -123,6 +131,9 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 - (void)setupCloud
 {
     _isUsingCloud = NO;
+    
+    if(self.doesUserWantCloud == nil || self.doesUserWantCloud.boolValue == NO)
+        return;
     
     id cloudId = [[NSFileManager defaultManager] ubiquityIdentityToken];
     if(cloudId == nil)
@@ -201,6 +212,18 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 }
 
 
+- (NSNumber *)doesUserWantCloud
+{
+    return [[NSUserDefaults standardUserDefaults] valueForKey:kDoesUserWantCloudSetting];
+}
+
+
+- (void)setDoesUserWantCloud:(NSNumber *)value_
+{
+    [[NSUserDefaults standardUserDefaults] setValue:value_ forKey:kDoesUserWantCloudSetting];
+}
+
+
 #pragma mark - Notes Context Changes
 - (void)notesContextChanged:(NSNotification *)notification_
 {
@@ -218,9 +241,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 #pragma mark - Internal Control
 - (void)exportNotesToCloud
 {
-    if(!_isUsingCloud)
-        return;
-    
     NSLog(@"export");
     self.shouldIgnoreNotesContextChanges = YES;
     
@@ -418,6 +438,15 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 
 #pragma mark - Control
+- (void)reloadCloud
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
+    [self removeCloudObservers];
+    [self setupCloud];
+}
+
+
 - (Note *)addNewNote
 {
     Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note"
@@ -475,13 +504,15 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 {
     NSLog(@"Availability changed");
     
-    [self removeCloudObservers];
-    [self setupCloud];
+    [self reloadCloud];
 }
 
 
 - (void)cloudDataChanged:(NSNotification *)notification_
 {
+    if(!_isUsingCloud)
+        return;
+    
     static BOOL wasDownloaded = NO;
     static BOOL wasUploaded = NO;
     
