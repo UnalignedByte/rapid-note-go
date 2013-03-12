@@ -358,8 +358,24 @@
 - (void)showSettings
 {
     SettingsVC *settingsVC = [[SettingsVC alloc] init];
-    [self.navigationController presentModalViewController:[[UINavigationController alloc] initWithRootViewController:settingsVC]
-                                                 animated:YES];
+    CGRect padModalSize = settingsVC.view.frame;
+    padModalSize.size.width = 0.75 * padModalSize.size.height;
+
+    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    settingsNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    settingsNavigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
+    [self.navigationController presentViewController:settingsNavigationController
+                                            animated:YES
+                                          completion:^{
+                                                  if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                                                      settingsNavigationController.view.superview.bounds = padModalSize;
+                                                  }
+                                          }];
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        settingsNavigationController.view.superview.bounds = padModalSize;
+    }
 }
 
 

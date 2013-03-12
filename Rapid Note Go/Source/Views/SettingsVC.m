@@ -29,7 +29,7 @@
 {
     if((self = [super initWithNibName:@"SettingsView" bundle:nil]) == nil)
         return nil;
-    
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
     self.title = Localize(@"Preferences + Info");
     [self setupNavigationButtons];

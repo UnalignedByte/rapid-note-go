@@ -190,7 +190,7 @@
 					<object class="IBUILabel" id="75143440">
 						<reference key="NSNextResponder" ref="463881725"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{20, 196}, {280, 217}}</string>
+						<string key="NSFrame">{{20, 196}, {280, 305}}</string>
 						<reference key="NSSuperview" ref="463881725"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="321497717"/>
@@ -226,10 +226,9 @@ aW4gdGhlIEFwcCBTdG9yZSBhbmQgdmlzaXQgVW5hbGlnbmVkQnl0ZSBob21lcGFnZSE</string>
 					<object class="IBUIButton" id="321497717">
 						<reference key="NSNextResponder" ref="463881725"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{55, 425}, {210, 35}}</string>
+						<string key="NSFrame">{{55, 513}, {210, 35}}</string>
 						<reference key="NSSuperview" ref="463881725"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -257,7 +256,7 @@ aW4gdGhlIEFwcCBTdG9yZSBhbmQgdmlzaXQgVW5hbGlnbmVkQnl0ZSBob21lcGFnZSE</string>
 						</object>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 480}</string>
+				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="877713476"/>
@@ -266,6 +265,7 @@ aW4gdGhlIEFwcCBTdG9yZSBhbmQgdmlzaXQgVW5hbGlnbmVkQnl0ZSBob21lcGFnZSE</string>
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 				</object>
+				<int key="IBUIContentMode">4</int>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
 					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
@@ -275,13 +275,13 @@ aW4gdGhlIEFwcCBTdG9yZSBhbmQgdmlzaXQgVW5hbGlnbmVkQnl0ZSBob21lcGFnZSE</string>
 							<integer value="3"/>
 						</array>
 						<array key="dict.values">
-							<string>{320, 480}</string>
-							<string>{480, 320}</string>
+							<string>{320, 568}</string>
+							<string>{568, 320}</string>
 						</array>
 					</object>
 					<string key="IBUITargetRuntime">IBCocoaTouchFramework</string>
-					<string key="IBUIDisplayName">Retina 3.5 Full Screen</string>
-					<int key="IBUIType">0</int>
+					<string key="IBUIDisplayName">Retina 4 Full Screen</string>
+					<int key="IBUIType">2</int>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
