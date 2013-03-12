@@ -32,7 +32,9 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 @property (nonatomic, strong) NSMetadataQuery *notesCloudQuery;
 @property (nonatomic) id lastCloudId;
 @property (nonatomic) BOOL shouldIgnoreNotesContextChanges;
-@property (nonatomic, readonly) BOOL isUsingCloud;
+@property (nonatomic) BOOL isUsingCloud;
+@property (nonatomic) BOOL isCloudObserversAdded;
+@property (nonatomic) BOOL isUploadingData;
 
 @property (nonatomic, strong) void (^downloadBlock)();
 
@@ -62,6 +64,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         return nil;
     
     self.shouldIgnoreNotesContextChanges = NO;
+    self.isCloudObserversAdded = NO;
     
     [self setupNotesModel];
     [self setupNotesStoreCoordinator];
@@ -113,18 +116,24 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
                                                  name:NSMetadataQueryDidUpdateNotification
                                                object:self.notesCloudQuery];
     [self.notesCloudQuery startQuery];
+    
+    self.isCloudObserversAdded = YES;
 }
 
 
 - (void)removeCloudObservers
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:NSUbiquityIdentityDidChangeNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:NSMetadataQueryDidUpdateNotification
-                                                  object:self.notesCloudQuery];
-    [self.notesCloudQuery stopQuery];
+    if(self.isCloudObserversAdded) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:NSUbiquityIdentityDidChangeNotification
+                                                      object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:NSMetadataQueryDidUpdateNotification
+                                                      object:self.notesCloudQuery];
+        [self.notesCloudQuery stopQuery];
+    }
+    
+    self.isCloudObserversAdded = NO;
 }
 
 
@@ -154,14 +163,18 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         NSLog(@"First time");
         self.lastCloudId = cloudId;
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            if([self mergeNotesFromCloud])
+            BOOL shouldExportNotes = [self isThereNotUploadedNotes];
+            [self mergeNotesFromCloud];
+            if(shouldExportNotes)
                 [self exportNotesToCloud];
         }];
     //same iCloud account as the last time
     } else if([self.lastCloudId isEqual:cloudId]) {
         NSLog(@"Again");
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            if([self mergeNotesFromCloud])
+            BOOL shouldExportNotes = [self isThereNotUploadedNotes];
+            [self mergeNotesFromCloud];
+            if(shouldExportNotes)
                 [self exportNotesToCloud];
         }];
     //different iCloud account
@@ -243,6 +256,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 {
     NSLog(@"export");
     self.shouldIgnoreNotesContextChanges = YES;
+    self.isUploadingData = YES;
     
     //create new xml and save it
     APElement *notesRootNode = [[APElement alloc] initWithName:@"rapid"];
@@ -296,10 +310,8 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 }
 
 
-- (BOOL)mergeNotesFromCloud
+- (void)mergeNotesFromCloud
 {
-    BOOL addedAnyNote = NO;
-    
     NSLog(@"merge");
     
     self.shouldIgnoreNotesContextChanges = YES;
@@ -308,7 +320,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSString *xmlString = [NSString stringWithContentsOfFile:self.notesCloudUrl.path encoding:NSUTF8StringEncoding error:&error];
     if(error != nil) {
         NSLog(@"iCloud merge failed: %d, %@", error.code, error.localizedDescription);
-        return NO;
+        return;
     }
     
     //this will be used to delete notes
@@ -354,13 +366,9 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         if(fetchResult != nil && fetchResult.count > 0) {
             Note *existingNote = fetchResult[0];
             existingNote.isUploaded = @YES;
-            if([existingNote.modificationDate compare:modificationDate] == NSOrderedDescending) {
-                continue;
-            } else {
-                existingNote.modificationDate = modificationDate;
-                existingNote.notificationDate = notificationDate;
-                existingNote.message = message;
-            }
+            existingNote.modificationDate = modificationDate;
+            existingNote.notificationDate = notificationDate;
+            existingNote.message = message;
         //it's a new note, add it
         } else {
             Note *note = [self addNewNote];
@@ -371,8 +379,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             note.notificationDate = notificationDate;
             note.isUploaded = @YES;
         }
-        
-        addedAnyNote = YES;
     }
     
     //remove all remotely deleted notes
@@ -396,8 +402,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     self.shouldIgnoreNotesContextChanges = NO;
     NSLog(@"merge finished");
-    
-    return addedAnyNote;
 }
 
 
@@ -434,6 +438,17 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
         return;
     }
+}
+
+- (BOOL)isThereNotUploadedNotes
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
+    fetchRequest.entity = entityDescription;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @NO]];
+    NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
+    
+    return fetchResult.count > 0;
 }
 
 
@@ -512,10 +527,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 {
     if(!_isUsingCloud)
         return;
-    
-    static BOOL wasDownloaded = NO;
-    static BOOL wasUploaded = NO;
-    
+
     if([notification_.object resultCount] <= 0)
         return;
     
@@ -537,32 +549,31 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     if(isDownloaded && isUploaded && self.downloadBlock != nil) {
         self.downloadBlock();
         self.downloadBlock = nil;
-    } else if(isDownloaded && !wasDownloaded && isUploaded) {
-        [self mergeNotesFromCloud];
-    //new data is uploaded
-    } else if(isUploaded && !wasUploaded && isDownloaded) {
-        self.shouldIgnoreNotesContextChanges = YES;
         
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
-        fetchRequest.entity = entityDescription;
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @NO]];
-        NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
-        for(Note *note in fetchResult) {
-            note.isUploaded = @YES;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    } else if(isDownloaded && isUploaded) {
+        if(self.isUploadingData) {
+            self.shouldIgnoreNotesContextChanges = YES;
+            
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
+            fetchRequest.entity = entityDescription;
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @NO]];
+            NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
+            for(Note *note in fetchResult) {
+                note.isUploaded = @YES;
+            }
+            
+            _shouldIgnoreUpdates = YES;
+            [_notesContext save:nil];
+            _shouldIgnoreUpdates = NO;
+
+            self.shouldIgnoreNotesContextChanges = NO;
+            self.isUploadingData = NO;
+        } else {
+            [self mergeNotesFromCloud];
         }
         
-        _shouldIgnoreUpdates = YES;
-        [_notesContext save:nil];
-        _shouldIgnoreUpdates = NO;
-
-        self.shouldIgnoreNotesContextChanges = NO;
-    }
-    
-    wasDownloaded = isDownloaded;
-    wasUploaded = isUploaded;
-    
-    if(isDownloaded && isUploaded) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
 }
