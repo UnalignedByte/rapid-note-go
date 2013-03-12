@@ -229,6 +229,7 @@ aW4gdGhlIEFwcCBTdG9yZSBhbmQgdmlzaXQgVW5hbGlnbmVkQnl0ZSBob21lcGFnZSE</string>
 						<string key="NSFrame">{{55, 425}, {210, 35}}</string>
 						<reference key="NSSuperview" ref="463881725"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

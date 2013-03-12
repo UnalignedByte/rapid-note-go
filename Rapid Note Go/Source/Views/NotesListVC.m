@@ -22,6 +22,7 @@
 
 
 #define INPUT_ANIMATION_DURATION 0.3
+#define SETTINGS_BUTTON_HEIGHT 20.0
 
 
 #pragma mark - Private properties
@@ -53,7 +54,13 @@
 {
     if((self = [super init]) == nil)
         return nil;
-    
+
+    return self;
+}
+
+
+- (void)viewDidLoad
+{
     self.title = Localize(@"Notes");
     
     [self setupTable];
@@ -61,8 +68,6 @@
     [self setupNavigationButtonsForAdding];
     [self setupNotesResultsController];
     [self setupNoteInput];
-
-    return self;
 }
 
 
@@ -71,7 +76,7 @@
     self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     CGRect tableRect = self.view.frame;
     tableRect.origin.y = 0;
-    tableRect.size.height -= 30.0;
+    tableRect.size.height -= SETTINGS_BUTTON_HEIGHT * 2.0;
     self.tableVC.tableView.frame = tableRect;
     [self.view addSubview:self.tableVC.tableView];
     self.tableVC.tableView.dataSource = self;
@@ -84,14 +89,15 @@
 
 - (void)setupSettingsButton
 {
-    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 60.0, 20.0)];
+    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 60.0, SETTINGS_BUTTON_HEIGHT)];
     
     CGRect settingsButtonRect = settingsButton.frame;
     settingsButtonRect.origin.x = (self.view.frame.size.width - settingsButtonRect.size.width)/2.0;
-    settingsButtonRect.origin.y = self.view.frame.size.height - 70.0;
+    settingsButtonRect.origin.y = self.view.frame.size.height - settingsButton.frame.size.height*1.5;
     settingsButton.frame = settingsButtonRect;
 
     [settingsButton setBackgroundImage:[UIImage imageNamed:@"Setings and Info"] forState:UIControlStateNormal];
+    settingsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [settingsButton addTarget:self
                        action:@selector(settingsButtonAction:)
              forControlEvents:UIControlEventTouchUpInside];
@@ -351,7 +357,6 @@
 
 - (void)showSettings
 {
-    NSLog(@"show settings");
     SettingsVC *settingsVC = [[SettingsVC alloc] init];
     [self.navigationController presentModalViewController:[[UINavigationController alloc] initWithRootViewController:settingsVC]
                                                  animated:YES];
