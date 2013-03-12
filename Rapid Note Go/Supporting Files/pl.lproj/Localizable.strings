@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  Rapid Note Go
+
+  Created by Rafał Grodziński on 12.03.2013.
+  Copyright (c) 2013 UnalignedByte. All rights reserved.
+*/
+
+//Settings
+"Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?" = "Czy chcesz włączyć obsługę iCloud aby w pełni korzystać możliwości, które może Tobie dać Rapid Note Go?";
+"Enable" = "Włącz";
+"Don't Enable" = "Nie włączaj";
+"Preferences + Info" = "Ustawienia + Info";
+"Close" = "Zamknij";
+"Use iCloud" = "Używaj iCloud";
+"Version" = "Wersja";
+"Rapid Note Go has been designed and developed by Rafał Grodziński. Thanks for using :)\n\nGet Rapid Note for OS X to fully utilize power of Rapid Note Go\n\nDon't forget to rate app in the App Store and visit UnalignedByte homepage!" = "Rapid Note został zaprojektowany i napisany przez Rafała Grodzińskiego. Dzięki za używanie :)\n\nŚciągnij Rapid Note dla OS X żeby w pełni wykorzystać możliwości Rapid Note Go\n\nNie zapomnij ocenić appki w App Storze i odwiedzić stronę domową UnalignedByte!";
+"UnalignedByte Homepage" = "Strona UnalignedByte";
+
+//List
+"Notes" = "Notatki";
+"Edit" = "Edycja";
+"Add" = "Dodaj";
+"Cancel" = "Anuluj";
+"Done" = "Gotowe";
+"New Note" = "Nowa notatka";
+
+//Details
+"Set Notification" = "Ustaw notyfikację";
+"Cancel" = "Anuluj";
+"Save" = "Zapisz";
+"Are you suere that want to delete this note?" = "Czy napewno chcesz usunąć tą notatkę?";
+"Delete Note" = "Usuń notatkę";
+"Are you sure you want to disable notification for this note?" = "Czy na pewno chcesz wyłączyć notyfikację dla tej notatki?";
+"Disable Notification" = "Wyłącz notyfikację";
+"Note has been deleted remotely" = "Notatka została usunięta zdalnie";
+"Note has been modified remotely" = "Notatka została zmodyfikowana zdalnie";
+"OK" = "OK";
+
+//Notifications
+"Show" = "Pokaż";

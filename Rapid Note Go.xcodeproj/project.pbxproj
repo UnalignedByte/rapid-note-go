@@ -29,7 +29,6 @@
 		89B7BBF216B6C38500294BBA /* NotesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF116B6C38500294BBA /* NotesListVC.m */; };
 		89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */; };
 		89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* PadRootVC.m */; };
-		89D6CA5816B6920A0023F1C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D6CA5A16B6920A0023F1C8 /* Localizable.strings */; };
 		B50106B916E3D21300F9FE4B /* Set Notification Pad Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */; };
 		B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */; };
 		B5081F5B16BA8B4900C3F248 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */; };
@@ -116,6 +115,7 @@
 		B59A038516E4BA3F00A37055 /* PopoverDestroyButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59A037C16E4BA3F00A37055 /* PopoverDestroyButtonPressed@2x.png */; };
 		B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B30E1416B9D09000429607 /* NoteInputView.xib */; };
 		B5B70F6016C3F48700CBAC2C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B70F5F16C3F48700CBAC2C /* libz.dylib */; };
+		B5C5E95816EFA60800DD63F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C5E95A16EFA60800DD63F0 /* Localizable.strings */; };
 		B5D67A2C16DAC7C200360647 /* APAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2716DAC7C200360647 /* APAttribute.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D67A2D16DAC7C200360647 /* APDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2916DAC7C200360647 /* APDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D67A2E16DAC7C200360647 /* APElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D67A2B16DAC7C200360647 /* APElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -157,8 +157,6 @@
 		89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRootVC.m; path = Source/Views/PhoneRootVC.m; sourceTree = "<group>"; };
 		89B7BBF616B6C57000294BBA /* PadRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PadRootVC.h; path = Source/Views/PadRootVC.h; sourceTree = "<group>"; };
 		89B7BBF716B6C57000294BBA /* PadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootVC.m; path = Source/Views/PadRootVC.m; sourceTree = "<group>"; };
-		89D6CA5916B6920A0023F1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		89D6CA6116B692240023F1C8 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark.png"; path = "Graphics/Various/Set Notification Pad Dark.png"; sourceTree = "<group>"; };
 		B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark@2x.png"; path = "Graphics/Various/Set Notification Pad Dark@2x.png"; sourceTree = "<group>"; };
 		B5081F5916BA8B3D00C3F248 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Additions.h"; path = "Source/Utils/NSDate+Additions.h"; sourceTree = "<group>"; };
@@ -253,6 +251,8 @@
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
 		B5B70F5F16C3F48700CBAC2C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B5C5E95916EFA60800DD63F0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = file; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5C5E95B16EFA60C00DD63F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5D67A2516DAC7AC00360647 /* APXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APXML.h; path = "Rapid Note Go/Source/Utils/APXML/APXML.h"; sourceTree = SOURCE_ROOT; };
 		B5D67A2616DAC7C200360647 /* APAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APAttribute.h; path = "Rapid Note Go/Source/Utils/APXML/APAttribute.h"; sourceTree = SOURCE_ROOT; };
 		B5D67A2716DAC7C200360647 /* APAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APAttribute.m; path = "Rapid Note Go/Source/Utils/APXML/APAttribute.m"; sourceTree = SOURCE_ROOT; };
@@ -339,9 +339,9 @@
 		890EAE9C16A831F0000CFA48 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B5C5E95A16EFA60800DD63F0 /* Localizable.strings */,
 				890EAE9D16A831F0000CFA48 /* Rapid Note Go-Info.plist */,
 				B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */,
-				897FA6E416A838B300EB2D18 /* Localizations */,
 			);
 			name = "Supporting Files";
 			path = "Rapid Note Go";
@@ -408,14 +408,6 @@
 				897FA6E116A8386400EB2D18 /* Notes.xcdatamodeld */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		897FA6E416A838B300EB2D18 /* Localizations */ = {
-			isa = PBXGroup;
-			children = (
-				89D6CA5A16B6920A0023F1C8 /* Localizable.strings */,
-			);
-			name = Localizations;
 			sourceTree = "<group>";
 		};
 		8986400B16B68CD200446007 /* Defaults */ = {
@@ -713,7 +705,6 @@
 				8986400F16B68F0900446007 /* Default-Portrait@2x.png in Resources */,
 				8986401216B68F1000446007 /* Default-Landscape.png in Resources */,
 				8986401316B68F1000446007 /* Default-Landscape@2x.png in Resources */,
-				89D6CA5816B6920A0023F1C8 /* Localizable.strings in Resources */,
 				891B93BF16B8113400EE24C9 /* Icon.png in Resources */,
 				891B93C016B8113400EE24C9 /* Icon@2x.png in Resources */,
 				891B93CA16B8249C00EE24C9 /* NoteCell.xib in Resources */,
@@ -796,6 +787,7 @@
 				B52DD16316EE41FF00D13B07 /* iCloud@2x.png in Resources */,
 				B52DD16516EE4A6700D13B07 /* Setings and Info.png in Resources */,
 				B52DD16716EE51DB00D13B07 /* Setings and Info@2x.png in Resources */,
+				B5C5E95816EFA60800DD63F0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,14 +840,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		89D6CA5A16B6920A0023F1C8 /* Localizable.strings */ = {
+		B5C5E95A16EFA60800DD63F0 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				89D6CA5916B6920A0023F1C8 /* en */,
-				89D6CA6116B692240023F1C8 /* pl */,
+				B5C5E95916EFA60800DD63F0 /* pl */,
+				B5C5E95B16EFA60C00DD63F0 /* en */,
 			);
 			name = Localizable.strings;
-			path = "Supporting Files/Localizations";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
