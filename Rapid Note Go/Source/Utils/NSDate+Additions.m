@@ -37,7 +37,29 @@
     NSDateComponents *nowDateComponents = [gregorianCalendar components:calendarUnits
                                                                fromDate:self];
     nowDateComponents.second = 0;
-    return [gregorianCalendar dateFromComponents:nowDateComponents];
+    return [[gregorianCalendar dateFromComponents:nowDateComponents] copy];
+}
+
+
+- (NSDate *)dateBySettingSecondsAtOne
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *nowDateComponents = [gregorianCalendar components:calendarUnits
+                                                               fromDate:self];
+    nowDateComponents.second = 1;
+    return [[gregorianCalendar dateFromComponents:nowDateComponents] copy];
+}
+
+
+- (NSDate *)dateByAddingOneMinute
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger calendarUnits = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *nowDateComponents = [gregorianCalendar components:calendarUnits
+                                                               fromDate:self];
+    nowDateComponents.minute += 1;
+    return [[gregorianCalendar dateFromComponents:nowDateComponents] copy];
 }
 
 @end

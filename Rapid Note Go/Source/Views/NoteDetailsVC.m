@@ -47,6 +47,7 @@
 @property (nonatomic, weak) IBOutlet UIView *setNotificationDatePickerOverlayView;
 @property (nonatomic, strong) UIViewController *setNotificationDatePickerVC;
 @property (nonatomic, strong) UIPopoverController *setNotificationDatePickerPopover;
+@property (nonatomic, strong) NSTimer *setNotificationTimer;
 
 //current data
 @property (nonatomic, strong) NSString *currentNoteTag;
@@ -268,14 +269,29 @@
 
 - (void)showSetNotificationDate
 {
-    self.setNotificationDatePicker.minimumDate = [NSDate date];
+    self.setNotificationDatePicker.minimumDate = [[[NSDate date] dateBySettingSecondsAtOne] dateByAddingOneMinute];
     self.setNotificationDatePicker.date = self.setNotificationDatePicker.minimumDate;
+    
+    NSDate *timerFireDate = [[[NSDate date] dateByRemovingSeconds] dateByAddingOneMinute];
+    self.setNotificationTimer = [[NSTimer alloc] initWithFireDate:timerFireDate
+                                                         interval:60.0
+                                                           target:self
+                                                         selector:@selector(setNotificationTimerFired:)
+                                                         userInfo:nil
+                                                          repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.setNotificationTimer forMode:NSDefaultRunLoopMode];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self showSetNotificationDateForPhone];
     } else {
         [self showSetNotificationDateForPad];
     }
+}
+
+
+- (void)setNotificationTimerFired:(NSTimer *)timer_
+{
+    self.setNotificationDatePicker.minimumDate = [self.setNotificationDatePicker.minimumDate dateByAddingOneMinute];
 }
 
 
@@ -334,6 +350,8 @@
 
 - (void)hideSetNotificationDate
 {
+    [self.setNotificationTimer invalidate];
+    
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.setNotificationDatePickerPopover dismissPopoverAnimated:YES];
     } else {
@@ -354,9 +372,8 @@
 
 - (void)setNotification
 {
-    NSComparisonResult cmp = [[self.setNotificationDatePicker.minimumDate dateByRemovingSeconds] compare:[self.setNotificationDatePicker.date dateByRemovingSeconds]];
+    NSComparisonResult cmp = [[[NSDate date] dateByRemovingSeconds] compare:[self.setNotificationDatePicker.date dateByRemovingSeconds]];
     if(cmp == NSOrderedDescending || cmp == NSOrderedSame) {
-        [self.setNotificationDatePicker setDate:self.setNotificationDatePicker.minimumDate animated:YES];
         return;
     }
     
@@ -627,10 +644,10 @@
 
 - (IBAction)setNotificationPickerValueChanged:(id)sender_
 {
-    NSComparisonResult cmp = [[self.setNotificationDatePicker.minimumDate dateByRemovingSeconds] compare:[self.setNotificationDatePicker.date dateByRemovingSeconds]];
+    NSComparisonResult cmp = [self.setNotificationDatePicker.minimumDate compare:self.setNotificationDatePicker.date];
     
     if(cmp == NSOrderedDescending || cmp == NSOrderedSame) {
-        [self.setNotificationDatePicker setDate:self.setNotificationDatePicker.minimumDate animated:YES];
+        self.setNotificationDatePicker.date = [self.setNotificationDatePicker.minimumDate copy];
         return;
     }
 }

@@ -14,5 +14,7 @@
 - (NSString *)formatAsNiceString;
 - (NSString *)formatAsShortNiceString;
 - (NSDate *)dateByRemovingSeconds;
+- (NSDate *)dateBySettingSecondsAtOne;
+- (NSDate *)dateByAddingOneMinute;
 
 @end
