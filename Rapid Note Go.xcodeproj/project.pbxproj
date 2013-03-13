@@ -251,8 +251,9 @@
 		B5B30E1016B9C2AE00429607 /* Rapid Note Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Rapid Note Go.entitlements"; path = "Supporting Files/Rapid Note Go.entitlements"; sourceTree = "<group>"; };
 		B5B30E1416B9D09000429607 /* NoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteInputView.xib; path = Source/Views/NoteInputView.xib; sourceTree = "<group>"; };
 		B5B70F5F16C3F48700CBAC2C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		B5C5E95916EFA60800DD63F0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = file; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B5C5E95B16EFA60C00DD63F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5C5E95916EFA60800DD63F0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5C5E95B16EFA60C00DD63F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5C5E95C16F09CB000DD63F0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5D67A2516DAC7AC00360647 /* APXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APXML.h; path = "Rapid Note Go/Source/Utils/APXML/APXML.h"; sourceTree = SOURCE_ROOT; };
 		B5D67A2616DAC7C200360647 /* APAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APAttribute.h; path = "Rapid Note Go/Source/Utils/APXML/APAttribute.h"; sourceTree = SOURCE_ROOT; };
 		B5D67A2716DAC7C200360647 /* APAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APAttribute.m; path = "Rapid Note Go/Source/Utils/APXML/APAttribute.m"; sourceTree = SOURCE_ROOT; };
@@ -682,6 +683,7 @@
 			knownRegions = (
 				en,
 				pl,
+				fr,
 			);
 			mainGroup = 890EAE8416A831F0000CFA48;
 			productRefGroup = 890EAE9016A831F0000CFA48 /* Products */;
@@ -845,6 +847,7 @@
 			children = (
 				B5C5E95916EFA60800DD63F0 /* pl */,
 				B5C5E95B16EFA60C00DD63F0 /* en */,
+				B5C5E95C16F09CB000DD63F0 /* fr */,
 			);
 			name = Localizable.strings;
 			path = "Supporting Files";

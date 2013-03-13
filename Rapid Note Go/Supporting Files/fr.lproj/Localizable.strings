@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  Rapid Note Go
+
+  Created by Rafał Grodziński on 12.03.2013.
+  Copyright (c) 2013 UnalignedByte. All rights reserved.
+*/
+
+//Settings
+"Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?" = "";
+"Enable" = "";
+"Don't enable" = "";
+"Preferences + Info" = "";
+"Close" = "Fermer";
+"Use iCloud" = "Utiliser iCloud";
+"Version" = "Version";
+"Rapid Note Go has been designed and developed by Rafał Grodziński. Thanks for using :)\n\nGet Rapid Note for OS X to fully utilize power of Rapid Note Go\n\nDon't forget to rate app in the App Store and visit UnalignedByte homepage!" = "";
+"UnalignedByte Homepage" = "Page d'accueil UnalignedByte";
+
+//List
+"Notes" = "Notes";
+"Edit" = "Modifier";
+"Add" = "Ajouter";
+"Cancel" = "Annuler";
+"Done" = "OK";
+"New Note" = "Nouveau Noter";
+
+//Details
+"Set Notification" = "";
+"Cancel" = "Annuler";
+"Save" = "Sauver";
+"Are you suere that want to delete this note?" = "";
+"Delete Note" = "Supprimer le note";
+"Are you sure you want to disable notification for this note?" = "";
+"Disable Notification" = "";
+"Note has been deleted remotely" = "";
+"Note has been modified remotely" = "";
+"OK" = "OK";
+"Set" = "Fixer";
+
+//Notifications
+"Show" = "Afficher";
