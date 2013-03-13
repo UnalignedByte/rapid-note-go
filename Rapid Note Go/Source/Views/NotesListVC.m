@@ -61,8 +61,6 @@
 
 - (void)viewDidLoad
 {
-    self.title = Localize(@"Notes");
-    
     [self setupTable];
     [self setupSettingsButton];
     [self setupNavigationButtonsForAdding];
@@ -117,6 +115,7 @@
                                                                                    action:@selector(showNoteInputAction:)];
     self.navigationItem.leftBarButtonItem = editButton;
     self.navigationItem.rightBarButtonItem = addNoteButton;
+    self.title = Localize(@"Notes");
 }
 
 
@@ -132,6 +131,7 @@
                                                                         action:@selector(cancelNoteAction:)];
     self.navigationItem.rightBarButtonItem = addNoteButton;
     self.navigationItem.leftBarButtonItem = cancelNoteButton;
+    self.title = Localize(@"New Note");
 }
 
 
@@ -152,6 +152,7 @@
     }
     self.navigationItem.leftBarButtonItem = doneButton;
     self.navigationItem.rightBarButtonItem = nil;
+    self.title = Localize(@"Notes");
 }
 
 

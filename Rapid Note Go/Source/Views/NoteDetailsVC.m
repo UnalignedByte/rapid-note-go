@@ -175,6 +175,7 @@
                                                   action:@selector(deleteButtonAction:)];
 
     self.navigationItem.rightBarButtonItem = deleteButton;
+    self.title = @"";
     
     self.notificationButton.userInteractionEnabled = YES;
 }
@@ -192,6 +193,7 @@
                                                                          action:@selector(saveNoteEditingAction:)];
     self.navigationItem.leftBarButtonItem = cancelEditingButton;
     self.navigationItem.rightBarButtonItem = saveEditingButton;
+    self.title = @"";
     
     self.notificationButton.userInteractionEnabled = NO;
 }
@@ -206,12 +208,13 @@
                                                                                         style:UIBarButtonItemStylePlain
                                                                                        target:self
                                                                                        action:@selector(cancelSettingNotificationDateAction:)];
-    UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set Notification")
+    UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set")
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(setNotificationDateAction:)];
     self.navigationItem.leftBarButtonItem = cancelSettingNotificationButton;
     self.navigationItem.rightBarButtonItem = setNotificationButton;
+    self.title = Localize(@"Set Notification");
 }
 
 #pragma mark - Internal Control
@@ -324,13 +327,14 @@
                                                                                            target:self
                                                                                            action:@selector(cancelSettingNotificationDateAction:)];
         cancelSettingNotificationButton.tintColor = [UIColor blackColor];
-        UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set Notification")
+        UIBarButtonItem *setNotificationButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Set")
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(setNotificationDateAction:)];
         setNotificationButton.tintColor = [UIColor blackColor];
         pickerVC.navigationItem.leftBarButtonItem = cancelSettingNotificationButton;
         pickerVC.navigationItem.rightBarButtonItem = setNotificationButton;
+        pickerVC.title = Localize(@"Set Notification");
         
         self.setNotificationDatePickerVC = [[UINavigationController alloc] initWithRootViewController:pickerVC];
     }

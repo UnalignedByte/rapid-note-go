@@ -33,7 +33,7 @@
                                                                 message:Localize(@"Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?")
                                                                delegate:self
                                                       cancelButtonTitle:nil
-                                                      otherButtonTitles:Localize(@"Enable"), Localize(@"Don't Enable"), nil];
+                                                      otherButtonTitles:Localize(@"Enable"), Localize(@"Don't enable"), nil];
         [questionAlert show];
     }
     

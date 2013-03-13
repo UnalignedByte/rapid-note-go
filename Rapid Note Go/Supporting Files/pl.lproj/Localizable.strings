@@ -9,7 +9,7 @@
 //Settings
 "Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?" = "Czy chcesz włączyć obsługę iCloud aby w pełni korzystać możliwości, które może Tobie dać Rapid Note Go?";
 "Enable" = "Włącz";
-"Don't Enable" = "Nie włączaj";
+"Don't enable" = "Nie włączaj";
 "Preferences + Info" = "Ustawienia + Info";
 "Close" = "Zamknij";
 "Use iCloud" = "Używaj iCloud";
@@ -23,19 +23,20 @@
 "Add" = "Dodaj";
 "Cancel" = "Anuluj";
 "Done" = "Gotowe";
-"New Note" = "Nowa notatka";
+"New Note" = "Nowa Notatka";
 
 //Details
-"Set Notification" = "Ustaw notyfikację";
+"Set Notification" = "Powiadomienie";
 "Cancel" = "Anuluj";
 "Save" = "Zapisz";
 "Are you suere that want to delete this note?" = "Czy napewno chcesz usunąć tą notatkę?";
-"Delete Note" = "Usuń notatkę";
-"Are you sure you want to disable notification for this note?" = "Czy na pewno chcesz wyłączyć notyfikację dla tej notatki?";
-"Disable Notification" = "Wyłącz notyfikację";
+"Delete Note" = "Usuń Notatkę";
+"Are you sure you want to disable notification for this note?" = "Czy na pewno chcesz wyłączyć powiadomienie dla tej notatki?";
+"Disable Notification" = "Wyłącz Powiadomienie";
 "Note has been deleted remotely" = "Notatka została usunięta zdalnie";
 "Note has been modified remotely" = "Notatka została zmodyfikowana zdalnie";
 "OK" = "OK";
+"Set" = "Ustaw";
 
 //Notifications
 "Show" = "Pokaż";
