@@ -160,7 +160,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     //first time using iCloud
     if(self.lastCloudId == nil) {
-        NSLog(@"First time");
         self.lastCloudId = cloudId;
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
             BOOL shouldExportNotes = [self isThereNotUploadedNotes];
@@ -170,7 +169,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         }];
     //same iCloud account as the last time
     } else if([self.lastCloudId isEqual:cloudId]) {
-        NSLog(@"Again");
         [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
             BOOL shouldExportNotes = [self isThereNotUploadedNotes];
             [self mergeNotesFromCloud];
@@ -179,7 +177,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         }];
     //different iCloud account
     } else {
-        NSLog(@"Other");
         self.lastCloudId = cloudId;
         self.shouldIgnoreNotesContextChanges = YES;
             [self deleteAllNotes];
@@ -243,7 +240,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     if(self.shouldIgnoreNotesContextChanges)
         return;
     
-    NSLog(@"context changed and saved");
     [self.notesContext save:nil];
     
     if(_isUsingCloud)
@@ -254,7 +250,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 #pragma mark - Internal Control
 - (void)exportNotesToCloud
 {
-    NSLog(@"export");
     self.shouldIgnoreNotesContextChanges = YES;
     self.isUploadingData = YES;
     
@@ -265,7 +260,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         APElement *noteNode = [[APElement alloc] initWithName:@"note"];
         
         //add date element
-        APElement *creationDateNode = [[APElement alloc] initWithName:@"date"];
+        APElement *creationDateNode = [[APElement alloc] initWithName:@"creation_date"];
         [creationDateNode appendValue:[note.creationDate description]];
         [noteNode addChild:creationDateNode];
         
@@ -276,14 +271,14 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         
         //add timer node (if timer date != 0)
         if(note.notificationDate != nil) {
-            APElement *notificationDateNode = [[APElement alloc] initWithName:@"timer_date_time"];
+            APElement *notificationDateNode = [[APElement alloc] initWithName:@"notification_date"];
             [notificationDateNode appendValue:[note.notificationDate description]];
             [noteNode addChild:notificationDateNode];
         }
         
         //add modification node (if modificaiton date !=)
         if(note.modificationDate != nil) {
-            APElement *modificationDateNode = [[APElement alloc] initWithName:@"modification_date_time"];
+            APElement *modificationDateNode = [[APElement alloc] initWithName:@"modification_date"];
             [modificationDateNode appendValue:[note.modificationDate description]];
             [noteNode addChild:modificationDateNode];
         }
@@ -312,8 +307,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)mergeNotesFromCloud
 {
-    NSLog(@"merge");
-    
     self.shouldIgnoreNotesContextChanges = YES;
     
     NSError *error;
@@ -339,19 +332,19 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             continue;
         
         NSString *message = [(APElement *)[note childElements:@"message"][0] value];
-        NSDate *creationDate = [self stringToDate:[(APElement *)[note childElements:@"date"][0] value]];
+        NSDate *creationDate = [self stringToDate:[(APElement *)[note childElements:@"creation_date"][0] value]];
         NSString *tag = [(APElement *)[note childElements:@"tag"][0] value];
         NSDate *notificationDate = nil;
         NSDate *modificationDate = nil;
         
         //timer date & time
-        if([note childElements:@"timer_date_time"].count >= 1) {
-            notificationDate = [self stringToDate:[(APElement *)[note childElements:@"timer_date_time"][0] value]];
+        if([note childElements:@"notification_date"].count >= 1) {
+            notificationDate = [self stringToDate:[(APElement *)[note childElements:@"notification_date"][0] value]];
         }
         
         //modification date
-        if([note childElements:@"modification_date_time"].count >= 1) {
-            modificationDate = [self stringToDate:[(APElement *)[note childElements:@"modification_date_time"][0] value]];
+        if([note childElements:@"modification_date"].count >= 1) {
+            modificationDate = [self stringToDate:[(APElement *)[note childElements:@"modification_date"][0] value]];
         }
         
         [tagsFromXml addObject:tag];
@@ -401,7 +394,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     [[NotificationsManager sharedInstance] addNotificationsForNotes:[self allNotes]];
     
     self.shouldIgnoreNotesContextChanges = NO;
-    NSLog(@"merge finished");
 }
 
 
@@ -424,16 +416,13 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         return;
     }
     
-    NSLog(@"Is downloaded: %d", isDownloaded.boolValue);
-    
     if(isDownloaded.boolValue)
         return;
     
     self.downloadBlock = block_;
     
     //start downloading
-    BOOL started = [[NSFileManager defaultManager] startDownloadingUbiquitousItemAtURL:url_ error:&error];
-    NSLog(@"started: %d", started);
+    [[NSFileManager defaultManager] startDownloadingUbiquitousItemAtURL:url_ error:&error];
     if(error != nil) {
         NSLog(@"iCloud download failed: %d, %@", error.code, error.localizedDescription);
         return;
@@ -517,8 +506,6 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 #pragma mark - iCloud support
 - (void)cloudAvailabilityChanged:(NSNotification *)notification_
 {
-    NSLog(@"Availability changed");
-    
     [self reloadCloud];
 }
 
@@ -533,18 +520,11 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSLog(@"Data changed");
     NSMetadataItem *metadataItem =  (NSMetadataItem *)[[notification_ object] resultAtIndex:0];
     
-    BOOL isDownloading = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsDownloadingKey] boolValue];
     BOOL isDownloaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue];
-    
-    BOOL isUploading = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadingKey] boolValue];
     BOOL isUploaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadedKey] boolValue];
     
-    NSLog(@"Downloaded: %d, Downloading: %d", isDownloaded, isDownloading);
-    NSLog(@"Uploaded: %d, Uploading: %d", isUploaded, isUploading);
-
     //new data is downloaded
     if(isDownloaded && isUploaded && self.downloadBlock != nil) {
         self.downloadBlock();
