@@ -217,11 +217,11 @@
 #pragma mark - Internal Control
 - (void)cancelNoteEditing
 {
-    self.noteText.text = self.note.message;
-    
     [self setupNavigationButtonsForReading];
     
     [self.noteText resignFirstResponder];
+    
+    self.noteText.text = self.note.message;
 }
 
 
@@ -597,9 +597,6 @@
         [UIView setAnimationDuration:keyboardAnimationDuration];
         self.noteTextBackgroundView.frame = backgroundRect;
     [UIView commitAnimations];
-    
-    if(!resizeUpwards_)
-        [self.noteText scrollRangeToVisible:NSMakeRange(0, 0)];
 }
 
 
