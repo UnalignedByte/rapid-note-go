@@ -7,15 +7,15 @@
 */
 
 //Settings
-"Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?" = "";
-"Enable" = "";
-"Don't enable" = "";
-"Preferences + Info" = "";
+"Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?" = "Voulez vou activer iCloud et jouir tout les capacités de Rapid Note?";
+"Enable" = "Activer";
+"Don't Enable" = "Ne Activer Pas";
+"Preferences + Info" = "Préférences + Info";
 "Close" = "Fermer";
 "Use iCloud" = "Utiliser iCloud";
 "Version" = "Version";
-"Rapid Note Go has been designed and developed by Rafał Grodziński. Thanks for using :)\n\nGet Rapid Note for OS X to fully utilize power of Rapid Note Go\n\nDon't forget to rate app in the App Store and visit UnalignedByte homepage!" = "";
-"UnalignedByte Homepage" = "Page d'accueil UnalignedByte";
+"Rapid Note Go has been designed and developed by Rafał Grodziński. Thanks for using :)\n\nGet Rapid Note for OS X to fully utilize power of Rapid Note Go\n\nDon't forget to rate app in the App Store and visit UnalignedByte homepage!" = "Rapid Note a été developé par Rafał Grodziński. Merci pour l'utiliser :)\n\nObtenir Rapid Note pour OS X pour utiliser tout les capacités de Rapid Note Go\n\nN'oubliez pas de rater le app dans le App Store et visiter site web de  UnalignedByte!";
+"UnalignedByte Homepage" = "Site Web de UnalignedByte";
 
 //List
 "Notes" = "Notes";
@@ -23,20 +23,20 @@
 "Add" = "Ajouter";
 "Cancel" = "Annuler";
 "Done" = "OK";
-"New Note" = "Nouveau Noter";
+"New Note" = "Nouvelle Note";
 
 //Details
-"Set Notification" = "";
+"Set Notification" = "Notification";
 "Cancel" = "Annuler";
 "Save" = "Sauver";
-"Are you suere that want to delete this note?" = "";
-"Delete Note" = "Supprimer le note";
-"Are you sure you want to disable notification for this note?" = "";
-"Disable Notification" = "";
+"Are you suere that want to delete this note?" = "Voulez vous supprimer cette note?";
+"Delete Note" = "Supprimer la Note";
+"Are you sure you want to disable notification for this note?" = "Voulez vous désactiver la notification de cette note?";
+"Disable Notification" = "Désactiver la notification";
 "Note has been deleted remotely" = "";
 "Note has been modified remotely" = "";
 "OK" = "OK";
-"Set" = "Fixer";
+"Set" = "Régler";
 
 //Notifications
 "Show" = "Afficher";

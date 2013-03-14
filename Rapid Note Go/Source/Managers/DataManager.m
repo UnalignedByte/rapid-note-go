@@ -326,7 +326,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     for(APElement *note in notes) {
         if([note childElements:@"message"].count <= 0)
             continue;
-        if([note childElements:@"date"].count <= 0)
+        if([note childElements:@"creation_date"].count <= 0)
             continue;
         if([note childElements:@"tag"].count <= 0)
             continue;
@@ -416,8 +416,10 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         return;
     }
     
-    if(isDownloaded.boolValue)
+    if(isDownloaded.boolValue) {
+        block_();
         return;
+    }
     
     self.downloadBlock = block_;
     
