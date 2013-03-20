@@ -9,7 +9,7 @@
 //Settings
 "Do you want to enable iCloud and enjoy all the awesomeness that Rapid Note Go can give you?" = "Voulez vou activer iCloud et jouir tout les capacités de Rapid Note?";
 "Enable" = "Activer";
-"Don't Enable" = "Ne Activer Pas";
+"Don't Enable" = "N'Activer Pas";
 "Preferences + Info" = "Préférences + Info";
 "Close" = "Fermer";
 "Use iCloud" = "Utiliser iCloud";
@@ -33,8 +33,8 @@
 "Delete Note" = "Supprimer la Note";
 "Are you sure you want to disable notification for this note?" = "Voulez vous désactiver la notification de cette note?";
 "Disable Notification" = "Désactiver la notification";
-"Note has been deleted remotely" = "";
-"Note has been modified remotely" = "";
+"Note has been deleted remotely" = "La note a été supprimé à distance";
+"Note has been modified remotely" = "La note a été modifié à distance";
 "OK" = "OK";
 "Set" = "Régler";
 
