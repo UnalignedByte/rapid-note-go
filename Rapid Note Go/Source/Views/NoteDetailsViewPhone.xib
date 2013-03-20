@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -86,7 +86,7 @@
 					<object class="IBUIImageView" id="431810671">
 						<reference key="NSNextResponder" ref="657800916"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{3, 17}, {16, 16}}</string>
+						<string key="NSFrame">{{2, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="657800916"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="259720711"/>
@@ -101,7 +101,7 @@
 					<object class="IBUILabel" id="259720711">
 						<reference key="NSNextResponder" ref="657800916"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{21, 10}, {90, 30}}</string>
+						<string key="NSFrame">{{20, 10}, {90, 30}}</string>
 						<reference key="NSSuperview" ref="657800916"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="445246822"/>
@@ -131,7 +131,7 @@
 					<object class="IBUIImageView" id="445246822">
 						<reference key="NSNextResponder" ref="657800916"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{108, 17}, {16, 16}}</string>
+						<string key="NSFrame">{{107, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="657800916"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="486323601"/>
@@ -146,7 +146,7 @@
 					<object class="IBUILabel" id="486323601">
 						<reference key="NSNextResponder" ref="657800916"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{126, 10}, {90, 30}}</string>
+						<string key="NSFrame">{{125, 10}, {90, 30}}</string>
 						<reference key="NSSuperview" ref="657800916"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1063789522"/>
@@ -167,7 +167,7 @@
 					<object class="IBUIButton" id="180088384">
 						<reference key="NSNextResponder" ref="657800916"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{230, 10}, {90, 30}}</string>
+						<string key="NSFrame">{{228, 10}, {90, 30}}</string>
 						<reference key="NSSuperview" ref="657800916"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="413702104"/>
@@ -191,7 +191,7 @@
 					<object class="IBUIImageView" id="1063789522">
 						<reference key="NSNextResponder" ref="657800916"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{211, 17}, {16, 16}}</string>
+						<string key="NSFrame">{{210, 17}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="657800916"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="180088384"/>
@@ -442,6 +442,45 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NoteDetailsVC</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancelNoteEditingAction:">id</string>
+						<string key="cancelSettingNotificationDateAction:">id</string>
+						<string key="deleteButtonAction:">id</string>
+						<string key="notificationButtonAction:">id</string>
+						<string key="saveNoteEditingAction:">id</string>
+						<string key="setNotificationDateAction:">id</string>
+						<string key="setNotificationPickerValueChanged:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancelNoteEditingAction:">
+							<string key="name">cancelNoteEditingAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="cancelSettingNotificationDateAction:">
+							<string key="name">cancelSettingNotificationDateAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="deleteButtonAction:">
+							<string key="name">deleteButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="notificationButtonAction:">
+							<string key="name">notificationButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="saveNoteEditingAction:">
+							<string key="name">saveNoteEditingAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setNotificationDateAction:">
+							<string key="name">setNotificationDateAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setNotificationPickerValueChanged:">
+							<string key="name">setNotificationPickerValueChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="creationDateLabel">UILabel</string>
 						<string key="creationImage">UIImageView</string>
