@@ -135,7 +135,7 @@
     
     //notificaiton
     if(self.note.notificationDate != nil &&
-       [self.note.notificationDate compare:[NSDate date]] != NSOrderedAscending)
+       [self.note.notificationDate isInFuture])
     {
         self.notificationImage.hidden = NO;
         self.notificationButton.hidden = NO;
@@ -383,6 +383,7 @@
     
     self.currentNoteNotificationDate = [self.setNotificationDatePicker.date dateByRemovingSeconds];
     self.note.notificationDate = [self.currentNoteNotificationDate copy];
+    self.note.isUploaded = @NO;
     
     [self setupNote];
     
@@ -515,6 +516,7 @@
         if(buttonIndex_ == 0) {
             self.currentNoteNotificationDate = nil;
             self.note.notificationDate = nil;
+            self.note.isUploaded = @NO;
             [[NotificationsManager sharedInstance] removeNotificationForNote:self.note];
             [self setupNote];
         }
@@ -531,6 +533,7 @@
         if(buttonIndex_ == 0) {
             self.currentNoteNotificationDate = nil;
             self.note.notificationDate = nil;
+            self.note.isUploaded = @NO;
             [[NotificationsManager sharedInstance] removeNotificationForNote:self.note];
             [self setupNote];
         }

@@ -53,7 +53,7 @@
     self.noteLabel.text = note_.message;
     
     if(note_.notificationDate != nil &&
-       [note_.notificationDate compare:[NSDate date]] == NSOrderedDescending) {
+       [note_.notificationDate isInFuture]) {
         self.notificationImage.hidden = NO;
         self.notificationLabel.text = [note_.notificationDate formatAsNiceString];
         self.notificationLabel.hidden = NO;

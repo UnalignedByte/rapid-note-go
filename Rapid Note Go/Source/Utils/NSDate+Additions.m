@@ -62,4 +62,13 @@
     return [[gregorianCalendar dateFromComponents:nowDateComponents] copy];
 }
 
+
+- (BOOL)isInFuture
+{
+    if([(NSDate *)[NSDate date] compare:self] == NSOrderedAscending)
+        return YES;
+    
+    return NO;
+}
+
 @end

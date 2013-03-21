@@ -386,8 +386,6 @@
     NSArray *notes = [[DataManager sharedInstance] allNotes];
     for(int i=0; i<notes.count; i++) {
         Note *note = notes[i];
-        note.isUploaded = @NO;
-        note.notificationDate = nil;
         if([note.tag isEqualToString:tag_]) {
             [self tableView:self.tableVC.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
             return;

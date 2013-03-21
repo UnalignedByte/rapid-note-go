@@ -16,5 +16,6 @@
 - (NSDate *)dateByRemovingSeconds;
 - (NSDate *)dateBySettingSecondsAtOne;
 - (NSDate *)dateByAddingOneMinute;
+- (BOOL)isInFuture;
 
 @end

@@ -33,7 +33,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 @property (nonatomic) id lastCloudId;
 @property (nonatomic) BOOL shouldIgnoreNotesContextChanges;
 @property (nonatomic) BOOL isUsingCloud;
-@property (nonatomic) BOOL isCloudObserversAdded;
+@property (nonatomic) BOOL isCloudDataObserversAdded;
 @property (nonatomic) BOOL isUploadingData;
 
 @property (nonatomic, strong) void (^downloadBlock)();
@@ -64,11 +64,12 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         return nil;
     
     self.shouldIgnoreNotesContextChanges = NO;
-    self.isCloudObserversAdded = NO;
+    self.isCloudDataObserversAdded = NO;
     
     [self setupNotesModel];
     [self setupNotesStoreCoordinator];
     [self setupNotesContext];
+    [self setupCloudObservers];
     [self setupCloud];
 
     return self;
@@ -107,7 +108,11 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
                                              selector:@selector(cloudAvailabilityChanged:)
                                                  name:NSUbiquityIdentityDidChangeNotification
                                                object:nil];
-    
+}
+
+
+- (void)setupCloudDataObservers
+{
     self.notesCloudQuery = [[NSMetadataQuery alloc] init];
     self.notesCloudQuery.predicate = [NSPredicate predicateWithFormat:@"%K == 'notes.xml'", NSMetadataItemFSNameKey];
     self.notesCloudQuery.searchScopes = @[NSMetadataQueryUbiquitousDocumentsScope];
@@ -117,23 +122,20 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
                                                object:self.notesCloudQuery];
     [self.notesCloudQuery startQuery];
     
-    self.isCloudObserversAdded = YES;
+    self.isCloudDataObserversAdded = YES;
 }
 
 
-- (void)removeCloudObservers
+- (void)removeCloudDataObservers
 {
-    if(self.isCloudObserversAdded) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:NSUbiquityIdentityDidChangeNotification
-                                                      object:nil];
+    if(self.isCloudDataObserversAdded) {
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:NSMetadataQueryDidUpdateNotification
                                                       object:self.notesCloudQuery];
         [self.notesCloudQuery stopQuery];
     }
     
-    self.isCloudObserversAdded = NO;
+    self.isCloudDataObserversAdded = NO;
 }
 
 
@@ -156,7 +158,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     self.notesCloudUrl = [self.notesCloudUrl URLByAppendingPathComponent:@"notes.xml"];
     [self createDirectoryIfNecessary:self.notesCloudUrl];
     
-    [self setupCloudObservers];
+    [self setupCloudDataObservers];
     
     //first time using iCloud
     if(self.lastCloudId == nil) {
@@ -270,7 +272,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         [noteNode addChild:messageNode];
         
         //add timer node (if timer date != 0)
-        if(note.notificationDate != nil) {
+        if(note.notificationDate != nil && [note.notificationDate isInFuture]) {
             APElement *notificationDateNode = [[APElement alloc] initWithName:@"notification_date"];
             [notificationDateNode appendValue:[note.notificationDate description]];
             [noteNode addChild:notificationDateNode];
@@ -360,7 +362,10 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             Note *existingNote = fetchResult[0];
             existingNote.isUploaded = @YES;
             existingNote.modificationDate = modificationDate;
-            existingNote.notificationDate = notificationDate;
+            if([notificationDate isInFuture])
+                existingNote.notificationDate = notificationDate;
+            else
+                existingNote.notificationDate = nil;
             existingNote.message = message;
         //it's a new note, add it
         } else {
@@ -369,7 +374,10 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             note.tag = tag;
             note.creationDate = creationDate;
             note.modificationDate = modificationDate;
-            note.notificationDate = notificationDate;
+            if([notificationDate isInFuture])
+                note.notificationDate = notificationDate;
+            else
+                note.notificationDate = nil;
             note.isUploaded = @YES;
         }
     }
@@ -448,7 +456,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    [self removeCloudObservers];
+    [self removeCloudDataObservers];
     [self setupCloud];
 }
 
