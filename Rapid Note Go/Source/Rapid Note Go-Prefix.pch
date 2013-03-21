@@ -16,5 +16,9 @@
 
 #import "NSDate+Additions.h"
 
+//Check feature availability macro
+#import "MacroHelpers.h"
+#define CAN_USE_ICLOUD_TOKEN (systemVersionMacroHelper()>=6)
 
+//Translations
 #define Localize(string) NSLocalizedString(string, nil)

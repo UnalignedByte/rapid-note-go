@@ -93,6 +93,7 @@
 		B589448316DABBBE00B9E435 /* ixPickerOverlayTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447716DABBBE00B9E435 /* ixPickerOverlayTexture.png */; };
 		B589448416DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589447816DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png */; };
 		B589448616DABEBE00B9E435 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B589448516DABEBE00B9E435 /* QuartzCore.framework */; };
+		B591EF4216FB525F00A38C7D /* MacroHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B591EF4116FB525F00A38C7D /* MacroHelpers.m */; };
 		B59A035616E4B11B00A37055 /* KSCustomPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B59A035516E4B11B00A37055 /* KSCustomPopoverBackgroundView.m */; };
 		B59A036216E4B19E00A37055 /* popover-black-bcg-image.png in Resources */ = {isa = PBXBuildFile; fileRef = B59A035816E4B19E00A37055 /* popover-black-bcg-image.png */; };
 		B59A036316E4B19E00A37055 /* popover-black-bcg-image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59A035916E4B19E00A37055 /* popover-black-bcg-image@2x.png */; };
@@ -225,6 +226,8 @@
 		B589447716DABBBE00B9E435 /* ixPickerOverlayTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ixPickerOverlayTexture.png; sourceTree = "<group>"; };
 		B589447816DABBBE00B9E435 /* ixPickerOverlayTexture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ixPickerOverlayTexture@2x.png"; sourceTree = "<group>"; };
 		B589448516DABEBE00B9E435 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B591EF4016FB525F00A38C7D /* MacroHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MacroHelpers.h; path = Source/Utils/MacroHelpers.h; sourceTree = "<group>"; };
+		B591EF4116FB525F00A38C7D /* MacroHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MacroHelpers.m; path = Source/Utils/MacroHelpers.m; sourceTree = "<group>"; };
 		B59A035416E4B11B00A37055 /* KSCustomPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCustomPopoverBackgroundView.h; sourceTree = "<group>"; };
 		B59A035516E4B11B00A37055 /* KSCustomPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCustomPopoverBackgroundView.m; sourceTree = "<group>"; };
 		B59A035816E4B19E00A37055 /* popover-black-bcg-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-black-bcg-image.png"; sourceTree = "<group>"; };
@@ -454,6 +457,8 @@
 			children = (
 				B5081F5916BA8B3D00C3F248 /* NSDate+Additions.h */,
 				B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */,
+				B591EF4016FB525F00A38C7D /* MacroHelpers.h */,
+				B591EF4116FB525F00A38C7D /* MacroHelpers.m */,
 				B5B70F4E16C3F0CB00CBAC2C /* APXML */,
 				B589446816DABB9D00B9E435 /* IXPickerOverlayView */,
 				B59A035316E4B11B00A37055 /* KSCustomPopoverBackgroundView */,
@@ -836,6 +841,7 @@
 				B59A035616E4B11B00A37055 /* KSCustomPopoverBackgroundView.m in Sources */,
 				B59A037D16E4BA3F00A37055 /* LTKPopoverActionSheet.m in Sources */,
 				B5DD607E16EE1E99008F3842 /* SettingsVC.m in Sources */,
+				B591EF4216FB525F00A38C7D /* MacroHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,6 +81,7 @@
     self.tableVC.tableView.delegate = self;
 
     self.tableVC.tableView.backgroundView = nil;
+    self.tableVC.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
 }
 

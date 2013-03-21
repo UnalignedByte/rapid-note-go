@@ -104,10 +104,12 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 
 - (void)setupCloudObservers
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(cloudAvailabilityChanged:)
-                                                 name:NSUbiquityIdentityDidChangeNotification
-                                               object:nil];
+    if(CAN_USE_ICLOUD_TOKEN) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(cloudAvailabilityChanged:)
+                                                     name:NSUbiquityIdentityDidChangeNotification
+                                                   object:nil];
+    }
 }
 
 
@@ -146,51 +148,79 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     if(self.doesUserWantCloud == nil || self.doesUserWantCloud.boolValue == NO)
         return;
     
-    id cloudId = [[NSFileManager defaultManager] ubiquityIdentityToken];
-    if(cloudId == nil)
-        return;
-    
-    NSURL *ubiquityUrl = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-    if(ubiquityUrl == nil)
-        return;
-    
-    self.notesCloudUrl = [ubiquityUrl URLByAppendingPathComponent:@"Documents" isDirectory:YES];
-    self.notesCloudUrl = [self.notesCloudUrl URLByAppendingPathComponent:@"notes.xml"];
-    [self createDirectoryIfNecessary:self.notesCloudUrl];
-    
-    [self setupCloudDataObservers];
-    
-    //first time using iCloud
-    if(self.lastCloudId == nil) {
-        self.lastCloudId = cloudId;
-        [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            BOOL shouldExportNotes = [self isThereNotUploadedNotes];
-            [self mergeNotesFromCloud];
-            if(shouldExportNotes)
-                [self exportNotesToCloud];
-        }];
-    //same iCloud account as the last time
-    } else if([self.lastCloudId isEqual:cloudId]) {
-        [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            BOOL shouldExportNotes = [self isThereNotUploadedNotes];
-            [self mergeNotesFromCloud];
-            if(shouldExportNotes)
-                [self exportNotesToCloud];
-        }];
-    //different iCloud account
-    } else {
-        self.lastCloudId = cloudId;
-        self.shouldIgnoreNotesContextChanges = YES;
-            [self deleteAllNotes];
-            [_notesContext save:nil];
-        self.shouldIgnoreNotesContextChanges = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //get current iCloud id
+        id currentCloudId;
+        NSURL *cloudUrl;
         
-        [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
-            [self mergeNotesFromCloud];
-        }];
-    }
+        if(CAN_USE_ICLOUD_TOKEN) {
+            currentCloudId = [[NSFileManager defaultManager] ubiquityIdentityToken];
+            if(currentCloudId == nil)
+                return;
+            
+            cloudUrl = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+            if(cloudUrl == nil)
+                return;
+            
+        } else {
+            cloudUrl = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+            if(cloudUrl == nil)
+                return;
+            
+            NSURL *cloudIdUrl = [cloudUrl URLByAppendingPathComponent:@"Documents" isDirectory:YES];
+            cloudIdUrl = [cloudIdUrl URLByAppendingPathComponent:@"cloud.id" isDirectory:NO];
+            [self createDirectoryIfNecessary:cloudIdUrl];
+            
+            currentCloudId = [NSString stringWithContentsOfFile:cloudIdUrl.path encoding:NSUTF8StringEncoding error:nil];
+            
+            if(currentCloudId == nil) {
+                CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+                currentCloudId = CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuid));
+                [(NSString *)currentCloudId writeToFile:cloudIdUrl.path
+                                             atomically:NO
+                                               encoding:NSUTF8StringEncoding
+                                                  error:nil];
+            }
+        }
+        
+        self.notesCloudUrl = [cloudUrl URLByAppendingPathComponent:@"Documents" isDirectory:YES];
+        self.notesCloudUrl = [self.notesCloudUrl URLByAppendingPathComponent:@"notes.xml" isDirectory:NO];
+        [self createDirectoryIfNecessary:self.notesCloudUrl];
     
-    _isUsingCloud = YES;
+        [self setupCloudDataObservers];
+        
+        //first time using iCloud
+        if(self.lastCloudId == nil) {
+            self.lastCloudId = currentCloudId;
+            [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
+                BOOL shouldExportNotes = [self isThereNotUploadedNotes];
+                [self mergeNotesFromCloud];
+                if(shouldExportNotes)
+                    [self exportNotesToCloud];
+            }];
+        //same iCloud account as the last time
+        } else if([self.lastCloudId isEqual:currentCloudId]) {
+            [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
+                BOOL shouldExportNotes = [self isThereNotUploadedNotes];
+                [self mergeNotesFromCloud];
+                if(shouldExportNotes)
+                    [self exportNotesToCloud];
+            }];
+        //different iCloud account
+        } else {
+            self.lastCloudId = currentCloudId;
+            self.shouldIgnoreNotesContextChanges = YES;
+                [self deleteAllNotes];
+                [_notesContext save:nil];
+            self.shouldIgnoreNotesContextChanges = NO;
+            
+            [self downloadCloudFileAtUrl:self.notesCloudUrl downloadFinished:^{
+                [self mergeNotesFromCloud];
+            }];
+        }
+        
+        _isUsingCloud = YES;
+    });
 }
 
 
