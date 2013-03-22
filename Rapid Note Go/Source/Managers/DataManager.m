@@ -150,7 +150,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     dispatch_async(dispatch_get_main_queue(), ^{
         //get current iCloud id
-        id currentCloudId;
+        id currentCloudId = nil;
         NSURL *cloudUrl;
         
         if(CAN_USE_ICLOUD_TOKEN) {
@@ -176,6 +176,8 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
             if(currentCloudId == nil) {
                 CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
                 currentCloudId = CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuid));
+                CFRelease(uuid);
+                currentCloudId = [currentCloudId copy];
                 [(NSString *)currentCloudId writeToFile:cloudIdUrl.path
                                              atomically:NO
                                                encoding:NSUTF8StringEncoding
@@ -540,6 +542,16 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
         [[NotificationsManager sharedInstance] removeNotificationForNote:note];
         [self deleteNote:note];
     }
+}
+
+
+- (void)nilNotificaitonDateWithoutCloudExportForNote:(Note *)note_
+{
+    self.shouldIgnoreNotesContextChanges = YES;
+    note_.notificationDate = nil;
+    note_.isUploaded = @NO;
+    [self.notesContext save:nil];
+    self.shouldIgnoreNotesContextChanges = NO;
 }
 
 

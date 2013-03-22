@@ -50,7 +50,7 @@
 #pragma mark - Control
 - (void)addNotificationForNote:(Note *)note_
 {
-    if([note_.notificationDate isInFuture]) {
+    if(![note_.notificationDate isInFuture]) {
         return;
     }
     

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Note" representedClassName="Note" syncable="YES">
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="isUploaded" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="modificationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="isUploaded" attributeType="Boolean" syncable="YES"/>
+        <attribute name="message" attributeType="String" syncable="YES"/>
+        <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
         <attribute name="notificationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
     </entity>

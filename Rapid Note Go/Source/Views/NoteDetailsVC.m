@@ -133,6 +133,11 @@
         self.modificationDateLabel.text = @"";
     }
     
+    if(self.note.notificationDate != nil &&
+       ![self.note.notificationDate isInFuture]) {
+        [[DataManager sharedInstance] nilNotificaitonDateWithoutCloudExportForNote:self.note];
+    }
+    
     //notificaiton
     if(self.note.notificationDate != nil &&
        [self.note.notificationDate isInFuture])

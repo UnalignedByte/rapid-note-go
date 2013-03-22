@@ -29,5 +29,6 @@
 - (void)deleteNote:(Note *)note_;
 - (NSArray *)allNotes;
 - (void)deleteAllNotes;
+- (void)nilNotificaitonDateWithoutCloudExportForNote:(Note *)note_;
 
 @end
