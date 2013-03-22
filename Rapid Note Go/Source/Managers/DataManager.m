@@ -418,7 +418,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
     fetchRequest.entity = entityDescription;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @YES]];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == %@", @YES]];
     NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
     for(Note *note in fetchResult) {
         if([tagsFromXml indexOfObject:note.tag] == NSNotFound) {
