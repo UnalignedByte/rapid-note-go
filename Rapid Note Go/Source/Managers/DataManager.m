@@ -476,7 +476,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:_notesContext];
     fetchRequest.entity = entityDescription;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == '%@'", @NO]];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"isUploaded == %@", @NO]];
     NSArray *fetchResult = [_notesContext executeFetchRequest:fetchRequest error:nil];
     
     return fetchResult.count > 0;
