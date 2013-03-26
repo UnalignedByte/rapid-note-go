@@ -45,6 +45,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{7, 3}, {10, 10}}</string>
 								<reference key="NSSuperview" ref="707658588"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="971307106"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -59,6 +60,7 @@
 								<int key="NSvFlags">290</int>
 								<string key="NSFrame">{{18, 3}, {274, 10}}</string>
 								<reference key="NSSuperview" ref="707658588"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="427115760"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -92,8 +94,9 @@
 							<object class="IBUILabel" id="427115760">
 								<reference key="NSNextResponder" ref="707658588"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{5, 16}, {290, 32}}</string>
+								<string key="NSFrame">{{5, 16}, {290, 33}}</string>
 								<reference key="NSSuperview" ref="707658588"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -126,8 +129,9 @@
 								<double key="preferredMaxLayoutWidth">290</double>
 							</object>
 						</array>
-						<string key="NSFrameSize">{300, 51}</string>
+						<string key="NSFrameSize">{300, 52}</string>
 						<reference key="NSSuperview" ref="239508551"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="580136629"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -141,8 +145,9 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 52}</string>
+				<string key="NSFrameSize">{320, 53}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="707658588"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<int key="IBUIContentMode">2</int>

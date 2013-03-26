@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -48,7 +48,6 @@
 								<string key="NSFrame">{{10, 10}, {403, 944}}</string>
 								<reference key="NSSuperview" ref="98812133"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">2</int>
@@ -460,41 +459,16 @@
 					<string key="className">NoteDetailsVC</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="cancelNoteEditingAction:">id</string>
-						<string key="cancelSettingNotificationDateAction:">id</string>
 						<string key="deleteButtonAction:">id</string>
 						<string key="notificationButtonAction:">id</string>
-						<string key="saveNoteEditingAction:">id</string>
-						<string key="setNotificationDateAction:">id</string>
-						<string key="setNotificationPickerValueChanged:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="cancelNoteEditingAction:">
-							<string key="name">cancelNoteEditingAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="cancelSettingNotificationDateAction:">
-							<string key="name">cancelSettingNotificationDateAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="deleteButtonAction:">
 							<string key="name">deleteButtonAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="notificationButtonAction:">
 							<string key="name">notificationButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveNoteEditingAction:">
-							<string key="name">saveNoteEditingAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="setNotificationDateAction:">
-							<string key="name">setNotificationDateAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="setNotificationPickerValueChanged:">
-							<string key="name">setNotificationPickerValueChanged:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
