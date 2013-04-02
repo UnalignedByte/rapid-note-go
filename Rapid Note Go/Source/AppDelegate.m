@@ -61,6 +61,13 @@
 }
 
 
+#pragma mark - Application lifecycle
+- (void)applicationWillResignActive:(UIApplication *)application_
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+
 #pragma mark - Local Notifications Delegate
 - (void)application:(UIApplication *)application_ didReceiveLocalNotification:(UILocalNotification *)notification_
 {

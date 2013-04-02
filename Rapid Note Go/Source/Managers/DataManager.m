@@ -34,7 +34,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
 @property (nonatomic) BOOL shouldIgnoreNotesContextChanges;
 @property (nonatomic) BOOL isUsingCloud;
 @property (nonatomic) BOOL isCloudDataObserversAdded;
-@property (nonatomic) BOOL isUploadingData;
+@property (atomic) BOOL isUploadingData;
 
 @property (nonatomic, strong) void (^downloadBlock)();
 
@@ -277,15 +277,29 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     [self.notesContext save:nil];
     
     if(_isUsingCloud)
-        [self exportNotesToCloud];
+        [NSThread detachNewThreadSelector:@selector(exportNotesToCloud) toTarget:self withObject:nil];
 }
 
 
 #pragma mark - Internal Control
 - (void)exportNotesToCloud
 {
+    //here we make sure that only one thread is exporting at a time
+    //only only one thread is waiting to export next
+    static BOOL isQueueFull;
+    
+    if(isQueueFull)
+        return;
+    
+    isQueueFull = YES;
+    
+    while(self.isUploadingData)
+        [NSThread sleepForTimeInterval:0.1];
+    
     self.shouldIgnoreNotesContextChanges = YES;
     self.isUploadingData = YES;
+    
+    isQueueFull = NO;
     
     //create new xml and save it
     APElement *notesRootNode = [[APElement alloc] initWithName:@"rapid"];
@@ -576,7 +590,7 @@ static NSString *kLastCloudIdSetting = @"LastCloudId";
     
     BOOL isDownloaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsDownloadedKey] boolValue];
     BOOL isUploaded = [[metadataItem valueForAttribute:NSMetadataUbiquitousItemIsUploadedKey] boolValue];
-    
+
     //new data is downloaded
     if(isDownloaded && isUploaded && self.downloadBlock != nil) {
         self.downloadBlock();
