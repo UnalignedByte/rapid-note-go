@@ -6,7 +6,7 @@
         <attribute name="message" attributeType="String" syncable="YES"/>
         <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
         <attribute name="notificationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Note" positionX="0" positionY="0" width="128" height="135"/>
