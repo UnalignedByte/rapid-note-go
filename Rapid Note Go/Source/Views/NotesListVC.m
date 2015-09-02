@@ -71,7 +71,7 @@
 
 - (void)setupTable
 {
-    self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
     CGRect tableRect = self.view.frame;
     tableRect.origin.y = 0;
     tableRect.size.height -= SETTINGS_BUTTON_HEIGHT * 2.0;
@@ -83,6 +83,9 @@
     self.tableVC.tableView.backgroundView = nil;
     self.tableVC.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
+
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
@@ -107,6 +110,7 @@
 
 - (void)setupNavigationButtonsForAdding
 {
+    [self.navigationController setNavigationBarHidden:NO];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Edit")
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self

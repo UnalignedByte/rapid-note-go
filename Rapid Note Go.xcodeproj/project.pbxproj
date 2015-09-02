@@ -27,8 +27,7 @@
 		8986401216B68F1000446007 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 8986401016B68F1000446007 /* Default-Landscape.png */; };
 		8986401316B68F1000446007 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8986401116B68F1000446007 /* Default-Landscape@2x.png */; };
 		89B7BBF216B6C38500294BBA /* NotesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF116B6C38500294BBA /* NotesListVC.m */; };
-		89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */; };
-		89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* PadRootVC.m */; };
+		89B7BBF816B6C57000294BBA /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* RootVC.m */; };
 		B50106B916E3D21300F9FE4B /* Set Notification Pad Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */; };
 		B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */; };
 		B5081F5B16BA8B4900C3F248 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */; };
@@ -65,6 +64,7 @@
 		B5325B3A16DE564600426252 /* Note Viewer Top Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2816DE564600426252 /* Note Viewer Top Dark.png */; };
 		B5325B3B16DE564600426252 /* Note Viewer Top Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5325B2916DE564600426252 /* Note Viewer Top Dark@2x.png */; };
 		B53651E316BD3AB20090C926 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B53651E216BD3AB20090C926 /* NotificationsManager.m */; };
+		B56ABA5F1B714681004C3535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56ABA5E1B714681004C3535 /* Main.storyboard */; };
 		B570355B16D81650001A1D8A /* Background Pattern Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355916D81650001A1D8A /* Background Pattern Dark.png */; };
 		B570355C16D81650001A1D8A /* Background Pattern Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */; };
 		B589443F16D94CA000B9E435 /* Note Entry Background Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */; };
@@ -154,10 +154,8 @@
 		8986401116B68F1000446007 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x.png"; path = "Graphics/Defaults/Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		89B7BBF016B6C38500294BBA /* NotesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesListVC.h; path = Source/Views/NotesListVC.h; sourceTree = "<group>"; };
 		89B7BBF116B6C38500294BBA /* NotesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesListVC.m; path = Source/Views/NotesListVC.m; sourceTree = "<group>"; };
-		89B7BBF316B6C43B00294BBA /* PhoneRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneRootVC.h; path = Source/Views/PhoneRootVC.h; sourceTree = "<group>"; };
-		89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneRootVC.m; path = Source/Views/PhoneRootVC.m; sourceTree = "<group>"; };
-		89B7BBF616B6C57000294BBA /* PadRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PadRootVC.h; path = Source/Views/PadRootVC.h; sourceTree = "<group>"; };
-		89B7BBF716B6C57000294BBA /* PadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootVC.m; path = Source/Views/PadRootVC.m; sourceTree = "<group>"; };
+		89B7BBF616B6C57000294BBA /* RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootVC.h; path = Source/Views/RootVC.h; sourceTree = "<group>"; };
+		89B7BBF716B6C57000294BBA /* RootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootVC.m; path = Source/Views/RootVC.m; sourceTree = "<group>"; };
 		B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark.png"; path = "Graphics/Various/Set Notification Pad Dark.png"; sourceTree = "<group>"; };
 		B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark@2x.png"; path = "Graphics/Various/Set Notification Pad Dark@2x.png"; sourceTree = "<group>"; };
 		B5081F5916BA8B3D00C3F248 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Additions.h"; path = "Source/Utils/NSDate+Additions.h"; sourceTree = "<group>"; };
@@ -197,6 +195,7 @@
 		B5325B2916DE564600426252 /* Note Viewer Top Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Note Viewer Top Dark@2x.png"; sourceTree = "<group>"; };
 		B53651E116BD3AB20090C926 /* NotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationsManager.h; path = Source/Managers/NotificationsManager.h; sourceTree = "<group>"; };
 		B53651E216BD3AB20090C926 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationsManager.m; path = Source/Managers/NotificationsManager.m; sourceTree = "<group>"; };
+		B56ABA5E1B714681004C3535 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Source/Views/Main.storyboard; sourceTree = "<group>"; };
 		B570355916D81650001A1D8A /* Background Pattern Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark.png"; path = "Graphics/Various/Background Pattern Dark.png"; sourceTree = "<group>"; };
 		B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark@2x.png"; path = "Graphics/Various/Background Pattern Dark@2x.png"; sourceTree = "<group>"; };
 		B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Entry Background Dark.png"; path = "Graphics/Various/Note Entry Background Dark.png"; sourceTree = "<group>"; };
@@ -430,10 +429,9 @@
 		89B7BBEF16B6C34800294BBA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				89B7BBF316B6C43B00294BBA /* PhoneRootVC.h */,
-				89B7BBF416B6C43B00294BBA /* PhoneRootVC.m */,
-				89B7BBF616B6C57000294BBA /* PadRootVC.h */,
-				89B7BBF716B6C57000294BBA /* PadRootVC.m */,
+				B56ABA5E1B714681004C3535 /* Main.storyboard */,
+				89B7BBF616B6C57000294BBA /* RootVC.h */,
+				89B7BBF716B6C57000294BBA /* RootVC.m */,
 				89B7BBF016B6C38500294BBA /* NotesListVC.h */,
 				89B7BBF116B6C38500294BBA /* NotesListVC.m */,
 				B5B30E1416B9D09000429607 /* NoteInputView.xib */,
@@ -711,6 +709,7 @@
 				8986400F16B68F0900446007 /* Default-Portrait@2x.png in Resources */,
 				8986401216B68F1000446007 /* Default-Landscape.png in Resources */,
 				8986401316B68F1000446007 /* Default-Landscape@2x.png in Resources */,
+				B56ABA5F1B714681004C3535 /* Main.storyboard in Resources */,
 				891B93BF16B8113400EE24C9 /* Icon.png in Resources */,
 				891B93C016B8113400EE24C9 /* Icon@2x.png in Resources */,
 				891B93CA16B8249C00EE24C9 /* NoteCell.xib in Resources */,
@@ -824,8 +823,7 @@
 				890EAEA616A831F0000CFA48 /* AppDelegate.m in Sources */,
 				897FA6E316A8386400EB2D18 /* Notes.xcdatamodeld in Sources */,
 				89B7BBF216B6C38500294BBA /* NotesListVC.m in Sources */,
-				89B7BBF516B6C43B00294BBA /* PhoneRootVC.m in Sources */,
-				89B7BBF816B6C57000294BBA /* PadRootVC.m in Sources */,
+				89B7BBF816B6C57000294BBA /* RootVC.m in Sources */,
 				891B93C416B8227300EE24C9 /* DataManager.m in Sources */,
 				891B93CD16B824F800EE24C9 /* NoteCell.m in Sources */,
 				B5081F5B16BA8B4900C3F248 /* NSDate+Additions.m in Sources */,
@@ -919,8 +917,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -932,8 +931,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

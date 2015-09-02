@@ -1,5 +1,5 @@
 //
-//  iphoneRootVC.h
+//  RootVC.h
 //  Rapid Note Go
 //
 //  Created by Rafał Grodziński on 28.01.2013.
@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PhoneRootVC : UINavigationController
-
-//Initialization
-- (id)init;
+@interface RootVC : UISplitViewController <UISplitViewControllerDelegate>
 
 //Control
 - (void)showNoteForTag:(NSString *)tag_;

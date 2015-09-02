@@ -11,8 +11,7 @@
 #import "DataManager.h"
 #import "NotificationsManager.h"
 
-#import "PhoneRootVC.h"
-#import "PadRootVC.h"
+#import "RootVC.h"
 
 
 #pragma mark - Private properties
@@ -37,7 +36,7 @@
         [questionAlert show];
     }
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         self.rootVC = [[PhoneRootVC alloc] init];
@@ -45,7 +44,7 @@
         self.rootVC = [[PadRootVC alloc] init];
         
     self.window.rootViewController = self.rootVC;
-    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];*/
     
     //propagate handling of notification
     UILocalNotification *notification = options_[UIApplicationLaunchOptionsLocalNotificationKey];
@@ -76,14 +75,9 @@
     NSString *tag = notification_.userInfo[@"tag"];
     if(tag == nil)
         return;
-    
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        PadRootVC *rootVC = (PadRootVC *)self.rootVC;
-        [rootVC showNoteForTag:tag];
-    } else {
-        PhoneRootVC *rootVC = (PhoneRootVC *)self.rootVC;
-        [rootVC showNoteForTag:tag];
-    }
+
+    RootVC *rootVC = (RootVC *)self.rootVC;
+    [rootVC showNoteForTag:tag];
 }
 
 
