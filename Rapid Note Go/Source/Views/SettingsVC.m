@@ -42,6 +42,9 @@
 {
     self.doesUserWantCloudSwitch.on = [DataManager sharedInstance].doesUserWantCloud.boolValue;
     [self setupTranslations];
+
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 

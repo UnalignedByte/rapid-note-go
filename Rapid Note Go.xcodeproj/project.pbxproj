@@ -27,8 +27,6 @@
 		8986401316B68F1000446007 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8986401116B68F1000446007 /* Default-Landscape@2x.png */; };
 		89B7BBF216B6C38500294BBA /* NotesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF116B6C38500294BBA /* NotesListVC.m */; };
 		89B7BBF816B6C57000294BBA /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B7BBF716B6C57000294BBA /* RootVC.m */; };
-		B50106B916E3D21300F9FE4B /* Set Notification Pad Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */; };
-		B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */; };
 		B5081F5B16BA8B4900C3F248 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */; };
 		B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */; };
 		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
@@ -64,16 +62,12 @@
 		B56ABA5F1B714681004C3535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56ABA5E1B714681004C3535 /* Main.storyboard */; };
 		B570355B16D81650001A1D8A /* Background Pattern Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355916D81650001A1D8A /* Background Pattern Dark.png */; };
 		B570355C16D81650001A1D8A /* Background Pattern Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */; };
-		B589443F16D94CA000B9E435 /* Note Entry Background Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */; };
-		B589444016D94CA000B9E435 /* Note Entry Background Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589443E16D94CA000B9E435 /* Note Entry Background Dark@2x.png */; };
 		B589444716DA672100B9E435 /* Created Icon Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444116DA672100B9E435 /* Created Icon Dark.png */; };
 		B589444816DA672100B9E435 /* Created Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444216DA672100B9E435 /* Created Icon Dark@2x.png */; };
 		B589444B16DA672100B9E435 /* Modified Icon Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444516DA672100B9E435 /* Modified Icon Dark.png */; };
 		B589444C16DA672100B9E435 /* Modified Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444616DA672100B9E435 /* Modified Icon Dark@2x.png */; };
 		B589444F16DA674F00B9E435 /* Notification Icon Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444D16DA674F00B9E435 /* Notification Icon Dark.png */; };
 		B589445016DA674F00B9E435 /* Notification Icon Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */; };
-		B589445316DA694C00B9E435 /* Set Notification Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445116DA694C00B9E435 /* Set Notification Dark.png */; };
-		B589445416DA694C00B9E435 /* Set Notification Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */; };
 		B589446316DA6F0B00B9E435 /* NoteViewerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */; };
 		B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446416DA792200B9E435 /* Notification Icon Small Dark.png */; };
 		B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */; };
@@ -152,8 +146,6 @@
 		89B7BBF116B6C38500294BBA /* NotesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesListVC.m; path = Source/Views/NotesListVC.m; sourceTree = "<group>"; };
 		89B7BBF616B6C57000294BBA /* RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootVC.h; path = Source/Views/RootVC.h; sourceTree = "<group>"; };
 		89B7BBF716B6C57000294BBA /* RootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootVC.m; path = Source/Views/RootVC.m; sourceTree = "<group>"; };
-		B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark.png"; path = "Graphics/Various/Set Notification Pad Dark.png"; sourceTree = "<group>"; };
-		B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Pad Dark@2x.png"; path = "Graphics/Various/Set Notification Pad Dark@2x.png"; sourceTree = "<group>"; };
 		B5081F5916BA8B3D00C3F248 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Additions.h"; path = "Source/Utils/NSDate+Additions.h"; sourceTree = "<group>"; };
 		B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Additions.m"; path = "Source/Utils/NSDate+Additions.m"; sourceTree = "<group>"; };
 		B5081F5C16BA8CD000C3F248 /* NoteDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteDetailsVC.h; path = Source/Views/NoteDetailsVC.h; sourceTree = "<group>"; };
@@ -192,16 +184,12 @@
 		B56ABA5E1B714681004C3535 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Source/Views/Main.storyboard; sourceTree = "<group>"; };
 		B570355916D81650001A1D8A /* Background Pattern Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark.png"; path = "Graphics/Various/Background Pattern Dark.png"; sourceTree = "<group>"; };
 		B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background Pattern Dark@2x.png"; path = "Graphics/Various/Background Pattern Dark@2x.png"; sourceTree = "<group>"; };
-		B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Entry Background Dark.png"; path = "Graphics/Various/Note Entry Background Dark.png"; sourceTree = "<group>"; };
-		B589443E16D94CA000B9E435 /* Note Entry Background Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Note Entry Background Dark@2x.png"; path = "Graphics/Various/Note Entry Background Dark@2x.png"; sourceTree = "<group>"; };
 		B589444116DA672100B9E435 /* Created Icon Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Created Icon Dark.png"; path = "Graphics/Various/Created Icon Dark.png"; sourceTree = "<group>"; };
 		B589444216DA672100B9E435 /* Created Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Created Icon Dark@2x.png"; path = "Graphics/Various/Created Icon Dark@2x.png"; sourceTree = "<group>"; };
 		B589444516DA672100B9E435 /* Modified Icon Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Modified Icon Dark.png"; path = "Graphics/Various/Modified Icon Dark.png"; sourceTree = "<group>"; };
 		B589444616DA672100B9E435 /* Modified Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Modified Icon Dark@2x.png"; path = "Graphics/Various/Modified Icon Dark@2x.png"; sourceTree = "<group>"; };
 		B589444D16DA674F00B9E435 /* Notification Icon Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Dark.png"; path = "Graphics/Various/Notification Icon Dark.png"; sourceTree = "<group>"; };
 		B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Dark@2x.png"; path = "Graphics/Various/Notification Icon Dark@2x.png"; sourceTree = "<group>"; };
-		B589445116DA694C00B9E435 /* Set Notification Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Dark.png"; path = "Graphics/Various/Set Notification Dark.png"; sourceTree = "<group>"; };
-		B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Set Notification Dark@2x.png"; path = "Graphics/Various/Set Notification Dark@2x.png"; sourceTree = "<group>"; };
 		B589446116DA6F0B00B9E435 /* NoteViewerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewerBackgroundView.h; path = Source/Views/NoteViewerBackgroundView.h; sourceTree = "<group>"; };
 		B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewerBackgroundView.m; path = Source/Views/NoteViewerBackgroundView.m; sourceTree = "<group>"; };
 		B589446416DA792200B9E435 /* Notification Icon Small Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Notification Icon Small Dark.png"; path = "Graphics/Various/Notification Icon Small Dark.png"; sourceTree = "<group>"; };
@@ -518,18 +506,12 @@
 			children = (
 				B570355916D81650001A1D8A /* Background Pattern Dark.png */,
 				B570355A16D81650001A1D8A /* Background Pattern Dark@2x.png */,
-				B589443D16D94CA000B9E435 /* Note Entry Background Dark.png */,
-				B589443E16D94CA000B9E435 /* Note Entry Background Dark@2x.png */,
 				B589444116DA672100B9E435 /* Created Icon Dark.png */,
 				B589444216DA672100B9E435 /* Created Icon Dark@2x.png */,
 				B589444516DA672100B9E435 /* Modified Icon Dark.png */,
 				B589444616DA672100B9E435 /* Modified Icon Dark@2x.png */,
 				B589444D16DA674F00B9E435 /* Notification Icon Dark.png */,
 				B589444E16DA674F00B9E435 /* Notification Icon Dark@2x.png */,
-				B589445116DA694C00B9E435 /* Set Notification Dark.png */,
-				B589445216DA694C00B9E435 /* Set Notification Dark@2x.png */,
-				B50106B716E3D21300F9FE4B /* Set Notification Pad Dark.png */,
-				B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */,
 				B589446416DA792200B9E435 /* Notification Icon Small Dark.png */,
 				B589446516DA792300B9E435 /* Notification Icon Small Dark@2x.png */,
 				B5325B1516DE564500426252 /* Note Viewer Pad Horizontal */,
@@ -709,16 +691,12 @@
 				B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */,
 				B570355B16D81650001A1D8A /* Background Pattern Dark.png in Resources */,
 				B570355C16D81650001A1D8A /* Background Pattern Dark@2x.png in Resources */,
-				B589443F16D94CA000B9E435 /* Note Entry Background Dark.png in Resources */,
-				B589444016D94CA000B9E435 /* Note Entry Background Dark@2x.png in Resources */,
 				B589444716DA672100B9E435 /* Created Icon Dark.png in Resources */,
 				B589444816DA672100B9E435 /* Created Icon Dark@2x.png in Resources */,
 				B589444B16DA672100B9E435 /* Modified Icon Dark.png in Resources */,
 				B589444C16DA672100B9E435 /* Modified Icon Dark@2x.png in Resources */,
 				B589444F16DA674F00B9E435 /* Notification Icon Dark.png in Resources */,
 				B589445016DA674F00B9E435 /* Notification Icon Dark@2x.png in Resources */,
-				B589445316DA694C00B9E435 /* Set Notification Dark.png in Resources */,
-				B589445416DA694C00B9E435 /* Set Notification Dark@2x.png in Resources */,
 				B589446616DA792300B9E435 /* Notification Icon Small Dark.png in Resources */,
 				B589446716DA792300B9E435 /* Notification Icon Small Dark@2x.png in Resources */,
 				B589447916DABBBE00B9E435 /* ixPickerOverlayGlass.png in Resources */,
@@ -751,8 +729,6 @@
 				B5325B3916DE564600426252 /* Note Viewer Middle Dark@2x.png in Resources */,
 				B5325B3A16DE564600426252 /* Note Viewer Top Dark.png in Resources */,
 				B5325B3B16DE564600426252 /* Note Viewer Top Dark@2x.png in Resources */,
-				B50106B916E3D21300F9FE4B /* Set Notification Pad Dark.png in Resources */,
-				B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */,
 				B59A036216E4B19E00A37055 /* popover-black-bcg-image.png in Resources */,
 				B59A036316E4B19E00A37055 /* popover-black-bcg-image@2x.png in Resources */,
 				B59A036416E4B19E00A37055 /* popover-black-bottom-arrow-image.png in Resources */,

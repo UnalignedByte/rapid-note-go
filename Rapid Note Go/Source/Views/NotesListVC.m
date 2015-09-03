@@ -61,7 +61,6 @@
 - (void)viewDidLoad
 {
     [self setupTable];
-    [self setupSettingsButton];
     [self setupNavigationButtonsForAdding];
     [self setupNotesResultsController];
     [self setupNoteInput];
@@ -70,40 +69,7 @@
 
 - (void)setupTable
 {
-    /*self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    CGRect tableRect = self.view.frame;
-    tableRect.origin.y = 0;
-    tableRect.size.height -= SETTINGS_BUTTON_HEIGHT * 2.0;
-    self.tableVC.tableView.frame = tableRect;
-    [self.view addSubview:self.tableVC.tableView];
-    self.tableVC.tableView.dataSource = self;
-    self.tableVC.tableView.delegate = self;
-
-    self.tableVC.tableView.backgroundView = nil;
-    self.tableVC.tableView.backgroundColor = [UIColor clearColor];*/
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
-
-    //self.automaticallyAdjustsScrollViewInsets = YES;
-    //self.edgesForExtendedLayout = UIRectEdgeNone;
-}
-
-
-- (void)setupSettingsButton
-{
-    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 60.0, SETTINGS_BUTTON_HEIGHT)];
-    
-    CGRect settingsButtonRect = settingsButton.frame;
-    settingsButtonRect.origin.x = (self.view.frame.size.width - settingsButtonRect.size.width)/2.0;
-    settingsButtonRect.origin.y = self.view.frame.size.height - settingsButton.frame.size.height*1.5;
-    settingsButton.frame = settingsButtonRect;
-
-    [settingsButton setBackgroundImage:[UIImage imageNamed:@"Setings and Info"] forState:UIControlStateNormal];
-    settingsButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [settingsButton addTarget:self
-                       action:@selector(settingsButtonAction:)
-             forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:settingsButton];
 }
 
 
@@ -117,8 +83,12 @@
     UIBarButtonItem *addNoteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                    target:self
                                                                                    action:@selector(showNoteInputAction:)];
+
+    UIButton *settingsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [settingsButton addTarget:self action:@selector(settingsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *settingsBarButton = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
     self.navigationItem.leftBarButtonItem = editButton;
-    self.navigationItem.rightBarButtonItem = addNoteButton;
+    self.navigationItem.rightBarButtonItems = @[addNoteButton, settingsBarButton];
     self.title = Localize(@"Notes");
 }
 
@@ -133,8 +103,8 @@
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(cancelNoteAction:)];
-    self.navigationItem.rightBarButtonItem = addNoteButton;
     self.navigationItem.leftBarButtonItem = cancelNoteButton;
+    self.navigationItem.rightBarButtonItems = @[addNoteButton];
     self.title = Localize(@"New Note");
 }
 
@@ -155,7 +125,7 @@
                                                      action:@selector(finishEditingNotesListAction:)];
     }
     self.navigationItem.leftBarButtonItem = doneButton;
-    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItems = nil;
     self.title = Localize(@"Notes");
 }
 
