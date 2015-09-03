@@ -19,7 +19,6 @@
 		891B93BF16B8113400EE24C9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 891B93BD16B8113400EE24C9 /* Icon.png */; };
 		891B93C016B8113400EE24C9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 891B93BE16B8113400EE24C9 /* Icon@2x.png */; };
 		891B93C416B8227300EE24C9 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B93C316B8227300EE24C9 /* DataManager.m */; };
-		891B93CA16B8249C00EE24C9 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 891B93C916B8249C00EE24C9 /* NoteCell.xib */; };
 		891B93CD16B824F800EE24C9 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891B93CC16B824F800EE24C9 /* NoteCell.m */; };
 		897FA6E316A8386400EB2D18 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 897FA6E116A8386400EB2D18 /* Notes.xcdatamodeld */; };
 		8986400E16B68F0900446007 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 8986400C16B68F0900446007 /* Default-Portrait.png */; };
@@ -32,8 +31,6 @@
 		B50106BA16E3D21300F9FE4B /* Set Notification Pad Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B50106B816E3D21300F9FE4B /* Set Notification Pad Dark@2x.png */; };
 		B5081F5B16BA8B4900C3F248 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */; };
 		B5081F5E16BA8CD000C3F248 /* NoteDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */; };
-		B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */; };
-		B5081F6216BACB6000C3F248 /* NoteDetailsViewPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */; };
 		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
 		B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3A16C3D94C00B5EDEE /* Icon-72.png */; };
 		B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */; };
@@ -144,7 +141,6 @@
 		891B93BE16B8113400EE24C9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Graphics/Icons/Icon@2x.png"; sourceTree = "<group>"; };
 		891B93C216B8227300EE24C9 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = Source/Managers/DataManager.h; sourceTree = "<group>"; };
 		891B93C316B8227300EE24C9 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = Source/Managers/DataManager.m; sourceTree = "<group>"; };
-		891B93C916B8249C00EE24C9 /* NoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteCell.xib; path = Source/Cells/NoteCell.xib; sourceTree = "<group>"; };
 		891B93CB16B824F800EE24C9 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteCell.h; path = Source/Cells/NoteCell.h; sourceTree = "<group>"; };
 		891B93CC16B824F800EE24C9 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteCell.m; path = Source/Cells/NoteCell.m; sourceTree = "<group>"; };
 		897FA6E216A8386400EB2D18 /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
@@ -162,8 +158,6 @@
 		B5081F5A16BA8B4900C3F248 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Additions.m"; path = "Source/Utils/NSDate+Additions.m"; sourceTree = "<group>"; };
 		B5081F5C16BA8CD000C3F248 /* NoteDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteDetailsVC.h; path = Source/Views/NoteDetailsVC.h; sourceTree = "<group>"; };
 		B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteDetailsVC.m; path = Source/Views/NoteDetailsVC.m; sourceTree = "<group>"; };
-		B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPhone.xib; path = Source/Views/NoteDetailsViewPhone.xib; sourceTree = "<group>"; };
-		B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteDetailsViewPad.xib; path = Source/Views/NoteDetailsViewPad.xib; sourceTree = "<group>"; };
 		B5081F6316BC082900C3F248 /* SetNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetNotificationView.xib; path = Source/Views/SetNotificationView.xib; sourceTree = "<group>"; };
 		B5269B3A16C3D94C00B5EDEE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Graphics/Icons/Icon-72.png"; sourceTree = "<group>"; };
 		B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Graphics/Icons/Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -388,7 +382,6 @@
 		891B93C816B8246100EE24C9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				891B93C916B8249C00EE24C9 /* NoteCell.xib */,
 				891B93CB16B824F800EE24C9 /* NoteCell.h */,
 				891B93CC16B824F800EE24C9 /* NoteCell.m */,
 			);
@@ -437,8 +430,6 @@
 				B5B30E1416B9D09000429607 /* NoteInputView.xib */,
 				B5081F5C16BA8CD000C3F248 /* NoteDetailsVC.h */,
 				B5081F5D16BA8CD000C3F248 /* NoteDetailsVC.m */,
-				B5081F5F16BA8CEB00C3F248 /* NoteDetailsViewPhone.xib */,
-				B5081F6116BACB6000C3F248 /* NoteDetailsViewPad.xib */,
 				B5081F6316BC082900C3F248 /* SetNotificationView.xib */,
 				B589446116DA6F0B00B9E435 /* NoteViewerBackgroundView.h */,
 				B589446216DA6F0B00B9E435 /* NoteViewerBackgroundView.m */,
@@ -712,10 +703,7 @@
 				B56ABA5F1B714681004C3535 /* Main.storyboard in Resources */,
 				891B93BF16B8113400EE24C9 /* Icon.png in Resources */,
 				891B93C016B8113400EE24C9 /* Icon@2x.png in Resources */,
-				891B93CA16B8249C00EE24C9 /* NoteCell.xib in Resources */,
 				B5B30E1516B9D09000429607 /* NoteInputView.xib in Resources */,
-				B5081F6016BA8CEB00C3F248 /* NoteDetailsViewPhone.xib in Resources */,
-				B5081F6216BACB6000C3F248 /* NoteDetailsViewPad.xib in Resources */,
 				B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */,
 				B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */,
 				B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */,

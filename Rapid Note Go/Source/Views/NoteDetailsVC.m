@@ -62,15 +62,15 @@
 @implementation NoteDetailsVC
 
 #pragma mark - Initialization
-- (id)init
+- (void)viewDidLoad
 {
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    /*if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         if((self = [super initWithNibName:@"NoteDetailsViewPad" bundle:nil]) == nil)
             return nil;
     } else {
         if((self = [super initWithNibName:@"NoteDetailsViewPhone" bundle:nil]) == nil)
             return nil;
-    }
+    }*/
     
     [self setupBackground];
     [self setupNote];
@@ -80,8 +80,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    //self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    //self.navigationItem.leftItemsSupplementBackButton = YES;
     
-    return self;
+    //return self;
 }
 
 
@@ -179,8 +182,8 @@
                                                   target:self
                                                   action:@selector(deleteButtonAction:)];
 
-    self.navigationItem.rightBarButtonItem = deleteButton;
-    self.title = @"";
+    self.navigationItem.rightBarButtonItems = @[deleteButton];
+    //self.title = @"";
     
     self.notificationButton.userInteractionEnabled = YES;
 }
@@ -458,6 +461,8 @@
 #pragma mark - Control
 - (void)configureWithNote:(Note *)note_ isRemoteChange:(BOOL)isRemoteChange_;
 {
+    self.note = note_;
+    return;
     BOOL isModified = [self isNoteDifferent:note_];
     
     BOOL isDeletedRemotely = (self.note != nil) && (note_ == nil) && isRemoteChange_;

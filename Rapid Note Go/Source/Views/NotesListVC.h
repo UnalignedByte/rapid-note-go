@@ -9,12 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@class NoteDetailsVC;
-
-
-@interface NotesListVC : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPopoverControllerDelegate>
-
-@property (nonatomic, strong) NoteDetailsVC *noteDetailsVC;
+@interface NotesListVC : UITableViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPopoverControllerDelegate>
 
 //Initialization
 - (id)init;

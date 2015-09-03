@@ -23,31 +23,7 @@
 
 @implementation NoteCell
 
-#pragma mark - Class  Info
-+ (CGFloat)height
-{
-    static NoteCell *cell;
-    static dispatch_once_t once;
-    
-    dispatch_once(&once, ^{
-        NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"NoteCell" owner:nil options:nil];
-        cell = nibObjects[0];
-    });
-    
-    return cell.frame.size.height;
-}
-
-
 #pragma mark - Initialization
-- (id)init
-{    
-    NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"NoteCell" owner:nil options:nil];
-    NoteCell *cell = nibObjects[0];
-    
-    return cell;
-}
-
-
 - (void)configureWithNote:(Note *)note_
 {
     self.noteLabel.text = note_.message;

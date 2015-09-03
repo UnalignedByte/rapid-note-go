@@ -28,7 +28,6 @@
 #pragma mark - Private properties
 @interface NotesListVC ()
 
-@property (nonatomic, strong) UITableViewController *tableVC;
 @property (nonatomic, strong) NSFetchedResultsController *notesResultsController;
 @property (nonatomic, strong) IBOutlet UIView *noteInputView;
 @property (nonatomic, strong) IBOutlet UITextView *noteInputText;
@@ -71,7 +70,7 @@
 
 - (void)setupTable
 {
-    self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    /*self.tableVC = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
     CGRect tableRect = self.view.frame;
     tableRect.origin.y = 0;
     tableRect.size.height -= SETTINGS_BUTTON_HEIGHT * 2.0;
@@ -81,11 +80,11 @@
     self.tableVC.tableView.delegate = self;
 
     self.tableVC.tableView.backgroundView = nil;
-    self.tableVC.tableView.backgroundColor = [UIColor clearColor];
+    self.tableVC.tableView.backgroundColor = [UIColor clearColor];*/
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background Pattern Dark"]];
 
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    //self.automaticallyAdjustsScrollViewInsets = YES;
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
@@ -337,7 +336,8 @@
 - (void)editNotesList
 {
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
+        //MARK: FIXME
+        //[self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
         
         if(self.noteInputPadPopover != nil && self.noteInputPadPopover.isPopoverVisible) {
             [self hideInputForPad];
@@ -347,7 +347,7 @@
     
     [self setupNavigationButtonsForListEditing];
     
-    [self.tableVC.tableView setEditing:YES animated:YES];
+    [self.tableView setEditing:YES animated:YES];
 }
 
 
@@ -357,7 +357,7 @@
     
     [self setupNavigationButtonsForAdding];
     
-    [self.tableVC.tableView setEditing:NO animated:YES];
+    [self.tableView setEditing:NO animated:YES];
 }
 
 
@@ -393,10 +393,25 @@
         Note *note = notes[i];
         [[DataManager sharedInstance] nilNotificaitonDateWithoutCloudExportForNote:note];
         if([note.tag isEqualToString:tag_]) {
-            [self tableView:self.tableVC.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
             return;
         }
     }
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue_ sender:(id)sender_
+{
+    NoteDetailsVC *noteDetailsVC = (NoteDetailsVC *)segue_.destinationViewController;
+
+    Note *note = [self.notesResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
+    self.currentNoteTag = note.tag;
+
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+    }
+
+    [noteDetailsVC configureWithNote:note isRemoteChange:NO];
 }
 
 
@@ -447,37 +462,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView_ heightForRowAtIndexPath:(NSIndexPath *)indexPath_
-{
-    return [NoteCell height];
-}
-
-
-- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath_
-{
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [tableView_ deselectRowAtIndexPath:indexPath_ animated:YES];
-    }
-    
-    Note *note = [self.notesResultsController objectAtIndexPath:indexPath_];
-    self.currentNoteTag = note.tag;
-    
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.noteDetailsVC configureWithNote:note isRemoteChange:NO];
-    } else {
-        if(self.navigationController.topViewController == self.noteDetailsVC) {
-            [self.noteDetailsVC configureWithNote:note isRemoteChange:NO];
-        } else {
-            if(self.noteDetailsVC == nil)
-                self.noteDetailsVC = [[NoteDetailsVC alloc] init];
-
-            [self.noteDetailsVC configureWithNote:note isRemoteChange:NO];
-            [self.navigationController pushViewController:self.noteDetailsVC animated:YES];
-        }
-    }
-}
-
-
 - (void)tableView:(UITableView *)tableView_ commitEditingStyle:(UITableViewCellEditingStyle)style_
         forRowAtIndexPath:(NSIndexPath *)indexPath_
 {
@@ -486,8 +470,9 @@
     switch(style_) {
         case UITableViewCellEditingStyleDelete:
         {
-            if(indexPath_.row == [self.tableVC.tableView indexPathForSelectedRow].row) {
-                [self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
+            if(indexPath_.row == [self.tableView indexPathForSelectedRow].row) {
+                //MARK: FIXME
+                //[self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
             }
             [[NotificationsManager sharedInstance] removeNotificationForNote:note];
             [[DataManager sharedInstance] deleteNote:note];
@@ -511,8 +496,9 @@
     self.isEditingSingleRow = YES;
     
     [self setupNavigationButtonsForListEditing];
-    
-    [self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
+
+    //MARK: FIXME
+    //[self.noteDetailsVC configureWithNote:nil isRemoteChange:NO];
 }
 
 
@@ -528,7 +514,7 @@
     if([DataManager sharedInstance].shouldIgnoreUpdates)
         return;
     
-    [self.tableVC.tableView beginUpdates];
+    [self.tableView beginUpdates];
 }
 
 
@@ -540,11 +526,11 @@
     
     switch(type_) {
         case NSFetchedResultsChangeInsert:
-            [self.tableVC.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
                                   withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            [self.tableVC.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex_]
                                   withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
@@ -559,19 +545,19 @@
     
     switch(type_) {
         case NSFetchedResultsChangeInsert:
-            [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            [self.tableVC.tableView deleteRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeUpdate:
         {
-            [self.tableVC.tableView reloadRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
         case NSFetchedResultsChangeMove:
-            [self.tableVC.tableView deleteRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableVC.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath_] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -582,16 +568,17 @@
     if([DataManager sharedInstance].shouldIgnoreUpdates)
         return;
 
-    [self.tableVC.tableView endUpdates];
+    [self.tableView endUpdates];
 
     if(self.currentNoteTag != nil) {
         Note *currentNote = [self noteForTag:self.currentNoteTag];
-        [self.noteDetailsVC configureWithNote:currentNote isRemoteChange:YES];
+        //MARK: FIXME
+        //[self.noteDetailsVC configureWithNote:currentNote isRemoteChange:YES];
         
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             if(currentNote != nil) {
-                [self.tableVC.tableView selectRowAtIndexPath:[self.notesResultsController indexPathForObject:currentNote]
-                                                    animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+                [self.tableView selectRowAtIndexPath:[self.notesResultsController indexPathForObject:currentNote]
+                                            animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             }
         }
     }
