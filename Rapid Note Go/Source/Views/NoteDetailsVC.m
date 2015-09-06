@@ -64,13 +64,7 @@
 #pragma mark - Initialization
 - (void)viewDidLoad
 {
-    /*if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        if((self = [super initWithNibName:@"NoteDetailsViewPad" bundle:nil]) == nil)
-            return nil;
-    } else {
-        if((self = [super initWithNibName:@"NoteDetailsViewPhone" bundle:nil]) == nil)
-            return nil;
-    }*/
+    [super viewDidLoad];
     
     [self setupBackground];
     [self setupNote];
@@ -81,10 +75,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
-    //self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-    //self.navigationItem.leftItemsSupplementBackButton = YES;
-    
-    //return self;
+    UIBarButtonItem *modeItem = self.splitViewController.displayModeButtonItem;
+    self.navigationItem.leftBarButtonItem = modeItem;
 }
 
 
@@ -174,8 +166,6 @@
 
 - (void)setupNavigationButtonsForReading
 {
-    self.navigationItem.leftBarButtonItem = nil;
-    
     if(self.note == nil)
         return;
     UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
@@ -183,7 +173,6 @@
                                                   action:@selector(deleteButtonAction:)];
 
     self.navigationItem.rightBarButtonItems = @[deleteButton];
-    //self.title = @"";
     
     self.notificationButton.userInteractionEnabled = YES;
 }
@@ -505,6 +494,14 @@
     
     if(isDeletedRemotely)
         [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [super traitCollectionDidChange:previousTraitCollection];
+
+    NSLog(@"changed");
 }
 
 

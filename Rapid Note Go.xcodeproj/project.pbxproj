@@ -32,6 +32,7 @@
 		B5081F6416BC082900C3F248 /* SetNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5081F6316BC082900C3F248 /* SetNotificationView.xib */; };
 		B5269B3C16C3D94C00B5EDEE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3A16C3D94C00B5EDEE /* Icon-72.png */; };
 		B5269B3D16C3D94C00B5EDEE /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */; };
+		B529A3331B9C55A400BB05DF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B529A3321B9C55A400BB05DF /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		B52DD15A16EE3C7B00D13B07 /* Open Homepage Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15816EE3C7B00D13B07 /* Open Homepage Dark.png */; };
 		B52DD15B16EE3C7B00D13B07 /* Open Homepage Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15916EE3C7B00D13B07 /* Open Homepage Dark@2x.png */; };
 		B52DD15E16EE3F8200D13B07 /* Rapid Note Go.png in Resources */ = {isa = PBXBuildFile; fileRef = B52DD15C16EE3F8200D13B07 /* Rapid Note Go.png */; };
@@ -153,6 +154,7 @@
 		B5081F6316BC082900C3F248 /* SetNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetNotificationView.xib; path = Source/Views/SetNotificationView.xib; sourceTree = "<group>"; };
 		B5269B3A16C3D94C00B5EDEE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Graphics/Icons/Icon-72.png"; sourceTree = "<group>"; };
 		B5269B3B16C3D94C00B5EDEE /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Graphics/Icons/Icon-72@2x.png"; sourceTree = "<group>"; };
+		B529A3321B9C55A400BB05DF /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Rapid Note Go/Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B52DD15816EE3C7B00D13B07 /* Open Homepage Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Open Homepage Dark.png"; sourceTree = "<group>"; };
 		B52DD15916EE3C7B00D13B07 /* Open Homepage Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Open Homepage Dark@2x.png"; sourceTree = "<group>"; };
 		B52DD15C16EE3F8200D13B07 /* Rapid Note Go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rapid Note Go.png"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				897FA6E116A8386400EB2D18 /* Notes.xcdatamodeld */,
+				B529A3321B9C55A400BB05DF /* Launch Screen.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -648,7 +651,7 @@
 		890EAE8616A831F0000CFA48 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = UnalignedByte;
 			};
 			buildConfigurationList = 890EAE8916A831F0000CFA48 /* Build configuration list for PBXProject "Rapid Note Go" */;
@@ -738,6 +741,7 @@
 				B59A036816E4B19E00A37055 /* popover-black-right-arrow-image.png in Resources */,
 				B59A036916E4B19E00A37055 /* popover-black-right-arrow-image@2x.png in Resources */,
 				B59A036A16E4B19E00A37055 /* popover-black-top-arrow-image.png in Resources */,
+				B529A3331B9C55A400BB05DF /* Launch Screen.storyboard in Resources */,
 				B59A036B16E4B19E00A37055 /* popover-black-top-arrow-image@2x.png in Resources */,
 				B59A037E16E4BA3F00A37055 /* PopoverDefaultButton.png in Resources */,
 				B59A037F16E4BA3F00A37055 /* PopoverDefaultButton@2x.png in Resources */,
@@ -833,6 +837,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -844,7 +849,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -866,7 +871,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -882,6 +887,7 @@
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.unalignedbyte.rapidnotego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -896,6 +902,7 @@
 				GCC_PREFIX_HEADER = "Rapid Note Go/Source/Rapid Note Go-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Rapid Note Go/Supporting Files/Rapid Note Go-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.unalignedbyte.rapidnotego;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

@@ -20,6 +20,7 @@
     [super viewDidLoad];
 
     self.delegate = self;
+    self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 }
 
 
@@ -37,6 +38,15 @@
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController
 {
     return YES;
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    for(UIViewController *vc in self.viewControllers)
+    [self setOverrideTraitCollection:[UITraitCollection traitCollectionWithHorizontalSizeClass:UIUserInterfaceSizeClassRegular]
+              forChildViewController:vc];
+
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 @end

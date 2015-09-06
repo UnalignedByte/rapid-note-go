@@ -35,17 +35,7 @@
                                                       otherButtonTitles:Localize(@"Enable"), Localize(@"Don't Enable"), nil];
         [questionAlert show];
     }
-    
-    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        self.rootVC = [[PhoneRootVC alloc] init];
-    else
-        self.rootVC = [[PadRootVC alloc] init];
-        
-    self.window.rootViewController = self.rootVC;
-    [self.window makeKeyAndVisible];*/
-    
+
     //propagate handling of notification
     UILocalNotification *notification = options_[UIApplicationLaunchOptionsLocalNotificationKey];
     if(notification != nil) {

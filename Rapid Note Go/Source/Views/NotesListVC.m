@@ -60,6 +60,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     [self setupTable];
     [self setupNavigationButtonsForAdding];
     [self setupNotesResultsController];
@@ -75,7 +77,6 @@
 
 - (void)setupNavigationButtonsForAdding
 {
-    [self.navigationController setNavigationBarHidden:NO];
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Edit")
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
@@ -372,7 +373,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue_ sender:(id)sender_
 {
-    NoteDetailsVC *noteDetailsVC = (NoteDetailsVC *)segue_.destinationViewController;
+    NoteDetailsVC *noteDetailsVC = (NoteDetailsVC *)[((UINavigationController *)segue_.destinationViewController).viewControllers firstObject];
 
     Note *note = [self.notesResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
     self.currentNoteTag = note.tag;
